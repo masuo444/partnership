@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FOMUS GLOBAL PARTNERSHIP</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Shippori+Mincho:wght@400;500&family=Inter:wght@300;400;500&display=swap");
+
+      :root {
+        --bg: #f9f9f7;
+        --ink: #111111;
+        --vermilion: #c03528;
+        --stone-100: #f1f1ef;
+        --stone-200: #e3e3df;
+        --stone-300: #d1d1cc;
+        --stone-400: #b5b5ad;
+        --stone-500: #8f8f86;
+        --stone-600: #6a6a61;
+        --stone-700: #3d3d38;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body.jp {
+        --serif-font: "Shippori Mincho", "Noto Serif JP", serif;
+        font-family: "Inter", "Noto Serif JP", serif;
+      }
+
+      body.en {
+        --serif-font: "Cormorant Garamond", serif;
+        font-family: "Inter", sans-serif;
+      }
+
+      .font-serif {
+        font-family: var(--serif-font, "Cormorant Garamond", serif);
+      }
+
+      .container {
+        width: min(1200px, 92vw);
+        margin: 0 auto;
+      }
+
+      .fade {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.9s ease, transform 0.9s ease;
+      }
+
+      .fade.in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        transition: all 0.7s ease;
+        padding: 28px 0;
+      }
+
+      .nav.scrolled {
+        padding: 16px 0;
+        background: rgba(249, 249, 247, 0.95);
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .logo {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+      }
+
+      .logo-row {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+      }
+
+      .logo-dot {
+        width: 6px;
+        height: 6px;
+        background: var(--ink);
+      }
+
+      .logo-sub {
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        color: var(--stone-400);
+        transition: opacity 0.4s ease;
+      }
+
+      .nav.scrolled .logo-sub {
+        opacity: 0;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .lang-link {
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 2px;
+      }
+
+      .lang-link:hover {
+        border-color: var(--ink);
+      }
+
+      .lang-toggle {
+        background: transparent;
+        border: none;
+        text-transform: uppercase;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        cursor: pointer;
+      }
+
+      .lang-toggle span {
+        color: var(--stone-500);
+        transition: opacity 0.3s ease;
+      }
+
+      .lang-toggle .active {
+        color: var(--ink);
+        opacity: 1;
+      }
+
+      .nav-cta {
+        border: 1px solid var(--ink);
+        background: transparent;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+      }
+
+      .nav-cta:hover {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .hero {
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        padding-top: 120px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--stone-200);
+      }
+
+      .hero::before {
+        left: 6%;
+      }
+
+      .hero::after {
+        right: 6%;
+      }
+
+      .hero-texture {
+        position: absolute;
+        inset: 0;
+        opacity: 0.04;
+        background: url("https://www.transparenttextures.com/patterns/washi.png");
+        pointer-events: none;
+      }
+
+      .hero-content {
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        font-size: 11px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--stone-500);
+        margin-bottom: 20px;
+      }
+
+      .hero-brand::before,
+      .hero-brand::after {
+        content: "";
+        width: 28px;
+        height: 1px;
+        background: var(--ink);
+      }
+
+      .hero-title {
+        font-size: clamp(2rem, 5vw, 4.4rem);
+        line-height: 1.6;
+        letter-spacing: 0.04em;
+        margin: 0 0 40px;
+      }
+
+      .hero-scroll {
+        position: absolute;
+        bottom: -10vh;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        color: var(--stone-400);
+        font-size: 9px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+      }
+
+      .hero-scroll span:last-child {
+        width: 1px;
+        height: 80px;
+        background: var(--stone-300);
+      }
+
+      section {
+        padding: 140px 0;
+      }
+
+      .intro-section {
+        padding: 90px 0 110px;
+      }
+
+      .label {
+        font-size: 10px;
+        letter-spacing: 0.3em;
+        color: var(--stone-400);
+        text-transform: uppercase;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.3;
+        margin: 16px 0 0;
+        white-space: pre-line;
+      }
+
+      .intro-grid {
+        display: grid;
+        gap: 40px;
+      }
+
+      .intro-left {
+        position: relative;
+        padding-right: 12px;
+      }
+
+      .intro-left::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 6px;
+        width: 1px;
+        height: 160px;
+        background: var(--stone-200);
+      }
+
+      .intro-title {
+        font-size: clamp(2rem, 3.6vw, 3rem);
+        line-height: 1.35;
+        letter-spacing: 0.02em;
+      }
+
+      .intro-kicker {
+        font-size: 11px;
+        letter-spacing: 0.35em;
+        color: var(--stone-400);
+        text-transform: uppercase;
+      }
+
+      .intro-quote {
+        font-size: 1.05rem;
+        line-height: 1.9;
+        color: var(--ink);
+        padding: 18px 0 18px 18px;
+        border-left: 1px solid var(--stone-300);
+      }
+
+      .intro-body {
+        color: var(--stone-600);
+        line-height: 2.05;
+        font-size: 0.95rem;
+      }
+
+      .intro-body p {
+        margin: 0 0 24px;
+      }
+
+      .intro-body p:first-child {
+        font-size: 1.05rem;
+      }
+
+      .intro-body .lead {
+        padding-left: 18px;
+        border-left: 1px solid var(--stone-300);
+      }
+
+      .intro-gridline {
+        width: 100%;
+        height: 1px;
+        background: var(--stone-200);
+        margin: 28px 0 24px;
+      }
+
+      .intro-side {
+        font-size: 11px;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--stone-400);
+      }
+
+      .intro-image {
+        width: min(260px, 52vw);
+        margin: 0 auto;
+        aspect-ratio: 1 / 1;
+        background: transparent;
+        overflow: hidden;
+      }
+
+      .intro-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: none;
+        opacity: 1;
+      }
+
+      .split {
+        display: grid;
+        gap: 40px;
+      }
+
+      .split img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .who-card {
+        background: #fff;
+        padding: 40px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.02);
+        position: relative;
+      }
+
+      .who-seal {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        width: 60px;
+        height: 60px;
+        border: 1px solid rgba(192, 53, 40, 0.3);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 9px;
+        letter-spacing: 0.3em;
+        color: var(--vermilion);
+        opacity: 0.7;
+      }
+
+      .who-grid {
+        display: grid;
+        gap: 32px;
+      }
+
+      .who-grid img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%);
+      }
+
+      .diff {
+        background: var(--ink);
+        color: var(--bg);
+      }
+
+      .diff-list {
+        margin-top: 60px;
+        border-top: 1px solid #2a2a28;
+      }
+
+      .diff-item {
+        border-bottom: 1px solid #2a2a28;
+        padding: 36px 0;
+        display: grid;
+        gap: 16px;
+        transition: background 0.4s ease;
+      }
+
+      .diff-item:hover {
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .diff-id {
+        color: var(--stone-600);
+        font-size: 1.4rem;
+      }
+
+      .diff-title {
+        font-size: 1.6rem;
+      }
+
+      .diff-desc {
+        color: var(--stone-400);
+        line-height: 1.8;
+      }
+
+      .membership {
+        background: var(--bg);
+      }
+
+      .membership-grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .membership-card {
+        background: #fff;
+        border: 1px solid var(--stone-200);
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        position: relative;
+        transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+      }
+
+      .membership-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--ink);
+        box-shadow: 0 24px 50px rgba(17, 17, 17, 0.08);
+      }
+
+      .membership-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .membership-price {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        font-size: 1.6rem;
+      }
+
+      .feature-grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      .feature-chip {
+        border: 1px solid var(--stone-200);
+        padding: 12px 14px;
+        font-size: 0.85rem;
+        color: var(--stone-600);
+        background: var(--bg);
+        transition: border-color 0.3s ease, color 0.3s ease;
+      }
+
+      .membership-card:hover .feature-chip {
+        border-color: var(--stone-400);
+        color: var(--stone-700);
+      }
+
+      .membership-cta {
+        margin-top: auto;
+        border: 1px solid var(--ink);
+        background: transparent;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        padding: 10px 0;
+        cursor: pointer;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      .membership-card:hover .membership-cta {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .membership-note {
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ink);
+        margin-top: 10px;
+        text-align: right;
+      }
+
+      .gate {
+        background: #fff;
+        border-top: 1px solid var(--stone-100);
+        text-align: center;
+      }
+
+      .gate-flow {
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        font-size: 11px;
+      }
+
+      .gate-button {
+        background: var(--ink);
+        color: #fff;
+        border: none;
+        padding: 18px 40px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 11px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .gate-button:hover {
+        background: #2b2b2b;
+      }
+
+      footer {
+        padding: 100px 0;
+        border-top: 1px solid var(--stone-200);
+        text-align: center;
+      }
+
+      footer p {
+        color: var(--stone-500);
+        font-size: 12px;
+        line-height: 1.8;
+      }
+
+      .footer-brand {
+        font-size: 10px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--stone-400);
+      }
+
+      @media (min-width: 900px) {
+        .intro-grid {
+          grid-template-columns: 1fr 1.2fr;
+        }
+
+        .split {
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+        }
+
+        .who-grid {
+          grid-template-columns: 0.9fr 1.6fr;
+          align-items: start;
+        }
+
+        .diff-item {
+          grid-template-columns: 60px 1fr 1.4fr;
+          align-items: center;
+        }
+
+        .hero-title {
+          line-height: 1.45;
+        }
+      }
+    </style>
+  </head>
+  <body class="jp">
+    <nav class="nav" id="nav">
+      <div class="container nav-inner">
+        <div class="logo">
+          <div class="logo-row">
+            <span class="logo-dot"></span>
+            <span>FOMUS</span>
+          </div>
+          <span class="logo-sub">Global Partnership</span>
+        </div>
+        <div class="nav-actions">
+          <a class="lang-link" href="index-en.html">EN</a>
+          <button class="nav-cta" data-jp="参加を希望する" data-en="Request Interview">参加を希望する</button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero" id="intro">
+        <div class="hero-texture"></div>
+        <div class="container hero-content fade">
+          <div class="hero-brand" data-jp="FOMUS GLOBAL PARTNERSHIP" data-en="FOMUS GLOBAL PARTNERSHIP">
+            FOMUS GLOBAL PARTNERSHIP
+          </div>
+          <h1
+            class="hero-title font-serif"
+            data-jp="日本文化の<span style='color:#b5b5ad;'>“内側”</span>に入り、<br>共に未来をつくるための関係性。"
+            data-en="Enter the <span style='color:#b5b5ad;font-style:italic;'>inner circle</span> of Japanese culture,<br>a relationship to co-create the future."
+          >
+            日本文化の<span style="color:#b5b5ad;">“内側”</span>に入り、<br>共に未来をつくるための関係性。
+          </h1>
+          <div class="hero-scroll">
+            <span data-jp="Scroll" data-en="Scroll">Scroll</span>
+            <span></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-section">
+        <div class="container">
+          <div class="fade" style="margin-bottom: 48px;">
+            <span class="label" data-jp="01 / INTRODUCTION" data-en="01 / INTRODUCTION">01 / INTRODUCTION</span>
+            <h2 class="section-title font-serif" data-jp="体験の先にある、<br>静かな共創。" data-en="Quiet Co-Creation<br>Beyond Experience.">
+              体験の先にある、<br>静かな共創。
+            </h2>
+          </div>
+          <div class="split">
+            <div class="intro-body fade">
+              <p class="intro-quote" data-jp="このパートナーシップは、特別な体験“だけ”を求めるものではありません。"
+                data-en="This partnership is not merely about seeking exclusive experiences.">
+                このパートナーシップは、特別な体験“だけ”を求めるものではありません。
+              </p>
+              <p data-jp="文化に触れ、心を動かされる体験は、確かに価値があります。しかしFOMUSが大切にしているのは、その先に生まれる「関係」と「共創」です。"
+                data-en="Touching culture and being moved by it has immense value. However, what FOMUS cherishes is the 'Relationship' and 'Co-Creation' born beyond that.">
+                文化に触れ、心を動かされる体験は、確かに価値があります。しかしFOMUSが大切にしているのは、その先に生まれる「関係」と「共創」です。
+              </p>
+              <p class="lead" data-jp="一度きりの訪問ではなく、時間を重ね、信頼を育み、未来を共につくること。"
+                data-en="Not a single visit, but deepening time, nurturing trust, and building the future together.">
+                一度きりの訪問ではなく、時間を重ね、信頼を育み、未来を共につくること。
+              </p>
+              <p style="color:#111111" data-jp="FOMUSは、日本文化の“内側”へと続く入口です。" data-en="FOMUS is the gateway to the 'Inside' of Japanese culture.">
+                FOMUSは、日本文化の“内側”へと続く入口です。
+              </p>
+            </div>
+            <div class="fade intro-image">
+              <img src="FOMUSlogo_edited.png" alt="FOMUS Logo" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="background:#fff;">
+        <div class="container">
+          <div class="fade" style="margin-bottom: 48px;">
+            <span class="label" data-jp="02 / WHAT IS FOMUS" data-en="02 / WHAT IS FOMUS">02 / WHAT IS FOMUS</span>
+            <h2 class="section-title font-serif" data-jp="関係を結び、<br>共に創るプロセス。" data-en="Connecting & Creating<br>Together.">
+              関係を結び、<br>共に創るプロセス。
+            </h2>
+          </div>
+          <div class="split">
+            <div class="fade" style="aspect-ratio:1/1; background: var(--stone-100); overflow:hidden;">
+              <img src="FOMUS枡.png" alt="FOMUS Masu" />
+            </div>
+            <div class="fade" style="align-self:center;">
+              <h3 class="font-serif" style="font-size:1.4rem; line-height:1.8;" data-jp="FOMUS GLOBAL PARTNERSHIPは、日本文化の担い手たちと世界をつなぐための会員制パートナーシップです。" data-en="FOMUS GLOBAL PARTNERSHIP is a membership alliance connecting the custodians of Japanese culture with the world.">
+                FOMUS GLOBAL PARTNERSHIPは、日本文化の担い手たちと世界をつなぐための会員制パートナーシップです。
+              </h3>
+              <div style="margin-top: 24px; color: var(--stone-600); line-height: 2;">
+                <p data-jp="ここで生まれるのは、「見る」「知る」体験ではなく、関係を結び、共に創るプロセス。" data-en="What is born here is not the experience of 'seeing' or 'knowing', but the process of connecting and creating together.">
+                  ここで生まれるのは、「見る」「知る」体験ではなく、関係を結び、共に創るプロセス。
+                </p>
+                <p data-jp="文化・技術・思想・人。それらが交差する“内側”に身を置くことで、新しい価値が静かに立ち上がります。" data-en="Culture, technique, philosophy, people. By placing yourself 'Inside' where these intersect, new value quietly arises.">
+                  文化・技術・思想・人。それらが交差する“内側”に身を置くことで、新しい価値が静かに立ち上がります。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container" style="max-width: 980px;">
+          <div class="fade" style="text-align:center; margin-bottom: 40px;">
+            <span class="label" data-jp="03 / WHO" data-en="03 / WHO">03 / WHO</span>
+          </div>
+          <div class="who-card fade">
+            <div class="who-seal">MASU</div>
+            <div class="who-grid">
+              <div style="aspect-ratio:3/4; background: var(--stone-100); overflow:hidden;">
+                <img src="プロフィール.png" alt="MaSU portrait" style="filter: none;" />
+              </div>
+              <div>
+                <h3 class="font-serif" style="font-size: 1.8rem; margin: 0;" data-jp="まっすー (MaSU)" data-en="MaSU">まっすー (MaSU)</h3>
+                <p style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone-400); margin-top: 10px;" data-jp="FOMUS代表" data-en="FOMUS Founder">
+                  FOMUS代表
+                </p>
+                <div style="margin-top: 20px; color: var(--stone-600); line-height: 1.9;">
+                  <p data-jp="日本全国を巡りながら、職人・蔵元・作り手たちと長年にわたり関係を築いてきました。また、日本の伝統工芸「枡」を軸に、40カ国以上で文化とビジネスをつないできた実践者でもあります。"
+                    data-en="MaSU has traveled across Japan building long-term relationships with artisans and brewers. Simultaneously, he is a practitioner who has connected culture and business in over 40 countries, using the traditional 'Masu' craft as his axis.">
+                    日本全国を巡りながら、職人・蔵元・作り手たちと長年にわたり関係を築いてきました。また、日本の伝統工芸「枡」を軸に、40カ国以上で文化とビジネスをつないできた実践者でもあります。
+                  </p>
+                  <p data-jp="表に出ることのない工房。語られてこなかった哲学。積み重ねられてきた、静かな誇り。それらは、信頼関係の中でしか開かれません。"
+                    data-en="Workshops that remain hidden. Philosophies left unspoken. Quiet pride built over generations. These only open within a relationship of trust.">
+                    表に出ることのない工房。語られてこなかった哲学。積み重ねられてきた、静かな誇り。それらは、信頼関係の中でしか開かれません。
+                  </p>
+                  <p data-jp="FOMUSを通じてあなたが出会うのは、「案内された場所」ではなく、信頼によって迎え入れられる世界です。"
+                    data-en="Through FOMUS, you encounter not a 'guided destination,' but a world that welcomes you through trust.">
+                    FOMUSを通じてあなたが出会うのは、「案内された場所」ではなく、信頼によって迎え入れられる世界です。
+                  </p>
+                  <p class="font-serif" style="font-style: italic; color: var(--ink); margin-top: 16px;" data-jp="まっすーは、その境界に立ち、文化と人をつなぐ存在です。" data-en="MaSU stands at that boundary, connecting culture and people.">
+                    まっすーは、その境界に立ち、文化と人をつなぐ存在です。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="diff" id="diff">
+        <div class="container">
+          <div class="fade" style="margin-bottom: 40px;">
+            <span class="label" data-jp="04 / DIFFERENCE" data-en="04 / DIFFERENCE">04 / DIFFERENCE</span>
+            <h2 class="section-title font-serif" data-jp="DIFFERENCE" data-en="DIFFERENCE">DIFFERENCE</h2>
+          </div>
+          <div class="diff-list">
+            <div class="diff-item fade">
+              <div class="diff-id">01</div>
+              <div class="diff-title font-serif" data-jp="体験で終わらせない" data-en="Beyond Experience">体験で終わらせない</div>
+              <div class="diff-desc" data-jp="一過性の感動ではなく、継続する関係と信頼を築きます。" data-en="We build lasting relationships and trust, not just transient excitement.">
+                一過性の感動ではなく、継続する関係と信頼を築きます。
+              </div>
+            </div>
+            <div class="diff-item fade">
+              <div class="diff-id">02</div>
+              <div class="diff-title font-serif" data-jp="内側から関わる" data-en="Engage from the Inside">内側から関わる</div>
+              <div class="diff-desc" data-jp="表には出ない現場、思想、対話。限られた人だけが触れられる領域へ。" data-en="Unseen sites, philosophies, dialogues. Access to realms only a few can touch.">
+                表には出ない現場、思想、対話。限られた人だけが触れられる領域へ。
+              </div>
+            </div>
+            <div class="diff-item fade">
+              <div class="diff-id">03</div>
+              <div class="diff-title font-serif" data-jp="共につくる" data-en="Co-Create">共につくる</div>
+              <div class="diff-desc" data-jp="プロジェクト、文化、未来。参加者は“顧客”ではなく“共創者”です。" data-en="Projects, culture, future. Participants are not 'customers' but 'co-creators'.">
+                プロジェクト、文化、未来。参加者は“顧客”ではなく“共創者”です。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="membership" id="alliance">
+        <div class="container" style="max-width: 980px;">
+          <div class="fade" style="text-align: center; margin-bottom: 60px;">
+            <span class="label" data-jp="05 / ALLIANCE" data-en="05 / ALLIANCE">05 / ALLIANCE</span>
+            <h2 class="section-title font-serif" data-jp="PARTNERSHIP ALLIANCE" data-en="PARTNERSHIP ALLIANCE">PARTNERSHIP ALLIANCE</h2>
+          </div>
+
+          <div class="membership-grid">
+            <div class="membership-card fade">
+              <div class="membership-meta">
+                <h3 class="font-serif" data-jp="PERSONAL PARTNERSHIP" data-en="PERSONAL PARTNERSHIP">PERSONAL PARTNERSHIP</h3>
+                <p style="font-size: 11px; letter-spacing: 0.2em; color: var(--stone-500); text-transform: uppercase;" data-jp="個人向け" data-en="Individual">個人向け</p>
+              </div>
+              <div class="membership-price font-serif">
+                <span data-jp="$10,000" data-en="$10,000">$10,000</span>
+                <span style="font-size: 11px; color: var(--stone-500);">/ Year</span>
+              </div>
+              <div class="feature-grid">
+                <div class="feature-chip" data-jp="年1回のプライベート・ホスティング" data-en="Annual Private Hosting (1x)">年1回のプライベート・ホスティング</div>
+                <div class="feature-chip" data-jp="ご家族向けコンシェルジュサポート" data-en="Concierge Support for Family">ご家族向けコンシェルジュサポート</div>
+                <div class="feature-chip" data-jp="限定イベント・非公開の場への参加権" data-en="Access to Closed Events">限定イベント・非公開の場への参加権</div>
+              </div>
+              <button class="membership-cta" data-jp="個人パートナーシップ申請" data-en="Apply for Personal">個人パートナーシップ申請</button>
+            </div>
+
+            <div class="membership-card fade">
+              <div class="membership-meta">
+                <h3 class="font-serif" data-jp="CORPORATE PARTNERSHIP" data-en="CORPORATE PARTNERSHIP">CORPORATE PARTNERSHIP</h3>
+                <p style="font-size: 11px; letter-spacing: 0.2em; color: var(--stone-500); text-transform: uppercase;" data-jp="法人・経営者向け" data-en="Corporate / Executive">法人・経営者向け</p>
+                <div class="membership-note" data-jp="法人契約・請求書対応可 / 経費処理を前提とした設計です" data-en="Corporate contracts and invoice billing available / Designed for expense processing">
+                  法人契約・請求書対応可 / 経費処理を前提とした設計です
+                </div>
+              </div>
+              <div class="membership-price font-serif">
+                <span data-jp="$15,000" data-en="$15,000">$15,000</span>
+                <span style="font-size: 11px; color: var(--stone-500);">/ Year</span>
+              </div>
+              <div class="feature-grid">
+                <div class="feature-chip" data-jp="経営チームとの同行（最大3名）" data-en="Executive Team Access (Max 3)">経営チームとの同行（最大3名）</div>
+                <div class="feature-chip" data-jp="事業視察・共同プロジェクト設計" data-en="Business Inspection & Design">事業視察・共同プロジェクト設計</div>
+                <div class="feature-chip" data-jp="日本文化を起点とした事業創出支援" data-en="Business Creation Support">日本文化を起点とした事業創出支援</div>
+                <div class="feature-chip" data-jp="限定イベント・非公開の場への参加権" data-en="Access to Closed Events">限定イベント・非公開の場への参加権</div>
+              </div>
+              <button class="membership-cta" data-jp="法人パートナーシップ申請" data-en="Apply for Corporate">法人パートナーシップ申請</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gate" id="gate">
+        <div class="container" style="max-width: 720px;">
+          <div class="fade">
+            <span class="label" data-jp="06 / THE GATE" data-en="06 / THE GATE">06 / THE GATE</span>
+            <div style="margin-top: 32px; color: var(--stone-600); line-height: 2;">
+              <p data-jp="このパートナーシップは、誰にでも開かれているわけではありません。" data-en="This partnership is not open to everyone.">
+                このパートナーシップは、誰にでも開かれているわけではありません。
+              </p>
+              <p data-jp="私たちは「顧客」ではなく、共に未来をつくる仲間を求めています。" data-en="We seek partners, not customers. We seek allies to build the future together.">
+                私たちは「顧客」ではなく、共に未来をつくる仲間を求めています。
+              </p>
+              <p data-jp="静かに、しかし確かな関係を築くため、参加は招待制・審査制としています。" data-en="To build quiet but certain relationships, participation is by invitation/application only.">
+                静かに、しかし確かな関係を築くため、参加は招待制・審査制としています。
+              </p>
+            </div>
+            <h3 class="font-serif" style="font-size: 1.8rem; margin: 30px 0 18px;" data-jp="あなたは、何を創りたいですか？" data-en="What do you wish to create?">
+              あなたは、何を創りたいですか？
+            </h3>
+            <p class="gate-flow" data-jp="体験の先へ。関係の中へ。そして、未来へ。" data-en="Beyond Experience. Into Relationship. Towards the Future.">
+              体験の先へ。関係の中へ。そして、未来へ。
+            </p>
+            <div style="margin-top: 36px;">
+              <button class="gate-button" data-jp="参加を希望する（面談リクエスト）" data-en="Request to Join (Interview)">
+                参加を希望する（面談リクエスト）
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div style="width: 1px; height: 50px; background: var(--ink); margin: 0 auto 20px;"></div>
+        <h2 class="font-serif" style="font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 20px;">FOMUS</h2>
+        <p data-jp="日本文化の“内側”に入り、共に未来をつくるための関係性。" data-en="Enter the 'Inner Circle' of Japanese Culture. A relationship to co-create the future.">
+          日本文化の“内側”に入り、共に未来をつくるための関係性。
+        </p>
+        <div class="footer-brand" data-jp="FOMUS GLOBAL PARTNERSHIP" data-en="FOMUS GLOBAL PARTNERSHIP">FOMUS GLOBAL PARTNERSHIP</div>
+      </div>
+    </footer>
+
+    <script>
+      const nav = document.getElementById("nav");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 50);
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
+
+    </script>
+  </body>
+</html>
