@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -614,7 +614,7 @@
       }
     </style>
   </head>
-  <body class="en">
+  <body class="jp">
     <nav class="nav" id="nav">
       <div class="container nav-inner">
         <div class="logo">
@@ -625,7 +625,7 @@
           <span class="logo-sub">Global Partnership</span>
         </div>
         <div class="nav-actions">
-          <a class="lang-link" href="index.html">JP</a>
+          <a class="lang-link" href="index.html">EN</a>
           <button class="nav-cta" data-jp="参加を希望する" data-en="Request Interview">参加を希望する</button>
         </div>
       </div>
@@ -880,16 +880,6 @@
       const nav = document.getElementById("nav");
       window.addEventListener("scroll", () => {
         nav.classList.toggle("scrolled", window.scrollY > 50);
-      });
-
-      document.querySelectorAll("[data-en]").forEach((el) => {
-        const value = el.getAttribute("data-en");
-        if (!value) return;
-        if (el.tagName === "INPUT") {
-          el.setAttribute("placeholder", value);
-        } else {
-          el.innerHTML = value;
-        }
       });
 
       const observer = new IntersectionObserver(
