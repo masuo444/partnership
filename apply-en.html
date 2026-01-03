@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Partnership Application | FOMUS GLOBAL PARTNERSHIP</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Shippori+Mincho:wght@400;500&family=Inter:wght@300;400;500&display=swap");
+
+      :root {
+        --bg: #f9f9f7;
+        --ink: #111111;
+        --vermilion: #c03528;
+        --stone-100: #f1f1ef;
+        --stone-200: #e3e3df;
+        --stone-300: #d1d1cc;
+        --stone-400: #b5b5ad;
+        --stone-500: #8f8f86;
+        --stone-600: #6a6a61;
+        --stone-700: #3d3d38;
+        --glow: rgba(17, 17, 17, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: radial-gradient(circle at 15% 10%, rgba(17, 17, 17, 0.05), transparent 40%),
+          radial-gradient(circle at 85% 20%, rgba(17, 17, 17, 0.04), transparent 45%),
+          var(--bg);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body.en {
+        --serif-font: "Cormorant Garamond", serif;
+        font-family: "Inter", sans-serif;
+      }
+
+      .font-serif {
+        font-family: var(--serif-font, "Cormorant Garamond", serif);
+      }
+
+      .container {
+        width: min(1120px, 92vw);
+        margin: 0 auto;
+      }
+
+      .fade {
+        opacity: 0;
+        transform: translateY(26px);
+        transition: opacity 0.9s ease, transform 0.9s ease;
+      }
+
+      .fade.in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding: 22px 0;
+        background: rgba(249, 249, 247, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(227, 227, 223, 0.7);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .logo {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 4px;
+        text-decoration: none;
+        color: var(--ink);
+      }
+
+      .logo-row {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+      }
+
+      .logo-dot {
+        width: 6px;
+        height: 6px;
+        background: var(--ink);
+      }
+
+      .logo-sub {
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        color: var(--stone-400);
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .nav-link {
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 2px;
+      }
+
+      .nav-link:hover {
+        border-color: var(--ink);
+      }
+
+      .nav-cta {
+        border: 1px solid var(--ink);
+        background: transparent;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        padding: 10px 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink);
+        text-decoration: none;
+        transition: all 0.4s ease;
+      }
+
+      .nav-cta:hover {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .hero {
+        padding: 80px 0 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("https://www.transparenttextures.com/patterns/washi.png");
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        align-items: center;
+      }
+
+      .hero-card {
+        padding: 32px;
+        background: #fff;
+        border: 1px solid var(--stone-200);
+        box-shadow: 0 18px 40px rgba(17, 17, 17, 0.08);
+        position: relative;
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        inset: 20px;
+        border: 1px solid var(--stone-100);
+        pointer-events: none;
+      }
+
+      .hero-eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--stone-500);
+      }
+
+      .hero-title {
+        font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+        line-height: 1.6;
+        margin: 18px 0 12px;
+      }
+
+      .hero-text {
+        color: var(--stone-600);
+        line-height: 1.9;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .badge {
+        border: 1px solid var(--stone-200);
+        padding: 6px 12px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--stone-600);
+        background: var(--bg);
+      }
+
+      .hero-visual {
+        min-height: 320px;
+        background: linear-gradient(135deg, rgba(17, 17, 17, 0.08), rgba(17, 17, 17, 0.03));
+        border: 1px solid var(--stone-200);
+        display: grid;
+        place-items: center;
+        position: relative;
+      }
+
+      .hero-visual img {
+        width: min(280px, 70%);
+        opacity: 0.8;
+      }
+
+      .hero-visual .stamp {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        font-size: 12px;
+        letter-spacing: 0.4em;
+        color: var(--stone-500);
+        text-transform: uppercase;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+        margin: 0 0 16px;
+      }
+
+      .flow-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .flow-card {
+        padding: 24px;
+        border: 1px solid var(--stone-200);
+        background: #fff;
+        position: relative;
+      }
+
+      .flow-card::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 40px;
+        height: 40px;
+        background: var(--glow);
+      }
+
+      .flow-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: var(--stone-500);
+      }
+
+      .flow-title {
+        margin: 12px 0 10px;
+        font-size: 1.1rem;
+      }
+
+      .flow-text {
+        color: var(--stone-600);
+        line-height: 1.8;
+      }
+
+      .form-shell {
+        display: grid;
+        grid-template-columns: minmax(240px, 360px) 1fr;
+        gap: 32px;
+        align-items: start;
+      }
+
+      .form-aside {
+        padding: 24px;
+        background: #fff;
+        border: 1px solid var(--stone-200);
+        position: sticky;
+        top: 110px;
+      }
+
+      .form-aside p {
+        color: var(--stone-600);
+        line-height: 1.9;
+      }
+
+      .form-card {
+        padding: 32px;
+        border: 1px solid var(--stone-200);
+        background: #fff;
+        box-shadow: 0 20px 45px rgba(17, 17, 17, 0.08);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      label {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--stone-500);
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid var(--stone-300);
+        background: var(--bg);
+        font-size: 0.95rem;
+        font-family: "Inter", sans-serif;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--ink);
+        box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.1);
+      }
+
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      .form-note {
+        margin: 18px 0 0;
+        font-size: 12px;
+        color: var(--stone-500);
+        line-height: 1.7;
+      }
+
+      .submit-row {
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .submit-btn {
+        border: none;
+        background: var(--ink);
+        color: #fff;
+        padding: 14px 36px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 11px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        background: #2b2b2b;
+      }
+
+      .footer {
+        padding: 80px 0 60px;
+        text-align: center;
+        border-top: 1px solid var(--stone-200);
+      }
+
+      .footer p {
+        color: var(--stone-500);
+        font-size: 12px;
+      }
+
+      @media (max-width: 860px) {
+        .form-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .form-aside {
+          position: static;
+        }
+
+        .hero-card::after {
+          inset: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body class="en">
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a class="logo" href="index.html">
+          <div class="logo-row">
+            <span class="logo-dot"></span>
+            <span>FOMUS</span>
+          </div>
+          <span class="logo-sub">Global Partnership</span>
+        </a>
+        <div class="nav-actions">
+          <a class="nav-link" href="index.html">HOME</a>
+          <a class="nav-link" href="index-jp.html">JP</a>
+          <a class="nav-cta" href="index.html#gate">Back</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid fade">
+          <div>
+            <div class="hero-eyebrow">PARTNERSHIP APPLICATION</div>
+            <h1 class="hero-title font-serif">A first conversation<br />to begin co-creation</h1>
+            <p class="hero-text">
+              This application is not about approval alone. It is a starting point for a thoughtful dialogue,
+              where we explore how our values align and what kind of future we can build together.
+            </p>
+            <div class="hero-badges">
+              <span class="badge">Invitation & Review</span>
+              <span class="badge">Private Conversation</span>
+              <span class="badge">Co-Creation</span>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <img src="FOMUSlogo_edited.png" alt="FOMUS logo" />
+            <div class="stamp">FOMUS</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title font-serif fade">Process</h2>
+          <div class="flow-grid">
+            <div class="flow-card fade">
+              <div class="flow-label">Step 01</div>
+              <div class="flow-title font-serif">Share your profile</div>
+              <p class="flow-text">Tell us about your background and intention so we can build a foundation for dialogue.</p>
+            </div>
+            <div class="flow-card fade">
+              <div class="flow-label">Step 02</div>
+              <div class="flow-title font-serif">Interview invitation</div>
+              <p class="flow-text">We will review your submission and follow up with potential times within a few days.</p>
+            </div>
+            <div class="flow-card fade">
+              <div class="flow-label">Step 03</div>
+              <div class="flow-title font-serif">Design the relationship</div>
+              <p class="flow-text">Together we explore the ideal partnership form and how we can co-create.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container form-shell">
+          <aside class="form-aside fade">
+            <h3 class="font-serif" style="margin-top: 0;">How to respond</h3>
+            <p>We value clarity of intention more than length. Share what matters most to you.</p>
+            <p>Individuals and organizations are both welcome. If some details are undecided, that is fine.</p>
+            <p>Questions or consultations via WhatsApp are welcome: +971 524109747</p>
+            <p class="form-note">Response estimate: 3-5 business days</p>
+          </aside>
+
+          <div class="form-card fade">
+            <form action="mailto:fomus.official@gmail.com?subject=FOMUS%20Partnership%20Application" method="post" enctype="text/plain">
+              <div class="form-grid">
+                <div>
+                  <label for="name">Full Name *</label>
+                  <input id="name" name="name" type="text" required />
+                </div>
+                <div>
+                  <label for="email">Email *</label>
+                  <input id="email" name="email" type="email" required />
+                </div>
+                <div>
+                  <label for="organization">Organization</label>
+                  <input id="organization" name="organization" type="text" />
+                </div>
+                <div>
+                  <label for="role">Role / Title</label>
+                  <input id="role" name="role" type="text" />
+                </div>
+                <div>
+                  <label for="country">Country / Region</label>
+                  <input id="country" name="country" type="text" />
+                </div>
+                <div>
+                  <label for="site">Website / Social</label>
+                  <input id="site" name="site" type="url" placeholder="https://" />
+                </div>
+                <div>
+                  <label for="type">Partnership Type</label>
+                  <select id="type" name="type">
+                    <option value="">Select</option>
+                    <option value="personal">Personal Partnership</option>
+                    <option value="corporate">Corporate Partnership</option>
+                    <option value="undecided">Undecided / Consultation</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="contact">Preferred Contact</label>
+                  <select id="contact" name="contact">
+                    <option value="">Select</option>
+                    <option value="email">Email</option>
+                    <option value="online">Online Meeting</option>
+                    <option value="phone">Phone</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="margin-top: 20px;">
+                <label for="vision">What would you like to create together? *</label>
+                <textarea id="vision" name="vision" required placeholder="Share the relationship or projects you wish to build."></textarea>
+              </div>
+
+              <div style="margin-top: 20px;">
+                <label for="notes">Anything else to share</label>
+                <textarea id="notes" name="notes" placeholder="Timing, cultural domains, or questions."></textarea>
+              </div>
+
+              <div class="submit-row">
+                <button class="submit-btn" type="submit">Send Application</button>
+                <span class="form-note">Your email client will open for sending. Please review before sending.</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <h2 class="font-serif" style="font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;">FOMUS</h2>
+        <p>Enter the inner circle of Japanese culture and co-create the future.</p>
+      </div>
+    </footer>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
