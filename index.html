@@ -639,8 +639,12 @@
           <span class="logo-sub">Global Partnership</span>
         </div>
         <div class="nav-actions">
-          <a class="lang-link" href="index-jp.html">JP</a>
-          <a class="nav-cta" href="apply-en.html" data-jp="参加を希望する" data-en="Request Interview">参加を希望する</a>
+          <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+            <span id="langEn" class="active">EN</span>
+            <span style="color:var(--stone-300);"> / </span>
+            <span id="langJp">JP</span>
+          </button>
+          <a class="nav-cta" href="apply.html" data-jp="参加を希望する" data-en="Request Interview">Request Interview</a>
         </div>
       </div>
     </nav>
@@ -821,7 +825,7 @@
                 <div class="feature-chip" data-jp="ご家族向けコンシェルジュサポート" data-en="Concierge Support for Family">ご家族向けコンシェルジュサポート</div>
                 <div class="feature-chip" data-jp="限定イベント・非公開の場への参加権" data-en="Access to Closed Events">限定イベント・非公開の場への参加権</div>
               </div>
-              <a class="membership-cta" href="apply-en.html" data-jp="個人パートナーシップ申請" data-en="Apply for Personal">個人パートナーシップ申請</a>
+              <a class="membership-cta" href="apply.html" data-jp="個人パートナーシップ申請" data-en="Apply for Personal">個人パートナーシップ申請</a>
             </div>
 
             <div class="membership-card fade">
@@ -842,7 +846,7 @@
                 <div class="feature-chip" data-jp="日本文化を起点とした事業創出支援" data-en="Business Creation Support">日本文化を起点とした事業創出支援</div>
                 <div class="feature-chip" data-jp="限定イベント・非公開の場への参加権" data-en="Access to Closed Events">限定イベント・非公開の場への参加権</div>
               </div>
-              <a class="membership-cta" href="apply-en.html" data-jp="法人パートナーシップ申請" data-en="Apply for Corporate">法人パートナーシップ申請</a>
+              <a class="membership-cta" href="apply.html" data-jp="法人パートナーシップ申請" data-en="Apply for Corporate">法人パートナーシップ申請</a>
             </div>
           </div>
         </div>
@@ -870,7 +874,7 @@
               体験の先へ。関係の中へ。そして、未来へ。
             </p>
             <div style="margin-top: 36px;">
-              <a class="gate-button" href="apply-en.html" data-jp="参加を希望する（面談リクエスト）" data-en="Request to Join (Interview)">
+              <a class="gate-button" href="apply.html" data-jp="参加を希望する（面談リクエスト）" data-en="Request to Join (Interview)">
                 参加を希望する（面談リクエスト）
               </a>
             </div>
@@ -896,15 +900,35 @@
         nav.classList.toggle("scrolled", window.scrollY > 50);
       });
 
-      document.querySelectorAll("[data-en]").forEach((el) => {
-        const value = el.getAttribute("data-en");
-        if (!value) return;
-        if (el.tagName === "INPUT") {
-          el.setAttribute("placeholder", value);
-        } else {
-          el.innerHTML = value;
-        }
-      });
+      // Language toggle functionality
+      let currentLang = localStorage.getItem("fomus-lang") || "en";
+
+      function setLang(lang) {
+        currentLang = lang;
+        localStorage.setItem("fomus-lang", lang);
+        document.body.classList.remove("en", "jp");
+        document.body.classList.add(lang);
+
+        document.getElementById("langEn").classList.toggle("active", lang === "en");
+        document.getElementById("langJp").classList.toggle("active", lang === "jp");
+
+        document.querySelectorAll("[data-en][data-jp]").forEach((el) => {
+          const value = el.getAttribute("data-" + lang);
+          if (!value) return;
+          if (el.tagName === "INPUT") {
+            el.setAttribute("placeholder", value);
+          } else {
+            el.innerHTML = value;
+          }
+        });
+      }
+
+      function toggleLang() {
+        setLang(currentLang === "en" ? "jp" : "en");
+      }
+
+      // Initialize language on page load
+      setLang(currentLang);
 
       const observer = new IntersectionObserver(
         (entries) => {

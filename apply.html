@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Partnership Application | FOMUS GLOBAL PARTNERSHIP</title>
+    <title data-en="Partnership Application | FOMUS GLOBAL PARTNERSHIP" data-jp="パートナーシップ申請 | FOMUS GLOBAL PARTNERSHIP">Partnership Application | FOMUS GLOBAL PARTNERSHIP</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Shippori+Mincho:wght@400;500&family=Inter:wght@300;400;500&display=swap");
 
@@ -33,6 +33,11 @@
         color: var(--ink);
         font-family: "Inter", sans-serif;
         -webkit-font-smoothing: antialiased;
+      }
+
+      body.jp {
+        --serif-font: "Shippori Mincho", "Noto Serif JP", serif;
+        font-family: "Inter", "Noto Serif JP", serif;
       }
 
       body.en {
@@ -124,6 +129,25 @@
 
       .nav-link:hover {
         border-color: var(--ink);
+      }
+
+      .lang-toggle {
+        background: transparent;
+        border: none;
+        text-transform: uppercase;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        cursor: pointer;
+      }
+
+      .lang-toggle span {
+        color: var(--stone-500);
+        transition: opacity 0.3s ease;
+      }
+
+      .lang-toggle .active {
+        color: var(--ink);
+        opacity: 1;
       }
 
       .nav-cta {
@@ -342,7 +366,7 @@
         border: 1px solid var(--stone-300);
         background: var(--bg);
         font-size: 0.95rem;
-        font-family: "Inter", sans-serif;
+        font-family: "Inter", "Noto Serif JP", serif;
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
       }
 
@@ -428,8 +452,12 @@
         </a>
         <div class="nav-actions">
           <a class="nav-link" href="index.html">HOME</a>
-          <a class="nav-link" href="index-jp.html">JP</a>
-          <a class="nav-cta" href="index.html#gate">Back</a>
+          <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+            <span id="langEn" class="active">EN</span>
+            <span style="color:var(--stone-300);"> / </span>
+            <span id="langJp">JP</span>
+          </button>
+          <a class="nav-cta" href="index.html#gate" data-en="Back" data-jp="戻る">Back</a>
         </div>
       </div>
     </nav>
@@ -439,8 +467,8 @@
         <div class="container hero-grid fade">
           <div>
             <div class="hero-eyebrow">PARTNERSHIP APPLICATION</div>
-            <h1 class="hero-title font-serif">A first conversation<br />to begin co-creation</h1>
-            <p class="hero-text">
+            <h1 class="hero-title font-serif" data-en="A first conversation<br />to begin co-creation" data-jp="共創を始めるための<br />申請ページ">A first conversation<br />to begin co-creation</h1>
+            <p class="hero-text" data-en="This application is not about approval alone. It is a starting point for a thoughtful dialogue, where we explore how our values align and what kind of future we can build together." data-jp="この申請は、参加可否を判断するためのものではなく、互いに向き合い、最適な関係性を探るための最初の対話です。あなたが大切にしたい価値、創りたい未来、そして日本文化への敬意について聞かせてください。">
               This application is not about approval alone. It is a starting point for a thoughtful dialogue,
               where we explore how our values align and what kind of future we can build together.
             </p>
@@ -459,22 +487,22 @@
 
       <section class="section">
         <div class="container">
-          <h2 class="section-title font-serif fade">Process</h2>
+          <h2 class="section-title font-serif fade" data-en="Process" data-jp="申請までの流れ">Process</h2>
           <div class="flow-grid">
             <div class="flow-card fade">
               <div class="flow-label">Step 01</div>
-              <div class="flow-title font-serif">Share your profile</div>
-              <p class="flow-text">Tell us about your background and intention so we can build a foundation for dialogue.</p>
+              <div class="flow-title font-serif" data-en="Share your profile" data-jp="プロフィールの共有">Share your profile</div>
+              <p class="flow-text" data-en="Tell us about your background and intention so we can build a foundation for dialogue." data-jp="ご自身・組織の背景や目的を教えてください。対話の基盤をつくります。">Tell us about your background and intention so we can build a foundation for dialogue.</p>
             </div>
             <div class="flow-card fade">
               <div class="flow-label">Step 02</div>
-              <div class="flow-title font-serif">Interview invitation</div>
-              <p class="flow-text">We will review your submission and follow up with potential times within a few days.</p>
+              <div class="flow-title font-serif" data-en="Interview invitation" data-jp="面談のご案内">Interview invitation</div>
+              <p class="flow-text" data-en="We will review your submission and follow up with potential times within a few days." data-jp="内容を拝見のうえ、数日以内に面談の候補日をご案内します。">We will review your submission and follow up with potential times within a few days.</p>
             </div>
             <div class="flow-card fade">
               <div class="flow-label">Step 03</div>
-              <div class="flow-title font-serif">Design the relationship</div>
-              <p class="flow-text">Together we explore the ideal partnership form and how we can co-create.</p>
+              <div class="flow-title font-serif" data-en="Design the relationship" data-jp="関係性の設計">Design the relationship</div>
+              <p class="flow-text" data-en="Together we explore the ideal partnership form and how we can co-create." data-jp="面談を通じて、パートナーシップの形を共に設計していきます。">Together we explore the ideal partnership form and how we can co-create.</p>
             </div>
           </div>
         </div>
@@ -483,73 +511,73 @@
       <section class="section">
         <div class="container form-shell">
           <aside class="form-aside fade">
-            <h3 class="font-serif" style="margin-top: 0;">How to respond</h3>
-            <p>We value clarity of intention more than length. Share what matters most to you.</p>
-            <p>Individuals and organizations are both welcome. If some details are undecided, that is fine.</p>
-            <p>Questions or consultations via WhatsApp are welcome: +971 524109747</p>
-            <p class="form-note">Response estimate: 3-5 business days</p>
+            <h3 class="font-serif" style="margin-top: 0;" data-en="How to respond" data-jp="ご記入の目安">How to respond</h3>
+            <p data-en="We value clarity of intention more than length. Share what matters most to you." data-jp="回答の量よりも、あなたが大切にしている価値観が伝わることを重視しています。">We value clarity of intention more than length. Share what matters most to you.</p>
+            <p data-en="Individuals and organizations are both welcome. If some details are undecided, that is fine." data-jp="法人・個人いずれも歓迎です。未定項目があっても構いません。">Individuals and organizations are both welcome. If some details are undecided, that is fine.</p>
+            <p data-en="Questions or consultations via WhatsApp are welcome: +971 524109747" data-jp="ご質問やご相談はWhatsAppでも承ります: +971 524109747">Questions or consultations via WhatsApp are welcome: +971 524109747</p>
+            <p class="form-note" data-en="Response estimate: 3-5 business days" data-jp="返信目安: 3〜5営業日">Response estimate: 3-5 business days</p>
           </aside>
 
           <div class="form-card fade">
             <form action="mailto:fomus.official@gmail.com?subject=FOMUS%20Partnership%20Application" method="post" enctype="text/plain">
               <div class="form-grid">
                 <div>
-                  <label for="name">Full Name *</label>
+                  <label for="name" data-en="Full Name *" data-jp="お名前 *">Full Name *</label>
                   <input id="name" name="name" type="text" required />
                 </div>
                 <div>
-                  <label for="email">Email *</label>
+                  <label for="email" data-en="Email *" data-jp="メールアドレス *">Email *</label>
                   <input id="email" name="email" type="email" required />
                 </div>
                 <div>
-                  <label for="organization">Organization</label>
+                  <label for="organization" data-en="Organization" data-jp="所属 / 会社名">Organization</label>
                   <input id="organization" name="organization" type="text" />
                 </div>
                 <div>
-                  <label for="role">Role / Title</label>
+                  <label for="role" data-en="Role / Title" data-jp="役職 / 立場">Role / Title</label>
                   <input id="role" name="role" type="text" />
                 </div>
                 <div>
-                  <label for="country">Country / Region</label>
+                  <label for="country" data-en="Country / Region" data-jp="国 / 地域">Country / Region</label>
                   <input id="country" name="country" type="text" />
                 </div>
                 <div>
-                  <label for="site">Website / Social</label>
+                  <label for="site" data-en="Website / Social" data-jp="Web / SNS">Website / Social</label>
                   <input id="site" name="site" type="url" placeholder="https://" />
                 </div>
                 <div>
-                  <label for="type">Partnership Type</label>
+                  <label for="type" data-en="Partnership Type" data-jp="ご希望の形">Partnership Type</label>
                   <select id="type" name="type">
-                    <option value="">Select</option>
+                    <option value="" data-en="Select" data-jp="選択してください">Select</option>
                     <option value="personal">Personal Partnership</option>
                     <option value="corporate">Corporate Partnership</option>
-                    <option value="undecided">Undecided / Consultation</option>
+                    <option value="undecided" data-en="Undecided / Consultation" data-jp="未定 / 相談したい">Undecided / Consultation</option>
                   </select>
                 </div>
                 <div>
-                  <label for="contact">Preferred Contact</label>
+                  <label for="contact" data-en="Preferred Contact" data-jp="ご希望の連絡方法">Preferred Contact</label>
                   <select id="contact" name="contact">
-                    <option value="">Select</option>
-                    <option value="email">Email</option>
-                    <option value="online">Online Meeting</option>
-                    <option value="phone">Phone</option>
+                    <option value="" data-en="Select" data-jp="選択してください">Select</option>
+                    <option value="email" data-en="Email" data-jp="メール">Email</option>
+                    <option value="online" data-en="Online Meeting" data-jp="オンライン面談">Online Meeting</option>
+                    <option value="phone" data-en="Phone" data-jp="電話">Phone</option>
                   </select>
                 </div>
               </div>
 
               <div style="margin-top: 20px;">
-                <label for="vision">What would you like to create together? *</label>
-                <textarea id="vision" name="vision" required placeholder="Share the relationship or projects you wish to build."></textarea>
+                <label for="vision" data-en="What would you like to create together? *" data-jp="共に創りたいこと *">What would you like to create together? *</label>
+                <textarea id="vision" name="vision" required data-en="Share the relationship or projects you wish to build." data-jp="どのような関係性やプロジェクトを望んでいますか？"></textarea>
               </div>
 
               <div style="margin-top: 20px;">
-                <label for="notes">Anything else to share</label>
-                <textarea id="notes" name="notes" placeholder="Timing, cultural domains, or questions."></textarea>
+                <label for="notes" data-en="Anything else to share" data-jp="その他共有したいこと">Anything else to share</label>
+                <textarea id="notes" name="notes" data-en="Timing, cultural domains, or questions." data-jp="ご都合の良い時期、文化領域、質問など"></textarea>
               </div>
 
               <div class="submit-row">
-                <button class="submit-btn" type="submit">Send Application</button>
-                <span class="form-note">Your email client will open for sending. Please review before sending.</span>
+                <button class="submit-btn" type="submit" data-en="Send Application" data-jp="申請内容を送信">Send Application</button>
+                <span class="form-note" data-en="Your email client will open for sending. Please review before sending." data-jp="送信はメールクライアントが起動します。送信前に内容をご確認ください。">Your email client will open for sending. Please review before sending.</span>
               </div>
             </form>
           </div>
@@ -560,11 +588,45 @@
     <footer class="footer">
       <div class="container">
         <h2 class="font-serif" style="font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;">FOMUS</h2>
-        <p>Enter the inner circle of Japanese culture and co-create the future.</p>
+        <p data-en="Enter the inner circle of Japanese culture and co-create the future." data-jp="日本文化の"内側"に入り、共に未来をつくるための関係性。">Enter the inner circle of Japanese culture and co-create the future.</p>
       </div>
     </footer>
 
     <script>
+      // Language toggle functionality
+      let currentLang = localStorage.getItem("fomus-lang") || "en";
+
+      function setLang(lang) {
+        currentLang = lang;
+        localStorage.setItem("fomus-lang", lang);
+        document.body.classList.remove("en", "jp");
+        document.body.classList.add(lang);
+
+        document.getElementById("langEn").classList.toggle("active", lang === "en");
+        document.getElementById("langJp").classList.toggle("active", lang === "jp");
+
+        document.querySelectorAll("[data-en][data-jp]").forEach((el) => {
+          const value = el.getAttribute("data-" + lang);
+          if (!value) return;
+          if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+            el.setAttribute("placeholder", value);
+          } else if (el.tagName === "OPTION") {
+            el.textContent = value;
+          } else if (el.tagName === "TITLE") {
+            document.title = value;
+          } else {
+            el.innerHTML = value;
+          }
+        });
+      }
+
+      function toggleLang() {
+        setLang(currentLang === "en" ? "jp" : "en");
+      }
+
+      // Initialize language on page load
+      setLang(currentLang);
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
