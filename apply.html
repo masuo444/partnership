@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title data-en="Join Partnership | FOMUS GLOBAL PARTNERSHIP" data-jp="パートナーシップ購入 | FOMUS GLOBAL PARTNERSHIP" data-fr="Rejoindre le Partenariat | FOMUS GLOBAL PARTNERSHIP" data-ar="انضم للشراكة | شراكة فومس العالمية">Join Partnership | FOMUS GLOBAL PARTNERSHIP</title>
+    <title data-en="Application | FOMUS GLOBAL PARTNERSHIP" data-jp="参加申請 | FOMUS GLOBAL PARTNERSHIP" data-fr="Candidature | FOMUS GLOBAL PARTNERSHIP" data-ar="طلب الانضمام | شراكة فومس العالمية">Application | FOMUS GLOBAL PARTNERSHIP</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Shippori+Mincho:wght@400;500&family=Inter:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap");
 
@@ -27,12 +27,11 @@
 
       body {
         margin: 0;
-        background: radial-gradient(circle at 15% 10%, rgba(17, 17, 17, 0.05), transparent 40%),
-          radial-gradient(circle at 85% 20%, rgba(17, 17, 17, 0.04), transparent 45%),
-          var(--bg);
+        background: var(--bg);
         color: var(--ink);
         font-family: "Inter", sans-serif;
         -webkit-font-smoothing: antialiased;
+        line-height: 1.8;
       }
 
       body.jp {
@@ -66,17 +65,13 @@
         flex-direction: row-reverse;
       }
 
-      body.ar .form-shell {
-        direction: rtl;
-      }
-
-      body.ar .submit-row {
+      body.ar .checkbox-item {
         flex-direction: row-reverse;
       }
 
-      body.ar .flow-card::before {
-        left: auto;
-        right: -1px;
+      body.ar .checkbox-item input {
+        margin-right: 0;
+        margin-left: 12px;
       }
 
       .font-serif {
@@ -84,13 +79,18 @@
       }
 
       .container {
-        width: min(1120px, 92vw);
+        width: min(800px, 90vw);
+        margin: 0 auto;
+      }
+
+      .container-wide {
+        width: min(1000px, 92vw);
         margin: 0 auto;
       }
 
       .fade {
         opacity: 0;
-        transform: translateY(26px);
+        transform: translateY(24px);
         transition: opacity 0.9s ease, transform 0.9s ease;
       }
 
@@ -104,7 +104,7 @@
         top: 0;
         z-index: 50;
         padding: 22px 0;
-        background: rgba(249, 249, 247, 0.92);
+        background: rgba(249, 249, 247, 0.95);
         backdrop-filter: blur(12px);
         border-bottom: 1px solid rgba(227, 227, 223, 0.7);
       }
@@ -184,30 +184,11 @@
         opacity: 1;
       }
 
-      .nav-cta {
-        border: 1px solid var(--ink);
-        background: transparent;
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        padding: 10px 20px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--ink);
-        text-decoration: none;
-        transition: all 0.4s ease;
-      }
-
-      .nav-cta:hover {
-        background: var(--ink);
-        color: #fff;
-      }
-
+      /* Hero */
       .hero {
-        padding: 80px 0 40px;
+        padding: 100px 0 60px;
+        text-align: center;
         position: relative;
-        overflow: hidden;
       }
 
       .hero::before {
@@ -215,260 +196,227 @@
         position: absolute;
         inset: 0;
         background: url("https://www.transparenttextures.com/patterns/washi.png");
-        opacity: 0.05;
+        opacity: 0.04;
         pointer-events: none;
       }
 
-      .hero-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
-        align-items: center;
-      }
-
-      .hero-eyebrow {
+      .hero-brand {
         font-size: 11px;
-        letter-spacing: 0.3em;
+        letter-spacing: 0.35em;
         text-transform: uppercase;
         color: var(--stone-500);
+        margin-bottom: 24px;
       }
 
       .hero-title {
-        font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
         line-height: 1.6;
-        margin: 18px 0 12px;
+        margin: 0 0 32px;
       }
 
-      .hero-text {
+      .hero-sub {
         color: var(--stone-600);
-        line-height: 1.9;
+        font-size: 1rem;
+        line-height: 2;
+        max-width: 520px;
+        margin: 0 auto;
       }
 
-      .hero-badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 20px;
-      }
-
-      .badge {
-        border: 1px solid var(--stone-200);
-        padding: 6px 12px;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        color: var(--stone-600);
-        background: var(--bg);
-      }
-
-      .hero-visual {
-        min-height: 320px;
-        background: linear-gradient(135deg, rgba(17, 17, 17, 0.08), rgba(17, 17, 17, 0.03));
-        border: 1px solid var(--stone-200);
-        display: grid;
-        place-items: center;
-        position: relative;
-      }
-
-      .hero-visual img {
-        width: min(280px, 70%);
-        opacity: 0.8;
-      }
-
-      .hero-visual .stamp {
-        position: absolute;
-        right: 20px;
-        bottom: 20px;
-        font-size: 12px;
-        letter-spacing: 0.4em;
-        color: var(--stone-500);
-        text-transform: uppercase;
-      }
-
+      /* Sections */
       .section {
-        padding: 60px 0;
-      }
-
-      .section-title {
-        font-size: 1.6rem;
-        margin: 0 0 16px;
-      }
-
-      .flow-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-      }
-
-      .flow-card {
-        padding: 24px;
-        border: 1px solid var(--stone-200);
-        background: #fff;
-        position: relative;
-      }
-
-      .flow-card::before {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        width: 40px;
-        height: 40px;
-        background: var(--glow);
-      }
-
-      .flow-label {
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.25em;
-        color: var(--stone-500);
-      }
-
-      .flow-title {
-        margin: 12px 0 10px;
-        font-size: 1.1rem;
-      }
-
-      .flow-text {
-        color: var(--stone-600);
-        line-height: 1.8;
-      }
-
-      .form-shell {
-        display: grid;
-        grid-template-columns: minmax(240px, 360px) 1fr;
-        gap: 32px;
-        align-items: start;
-      }
-
-      .form-aside {
-        padding: 24px;
-        background: #fff;
-        border: 1px solid var(--stone-200);
-        position: sticky;
-        top: 110px;
-      }
-
-      .form-aside p {
-        color: var(--stone-600);
-        line-height: 1.9;
-      }
-
-      .form-card {
-        padding: 32px;
-        border: 1px solid var(--stone-200);
-        background: #fff;
-        box-shadow: 0 20px 45px rgba(17, 17, 17, 0.08);
-      }
-
-      .form-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-      }
-
-      label {
-        font-size: 11px;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--stone-500);
-        display: block;
-        margin-bottom: 8px;
-      }
-
-      input,
-      select,
-      textarea {
-        width: 100%;
-        padding: 12px 14px;
-        border: 1px solid var(--stone-300);
-        background: var(--bg);
-        font-size: 0.95rem;
-        font-family: "Inter", "Noto Serif JP", "Noto Naskh Arabic", serif;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      input:focus,
-      select:focus,
-      textarea:focus {
-        outline: none;
-        border-color: var(--ink);
-        box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.1);
-      }
-
-      textarea {
-        min-height: 140px;
-        resize: vertical;
-      }
-
-      .form-note {
-        margin: 18px 0 0;
-        font-size: 12px;
-        color: var(--stone-500);
-        line-height: 1.7;
-      }
-
-      .submit-row {
-        margin-top: 24px;
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-
-      .submit-btn {
-        border: none;
-        background: var(--ink);
-        color: #fff;
-        padding: 14px 36px;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        font-size: 11px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-      }
-
-      .submit-btn:hover {
-        background: #2b2b2b;
-      }
-
-      .footer {
-        padding: 80px 0 60px;
-        text-align: center;
+        padding: 80px 0;
         border-top: 1px solid var(--stone-200);
       }
 
-      .footer p {
-        color: var(--stone-500);
-        font-size: 12px;
+      .section-dark {
+        background: var(--ink);
+        color: var(--bg);
+        border-top: none;
       }
 
-      .pricing-grid {
+      .section-white {
+        background: #fff;
+      }
+
+      .label {
+        font-size: 10px;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--stone-400);
+        margin-bottom: 16px;
+      }
+
+      .section-dark .label {
+        color: var(--stone-500);
+      }
+
+      .section-title {
+        font-size: clamp(1.4rem, 3vw, 1.8rem);
+        line-height: 1.5;
+        margin: 0 0 32px;
+      }
+
+      .section-body {
+        color: var(--stone-600);
+        line-height: 2.1;
+      }
+
+      .section-body p {
+        margin: 0 0 20px;
+      }
+
+      .section-body p:last-child {
+        margin-bottom: 0;
+      }
+
+      .section-dark .section-body {
+        color: var(--stone-400);
+      }
+
+      .highlight-box {
+        background: var(--stone-100);
+        border-left: 3px solid var(--ink);
+        padding: 24px 28px;
+        margin: 32px 0;
+      }
+
+      .highlight-box p {
+        margin: 0;
+        color: var(--ink);
+        line-height: 2;
+      }
+
+      /* WHO section */
+      .who-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 32px;
+        gap: 40px;
         margin-top: 40px;
       }
 
-      .pricing-card {
-        padding: 40px 32px;
-        border: 1px solid var(--stone-200);
+      @media (min-width: 700px) {
+        .who-grid {
+          grid-template-columns: 200px 1fr;
+          align-items: start;
+        }
+      }
+
+      .who-image {
+        width: 100%;
+        max-width: 200px;
+        aspect-ratio: 3/4;
+        background: var(--stone-100);
+        overflow: hidden;
+        margin: 0 auto;
+      }
+
+      .who-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%);
+      }
+
+      /* WHAT section */
+      .what-grid {
+        display: grid;
+        gap: 24px;
+        margin-top: 40px;
+      }
+
+      .what-category {
         background: #fff;
-        text-align: center;
+        border: 1px solid var(--stone-200);
+        padding: 28px;
+      }
+
+      .what-category-title {
+        font-size: 0.9rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--ink);
+        margin: 0 0 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--stone-200);
+      }
+
+      .what-category ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .what-category li {
+        padding: 8px 0;
+        color: var(--stone-600);
+        line-height: 1.7;
+      }
+
+      .what-note {
+        margin-top: 24px;
+        font-size: 0.85rem;
+        color: var(--stone-500);
+      }
+
+      /* DIFFERENCE */
+      .diff-list {
+        margin-top: 48px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .diff-item {
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding: 32px 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      @media (min-width: 600px) {
+        .diff-item {
+          grid-template-columns: 50px 1fr;
+          gap: 24px;
+        }
+      }
+
+      .diff-num {
+        font-size: 1.2rem;
+        color: var(--stone-500);
+      }
+
+      .diff-title {
+        font-size: 1.2rem;
+        margin: 0 0 8px;
+      }
+
+      .diff-desc {
+        color: var(--stone-400);
+        line-height: 1.8;
+      }
+
+      /* Plans */
+      .plans-grid {
+        display: grid;
+        gap: 24px;
+        margin-top: 48px;
+      }
+
+      @media (min-width: 700px) {
+        .plans-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .plan-card {
+        background: #fff;
+        border: 1px solid var(--stone-200);
+        padding: 36px 28px;
         position: relative;
-        transition: box-shadow 0.4s ease, transform 0.4s ease;
       }
 
-      .pricing-card:hover {
-        box-shadow: 0 20px 50px rgba(17, 17, 17, 0.12);
-        transform: translateY(-4px);
-      }
-
-      .pricing-card.featured {
+      .plan-card.featured {
         border-color: var(--ink);
       }
 
-      .pricing-card.featured::before {
+      .plan-card.featured::before {
         content: "";
         position: absolute;
         top: 0;
@@ -478,96 +426,259 @@
         background: var(--ink);
       }
 
-      .pricing-label {
-        font-size: 11px;
-        letter-spacing: 0.3em;
+      .plan-label {
+        font-size: 10px;
+        letter-spacing: 0.25em;
         text-transform: uppercase;
         color: var(--stone-500);
-        margin-bottom: 12px;
       }
 
-      .pricing-title {
-        font-size: 1.5rem;
-        margin: 0 0 20px;
+      .plan-title {
+        font-size: 1.3rem;
+        margin: 8px 0 20px;
       }
 
-      .pricing-price {
-        font-size: 2.5rem;
+      .plan-price {
+        font-size: 2rem;
         font-weight: 300;
-        margin-bottom: 8px;
       }
 
-      .pricing-period {
-        font-size: 12px;
+      .plan-period {
+        font-size: 0.9rem;
         color: var(--stone-500);
-        letter-spacing: 0.1em;
-        margin-bottom: 24px;
       }
 
-      .pricing-features {
-        list-style: none;
+      .plan-note {
+        font-size: 0.8rem;
+        color: var(--vermilion);
+        margin-top: 4px;
+      }
+
+      .plan-features {
+        margin: 24px 0;
         padding: 0;
-        margin: 0 0 32px;
-        text-align: left;
+        list-style: none;
+        border-top: 1px solid var(--stone-100);
       }
 
-      .pricing-features li {
-        padding: 10px 0;
+      .plan-features li {
+        padding: 12px 0;
         border-bottom: 1px solid var(--stone-100);
         color: var(--stone-600);
-        font-size: 0.95rem;
-        line-height: 1.6;
+        font-size: 0.9rem;
       }
 
-      .pricing-features li:last-child {
-        border-bottom: none;
-      }
-
-      .pricing-btn {
-        display: inline-block;
+      .plan-btn {
+        display: block;
         width: 100%;
-        padding: 16px 32px;
+        padding: 16px;
         border: 1px solid var(--ink);
         background: transparent;
         color: var(--ink);
+        text-align: center;
         text-transform: uppercase;
         letter-spacing: 0.2em;
         font-size: 11px;
         text-decoration: none;
-        transition: all 0.4s ease;
         cursor: pointer;
+        transition: all 0.3s ease;
       }
 
-      .pricing-btn:hover {
+      .plan-btn:hover,
+      .plan-card.featured .plan-btn {
         background: var(--ink);
         color: #fff;
       }
 
-      .pricing-card.featured .pricing-btn {
-        background: var(--ink);
-        color: #fff;
-      }
-
-      .pricing-card.featured .pricing-btn:hover {
+      .plan-card.featured .plan-btn:hover {
         background: #2b2b2b;
       }
 
-      .contact-section {
-        text-align: center;
-        padding: 60px 0;
-        border-top: 1px solid var(--stone-200);
+      /* Agreement */
+      .agreement-intro {
+        background: var(--stone-100);
+        padding: 28px;
+        margin-bottom: 32px;
       }
 
-      .contact-section h3 {
-        font-size: 1.3rem;
-        margin-bottom: 16px;
-      }
-
-      .contact-section p {
+      .agreement-intro p {
+        margin: 0;
         color: var(--stone-600);
-        line-height: 1.9;
-        max-width: 600px;
-        margin: 0 auto 24px;
+        line-height: 2;
+      }
+
+      .agreement-points {
+        background: #fff;
+        border: 1px solid var(--stone-200);
+        padding: 28px;
+        margin-bottom: 32px;
+      }
+
+      .agreement-points ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .agreement-points li {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--stone-100);
+        color: var(--stone-700);
+        line-height: 1.8;
+      }
+
+      .agreement-points li:last-child {
+        border-bottom: none;
+      }
+
+      .agreement-full {
+        margin-bottom: 32px;
+      }
+
+      .agreement-toggle {
+        background: transparent;
+        border: 1px solid var(--stone-300);
+        padding: 14px 20px;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: var(--stone-600);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+
+      .agreement-toggle:hover {
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+
+      .agreement-toggle::after {
+        content: "+";
+        font-size: 1.2rem;
+      }
+
+      .agreement-toggle.active::after {
+        content: "−";
+      }
+
+      .agreement-content {
+        display: none;
+        background: #fff;
+        border: 1px solid var(--stone-200);
+        border-top: none;
+        padding: 28px;
+        max-height: 300px;
+        overflow-y: auto;
+        font-size: 0.85rem;
+        color: var(--stone-600);
+        line-height: 2;
+      }
+
+      .agreement-content.show {
+        display: block;
+      }
+
+      .checkbox-group {
+        background: #fff;
+        border: 1px solid var(--stone-200);
+        padding: 28px;
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--stone-100);
+      }
+
+      .checkbox-item:last-child {
+        border-bottom: none;
+      }
+
+      .checkbox-item input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+        flex-shrink: 0;
+        cursor: pointer;
+        accent-color: var(--ink);
+      }
+
+      .checkbox-item label {
+        color: var(--stone-700);
+        line-height: 1.7;
+        cursor: pointer;
+        font-size: 0.95rem;
+      }
+
+      .checkbox-all {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 2px solid var(--stone-200);
+      }
+
+      .checkbox-all label {
+        font-weight: 500;
+        color: var(--ink);
+      }
+
+      /* Final CTA */
+      .final-cta {
+        text-align: center;
+        padding: 60px 0 80px;
+      }
+
+      .final-btn {
+        display: inline-block;
+        background: var(--ink);
+        color: #fff;
+        padding: 20px 48px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 12px;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease;
+        opacity: 0.4;
+        pointer-events: none;
+      }
+
+      .final-btn.enabled {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .final-btn.enabled:hover {
+        background: #2b2b2b;
+      }
+
+      .final-note {
+        margin-top: 20px;
+        font-size: 0.85rem;
+        color: var(--stone-500);
+      }
+
+      /* Contact */
+      .contact-box {
+        text-align: center;
+        padding: 48px 28px;
+        background: var(--stone-100);
+        margin-top: 60px;
+      }
+
+      .contact-box h4 {
+        font-size: 1.1rem;
+        margin: 0 0 12px;
+      }
+
+      .contact-box p {
+        color: var(--stone-600);
+        margin: 0 0 20px;
       }
 
       .whatsapp-btn {
@@ -594,20 +705,32 @@
         fill: currentColor;
       }
 
-      @media (max-width: 860px) {
-        .form-shell {
-          grid-template-columns: 1fr;
-        }
+      /* Footer */
+      .footer {
+        padding: 80px 0 60px;
+        text-align: center;
+        border-top: 1px solid var(--stone-200);
+      }
 
-        .form-aside {
-          position: static;
-        }
+      .footer-message {
+        max-width: 480px;
+        margin: 0 auto 32px;
+        color: var(--stone-600);
+        line-height: 2;
+        font-size: 0.95rem;
+      }
+
+      .footer-brand {
+        font-size: 10px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--stone-400);
       }
     </style>
   </head>
   <body class="en">
     <nav class="nav">
-      <div class="container nav-inner">
+      <div class="container-wide nav-inner">
         <a class="logo" href="index.html">
           <div class="logo-row">
             <span class="logo-dot"></span>
@@ -626,116 +749,421 @@
             <span style="color:var(--stone-300);"> / </span>
             <span id="langAr">AR</span>
           </button>
-          <a class="nav-cta" href="index.html#gate" data-en="Back" data-jp="戻る" data-fr="Retour" data-ar="رجوع">Back</a>
         </div>
       </div>
     </nav>
 
     <main>
+      <!-- HERO -->
       <section class="hero">
-        <div class="container hero-grid fade">
-          <div>
-            <div class="hero-eyebrow" data-en="JOIN PARTNERSHIP" data-jp="パートナーシップ購入" data-fr="REJOINDRE LE PARTENARIAT" data-ar="انضم للشراكة">JOIN PARTNERSHIP</div>
-            <h1 class="hero-title font-serif" data-en="Begin your journey<br />into Japanese culture" data-jp="日本文化への旅を<br />始めましょう" data-fr="Commencez votre voyage<br />dans la culture japonaise" data-ar="ابدأ رحلتك<br />في الثقافة اليابانية">Begin your journey<br />into Japanese culture</h1>
-            <p class="hero-text" data-en="Choose your partnership plan and start your authentic connection with Japanese culture today. Questions? We're here to help via WhatsApp." data-jp="パートナーシッププランを選んで、今日から日本文化との本物のつながりを始めましょう。ご質問があればWhatsAppでお気軽にどうぞ。" data-fr="Choisissez votre plan de partenariat et commencez votre connexion authentique avec la culture japonaise dès aujourd'hui. Des questions ? Nous sommes là pour vous aider via WhatsApp." data-ar="اختر خطة شراكتك وابدأ اتصالك الأصيل بالثقافة اليابانية اليوم. أسئلة؟ نحن هنا للمساعدة عبر واتساب.">
-              Choose your partnership plan and start your authentic connection with Japanese culture today. Questions? We're here to help via WhatsApp.
-            </p>
-            <div class="hero-badges">
-              <span class="badge" data-en="Instant Access" data-jp="即時アクセス" data-fr="Accès Instantané" data-ar="وصول فوري">Instant Access</span>
-              <span class="badge" data-en="Secure Payment" data-jp="安全な決済" data-fr="Paiement Sécurisé" data-ar="دفع آمن">Secure Payment</span>
-              <span class="badge" data-en="Direct Connection" data-jp="直接つながる" data-fr="Connexion Directe" data-ar="اتصال مباشر">Direct Connection</span>
-            </div>
-          </div>
-          <div class="hero-visual">
-            <img src="FOMUSlogo_edited.png" alt="FOMUS logo" />
-            <div class="stamp">FOMUS</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <h2 class="section-title font-serif fade" data-en="How It Works" data-jp="ご購入の流れ" data-fr="Comment ça marche" data-ar="كيف يعمل">How It Works</h2>
-          <div class="flow-grid">
-            <div class="flow-card fade">
-              <div class="flow-label">Step 01</div>
-              <div class="flow-title font-serif" data-en="Choose your plan" data-jp="プランを選ぶ" data-fr="Choisissez votre plan" data-ar="اختر خطتك">Choose your plan</div>
-              <p class="flow-text" data-en="Select the partnership type that fits your needs: Personal or Corporate." data-jp="ニーズに合ったパートナーシップを選択：個人または法人。" data-fr="Sélectionnez le type de partenariat qui correspond à vos besoins : Personnel ou Entreprise." data-ar="اختر نوع الشراكة الذي يناسب احتياجاتك: شخصي أو مؤسسي.">Select the partnership type that fits your needs: Personal or Corporate.</p>
-            </div>
-            <div class="flow-card fade">
-              <div class="flow-label">Step 02</div>
-              <div class="flow-title font-serif" data-en="Secure checkout" data-jp="安全に決済" data-fr="Paiement sécurisé" data-ar="الدفع الآمن">Secure checkout</div>
-              <p class="flow-text" data-en="Complete your purchase through Stripe's secure payment platform." data-jp="Stripeの安全な決済プラットフォームでお支払いを完了。" data-fr="Effectuez votre achat via la plateforme de paiement sécurisée Stripe." data-ar="أكمل عملية الشراء عبر منصة Stripe للدفع الآمن.">Complete your purchase through Stripe's secure payment platform.</p>
-            </div>
-            <div class="flow-card fade">
-              <div class="flow-label">Step 03</div>
-              <div class="flow-title font-serif" data-en="Start your journey" data-jp="旅を始める" data-fr="Commencez votre voyage" data-ar="ابدأ رحلتك">Start your journey</div>
-              <p class="flow-text" data-en="Receive your welcome package and begin your authentic Japanese cultural journey." data-jp="ウェルカムパッケージを受け取り、本物の日本文化体験を始めましょう。" data-fr="Recevez votre pack de bienvenue et commencez votre voyage culturel japonais authentique." data-ar="استلم حزمة الترحيب الخاصة بك وابدأ رحلتك الثقافية اليابانية الأصيلة.">Receive your welcome package and begin your authentic Japanese cultural journey.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="pricing">
-        <div class="container">
-          <h2 class="section-title font-serif fade" style="text-align: center;" data-en="Choose Your Partnership" data-jp="パートナーシップを選ぶ" data-fr="Choisissez Votre Partenariat" data-ar="اختر شراكتك">Choose Your Partnership</h2>
-          <p class="fade" style="text-align: center; color: var(--stone-600); max-width: 600px; margin: 0 auto;" data-en="Select the plan that best fits your journey into Japanese culture." data-jp="日本文化への旅に最適なプランをお選びください。" data-fr="Sélectionnez le plan qui correspond le mieux à votre voyage dans la culture japonaise." data-ar="اختر الخطة التي تناسب رحلتك في الثقافة اليابانية.">Select the plan that best fits your journey into Japanese culture.</p>
-
-          <div class="pricing-grid">
-            <div class="pricing-card fade">
-              <div class="pricing-label" data-en="For Individuals" data-jp="個人向け" data-fr="Pour les particuliers" data-ar="للأفراد">For Individuals</div>
-              <h3 class="pricing-title font-serif" data-en="Personal Partnership" data-jp="個人パートナーシップ" data-fr="Partenariat Personnel" data-ar="شراكة شخصية">Personal Partnership</h3>
-              <div class="pricing-price">$10,000</div>
-              <div class="pricing-period" data-en="per year" data-jp="年額" data-fr="par an" data-ar="سنوياً">per year</div>
-              <ul class="pricing-features">
-                <li data-en="Direct access to cultural experiences" data-jp="文化体験への直接アクセス" data-fr="Accès direct aux expériences culturelles" data-ar="الوصول المباشر للتجارب الثقافية">Direct access to cultural experiences</li>
-                <li data-en="Personal connection with Japanese artisans" data-jp="日本の職人との個人的なつながり" data-fr="Connexion personnelle avec les artisans japonais" data-ar="اتصال شخصي مع الحرفيين اليابانيين">Personal connection with Japanese artisans</li>
-                <li data-en="Exclusive cultural events invitations" data-jp="限定文化イベントへの招待" data-fr="Invitations aux événements culturels exclusifs" data-ar="دعوات لفعاليات ثقافية حصرية">Exclusive cultural events invitations</li>
-                <li data-en="Ongoing support from MaSU" data-jp="MaSUからの継続的なサポート" data-fr="Soutien continu de MaSU" data-ar="دعم مستمر من MaSU">Ongoing support from MaSU</li>
-              </ul>
-              <a href="#" class="pricing-btn" id="personal-btn" data-en="Purchase Now" data-jp="今すぐ購入" data-fr="Acheter maintenant" data-ar="اشترِ الآن">Purchase Now</a>
-            </div>
-
-            <div class="pricing-card featured fade">
-              <div class="pricing-label" data-en="For Organizations" data-jp="法人向け" data-fr="Pour les organisations" data-ar="للمؤسسات">For Organizations</div>
-              <h3 class="pricing-title font-serif" data-en="Corporate Partnership" data-jp="法人パートナーシップ" data-fr="Partenariat Entreprise" data-ar="شراكة مؤسسية">Corporate Partnership</h3>
-              <div class="pricing-price">$15,000</div>
-              <div class="pricing-period" data-en="per year" data-jp="年額" data-fr="par an" data-ar="سنوياً">per year</div>
-              <ul class="pricing-features">
-                <li data-en="All Personal Partnership benefits" data-jp="個人パートナーシップの全特典" data-fr="Tous les avantages du Partenariat Personnel" data-ar="جميع مزايا الشراكة الشخصية">All Personal Partnership benefits</li>
-                <li data-en="Business collaboration opportunities" data-jp="ビジネスコラボレーションの機会" data-fr="Opportunités de collaboration commerciale" data-ar="فرص التعاون التجاري">Business collaboration opportunities</li>
-                <li data-en="Brand integration with Japanese culture" data-jp="日本文化とのブランド統合" data-fr="Intégration de marque avec la culture japonaise" data-ar="دمج العلامة التجارية مع الثقافة اليابانية">Brand integration with Japanese culture</li>
-                <li data-en="Priority access to partnerships" data-jp="パートナーシップへの優先アクセス" data-fr="Accès prioritaire aux partenariats" data-ar="أولوية الوصول للشراكات">Priority access to partnerships</li>
-                <li data-en="Dedicated relationship manager" data-jp="専任リレーションシップマネージャー" data-fr="Gestionnaire de relation dédié" data-ar="مدير علاقات مخصص">Dedicated relationship manager</li>
-              </ul>
-              <a href="#" class="pricing-btn" id="corporate-btn" data-en="Purchase Now" data-jp="今すぐ購入" data-fr="Acheter maintenant" data-ar="اشترِ الآن">Purchase Now</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="contact-section">
         <div class="container fade">
-          <h3 class="font-serif" data-en="Have Questions?" data-jp="ご質問はありますか？" data-fr="Vous avez des questions ?" data-ar="هل لديك أسئلة؟">Have Questions?</h3>
-          <p data-en="Feel free to reach out via WhatsApp for any questions or consultations before purchasing. We're happy to help you find the right partnership." data-jp="ご購入前のご質問やご相談は、お気軽にWhatsAppでお問い合わせください。最適なパートナーシップを見つけるお手伝いをいたします。" data-fr="N'hésitez pas à nous contacter via WhatsApp pour toute question ou consultation avant l'achat. Nous serons heureux de vous aider à trouver le bon partenariat." data-ar="لا تتردد في التواصل عبر واتساب لأي أسئلة أو استشارات قبل الشراء. يسعدنا مساعدتك في العثور على الشراكة المناسبة.">Feel free to reach out via WhatsApp for any questions or consultations before purchasing. We're happy to help you find the right partnership.</p>
-          <a href="https://wa.me/971524109747" class="whatsapp-btn" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            <span data-en="Chat on WhatsApp" data-jp="WhatsAppでチャット" data-fr="Discuter sur WhatsApp" data-ar="الدردشة على واتساب">Chat on WhatsApp</span>
-          </a>
-          <p style="margin-top: 16px; font-size: 13px; color: var(--stone-500);">+971 524109747</p>
+          <div class="hero-brand">FOMUS GLOBAL PARTNERSHIP</div>
+          <h1 class="hero-title font-serif"
+            data-jp="日本文化の&quot;内側&quot;に入り、<br>共に未来をつくるための関係性。"
+            data-en="Enter the inner circle of Japanese culture,<br>a relationship to co-create the future."
+            data-fr="Entrez dans le cercle intérieur de la culture japonaise,<br>une relation pour co-créer l'avenir."
+            data-ar="ادخل إلى الدائرة الداخلية للثقافة اليابانية،<br>علاقة لصنع المستقبل معاً.">
+            Enter the inner circle of Japanese culture,<br>a relationship to co-create the future.
+          </h1>
+          <p class="hero-sub"
+            data-jp="この先は、「体験を買う」ためのページではありません。<br>関係を引き受ける人のための入口です。"
+            data-en="This is not a page for 'buying experiences.'<br>This is an entrance for those who accept a relationship."
+            data-fr="Ce n'est pas une page pour 'acheter des expériences.'<br>C'est une entrée pour ceux qui acceptent une relation."
+            data-ar="هذه ليست صفحة لـ 'شراء التجارب.'<br>هذا مدخل لمن يقبلون العلاقة.">
+            This is not a page for 'buying experiences.'<br>This is an entrance for those who accept a relationship.
+          </p>
+        </div>
+      </section>
+
+      <!-- INTRODUCTION -->
+      <section class="section">
+        <div class="container fade">
+          <div class="label" data-jp="INTRODUCTION" data-en="INTRODUCTION" data-fr="INTRODUCTION" data-ar="مقدمة">INTRODUCTION</div>
+          <h2 class="section-title font-serif"
+            data-jp="参加前に、必ずお読みください"
+            data-en="Please read before applying"
+            data-fr="Veuillez lire avant de postuler"
+            data-ar="يرجى القراءة قبل التقديم">
+            Please read before applying
+          </h2>
+          <div class="section-body">
+            <p data-jp="FOMUS GLOBAL PARTNERSHIP は、高級ツアーでも、体験型サービスでもありません。"
+              data-en="FOMUS GLOBAL PARTNERSHIP is neither a luxury tour nor an experience-based service."
+              data-fr="FOMUS GLOBAL PARTNERSHIP n'est ni un voyage de luxe ni un service basé sur l'expérience."
+              data-ar="شراكة فومس العالمية ليست جولة فاخرة ولا خدمة قائمة على التجربة.">
+              FOMUS GLOBAL PARTNERSHIP is neither a luxury tour nor an experience-based service.
+            </p>
+            <p data-jp="このパートナーシップは、日本文化の担い手たちと、表に出ない現場・思想・関係性の中で、時間をかけて信頼を育て、共に何かを生み出していくための関係です。"
+              data-en="This partnership is a relationship to nurture trust over time with the custodians of Japanese culture, within unseen workshops, philosophies, and connections, and to create something together."
+              data-fr="Ce partenariat est une relation pour cultiver la confiance au fil du temps avec les gardiens de la culture japonaise, dans des ateliers, philosophies et connexions invisibles, et pour créer quelque chose ensemble."
+              data-ar="هذه الشراكة هي علاقة لرعاية الثقة مع مرور الوقت مع حراس الثقافة اليابانية، ضمن ورش عمل وفلسفات واتصالات غير مرئية، ولخلق شيء معاً.">
+              This partnership is a relationship to nurture trust over time with the custodians of Japanese culture, within unseen workshops, philosophies, and connections, and to create something together.
+            </p>
+            <p data-jp="即効性のあるリターンや、決められた体験メニューを求める方には向いていません。"
+              data-en="This is not suitable for those seeking immediate returns or predetermined experience menus."
+              data-fr="Ce n'est pas adapté à ceux qui recherchent des retours immédiats ou des menus d'expérience prédéterminés."
+              data-ar="هذا غير مناسب لمن يبحثون عن عوائد فورية أو قوائم تجارب محددة مسبقاً.">
+              This is not suitable for those seeking immediate returns or predetermined experience menus.
+            </p>
+          </div>
+
+          <div class="highlight-box">
+            <p data-jp="それでも、<br><br>・日本文化を「消費」ではなく「関係」として捉えたい<br>・一過性ではなく、続いていく関わりを持ちたい<br>・FOMUSという文化圏の中に入る覚悟がある<br><br>そう感じる方にとっては、ここはとても静かで、深い入口になるはずです。"
+              data-en="However, for those who:<br><br>• Want to see Japanese culture as a 'relationship' rather than 'consumption'<br>• Want ongoing involvement, not a one-time experience<br>• Are ready to enter the cultural sphere of FOMUS<br><br>This will be a very quiet, profound entrance."
+              data-fr="Cependant, pour ceux qui:<br><br>• Veulent voir la culture japonaise comme une 'relation' plutôt qu'une 'consommation'<br>• Veulent une implication continue, pas une expérience unique<br>• Sont prêts à entrer dans la sphère culturelle de FOMUS<br><br>Ce sera une entrée très calme et profonde."
+              data-ar="ومع ذلك، لأولئك الذين:<br><br>• يريدون رؤية الثقافة اليابانية كـ 'علاقة' بدلاً من 'استهلاك'<br>• يريدون مشاركة مستمرة، وليس تجربة لمرة واحدة<br>• مستعدون لدخول المجال الثقافي لفومس<br><br>سيكون هذا مدخلاً هادئاً وعميقاً جداً.">
+              However, for those who:<br><br>• Want to see Japanese culture as a 'relationship' rather than 'consumption'<br>• Want ongoing involvement, not a one-time experience<br>• Are ready to enter the cultural sphere of FOMUS<br><br>This will be a very quiet, profound entrance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHO -->
+      <section class="section section-white">
+        <div class="container fade">
+          <div class="label" data-jp="WHO" data-en="WHO" data-fr="QUI" data-ar="من">WHO</div>
+          <h2 class="section-title font-serif"
+            data-jp="誰とつながるのか"
+            data-en="Who you connect with"
+            data-fr="Avec qui vous vous connectez"
+            data-ar="مع من تتواصل">
+            Who you connect with
+          </h2>
+          <div class="who-grid">
+            <div class="who-image">
+              <img src="プロフィール.png" alt="MaSU" />
+            </div>
+            <div class="section-body">
+              <p data-jp="FOMUS GLOBAL PARTNERSHIP は、FOMUS代表・まっすー（Masu）との直接的なパートナーシップです。"
+                data-en="FOMUS GLOBAL PARTNERSHIP is a direct partnership with MaSU, the founder of FOMUS."
+                data-fr="FOMUS GLOBAL PARTNERSHIP est un partenariat direct avec MaSU, le fondateur de FOMUS."
+                data-ar="شراكة فومس العالمية هي شراكة مباشرة مع ماسو، مؤسس فومس.">
+                FOMUS GLOBAL PARTNERSHIP is a direct partnership with MaSU, the founder of FOMUS.
+              </p>
+              <p data-jp="まっすーは、日本全国を巡り、職人・蔵元・作り手たちと長年にわたり関係を築いてきました。日本の伝統工芸「枡」を軸に、約20カ国で文化とビジネスをつないできた実践者です。"
+                data-en="MaSU has traveled across Japan, building long-term relationships with artisans, brewers, and craftspeople. He is a practitioner who has connected culture and business in approximately 20 countries, using the traditional 'Masu' craft as his axis."
+                data-fr="MaSU a parcouru le Japon, établissant des relations à long terme avec des artisans, des brasseurs et des artisans. C'est un praticien qui a connecté culture et affaires dans environ 20 pays, en utilisant l'artisanat traditionnel 'Masu' comme axe."
+                data-ar="سافر ماسو عبر اليابان، وبنى علاقات طويلة الأمد مع الحرفيين وصانعي الخمور. هو ممارس ربط بين الثقافة والأعمال في حوالي 20 دولة، باستخدام حرفة 'ماسو' التقليدية كمحور.">
+                MaSU has traveled across Japan, building long-term relationships with artisans, brewers, and craftspeople. He is a practitioner who has connected culture and business in approximately 20 countries, using the traditional 'Masu' craft as his axis.
+              </p>
+              <p data-jp="表に出ない工房。語られてこなかった哲学。信頼の中でしか共有されない現場。そうした"内側"の世界と、世界中の人・企業・意思決定層をつなぐ、間に立つ存在として活動してきました。"
+                data-en="Workshops that remain hidden. Philosophies left unspoken. Sites shared only within trust. He has worked as a bridge connecting these 'inner' worlds with people, companies, and decision-makers around the globe."
+                data-fr="Des ateliers qui restent cachés. Des philosophies non exprimées. Des sites partagés uniquement dans la confiance. Il a travaillé comme un pont reliant ces mondes 'intérieurs' avec des personnes, des entreprises et des décideurs du monde entier."
+                data-ar="ورش عمل تبقى مخفية. فلسفات لم يُعبر عنها. مواقع تُشارك فقط ضمن الثقة. عمل كجسر يربط هذه العوالم 'الداخلية' مع الناس والشركات وصناع القرار حول العالم.">
+                Workshops that remain hidden. Philosophies left unspoken. Sites shared only within trust. He has worked as a bridge connecting these 'inner' worlds with people, companies, and decision-makers around the globe.
+              </p>
+              <p style="font-style: italic; color: var(--ink);"
+                data-jp="このパートナーシップで出会うのは、「案内された日本」ではありません。信頼によって迎え入れられる日本です。"
+                data-en="What you encounter through this partnership is not a 'guided Japan.' It is a Japan that welcomes you through trust."
+                data-fr="Ce que vous rencontrez à travers ce partenariat n'est pas un 'Japon guidé.' C'est un Japon qui vous accueille par la confiance."
+                data-ar="ما تواجهه من خلال هذه الشراكة ليس 'اليابان الموجه.' إنه اليابان الذي يرحب بك من خلال الثقة.">
+                What you encounter through this partnership is not a 'guided Japan.' It is a Japan that welcomes you through trust.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT -->
+      <section class="section">
+        <div class="container fade">
+          <div class="label" data-jp="WHAT" data-en="WHAT" data-fr="QUOI" data-ar="ماذا">WHAT</div>
+          <h2 class="section-title font-serif"
+            data-jp="このパートナーシップでできること"
+            data-en="What you can do with this partnership"
+            data-fr="Ce que vous pouvez faire avec ce partenariat"
+            data-ar="ما يمكنك فعله مع هذه الشراكة">
+            What you can do with this partnership
+          </h2>
+          <p class="section-body" style="margin-bottom: 0;"
+            data-jp="FOMUS GLOBAL PARTNERSHIP に参加すると、次のような関わりが生まれます。"
+            data-en="By joining FOMUS GLOBAL PARTNERSHIP, the following engagements become possible."
+            data-fr="En rejoignant FOMUS GLOBAL PARTNERSHIP, les engagements suivants deviennent possibles."
+            data-ar="من خلال الانضمام إلى شراكة فومس العالمية، تصبح المشاركات التالية ممكنة.">
+            By joining FOMUS GLOBAL PARTNERSHIP, the following engagements become possible.
+          </p>
+
+          <div class="what-grid">
+            <div class="what-category">
+              <h4 class="what-category-title font-serif"
+                data-jp="文化の内側へのアクセス"
+                data-en="Access to the Inside of Culture"
+                data-fr="Accès à l'intérieur de la culture"
+                data-ar="الوصول إلى داخل الثقافة">
+                Access to the Inside of Culture
+              </h4>
+              <ul>
+                <li data-jp="職人・蔵元・作り手の現場への訪問機会" data-en="Opportunities to visit workshops of artisans, brewers, and craftspeople" data-fr="Opportunités de visiter les ateliers d'artisans, brasseurs et artisans" data-ar="فرص لزيارة ورش الحرفيين وصانعي الخمور">Opportunities to visit workshops of artisans, brewers, and craftspeople</li>
+                <li data-jp="非公開の場・対話・プロセスへの参加" data-en="Participation in private settings, dialogues, and processes" data-fr="Participation à des cadres privés, dialogues et processus" data-ar="المشاركة في الأماكن الخاصة والحوارات والعمليات">Participation in private settings, dialogues, and processes</li>
+              </ul>
+            </div>
+
+            <div class="what-category">
+              <h4 class="what-category-title font-serif"
+                data-jp="共創プロジェクトへの参加"
+                data-en="Participation in Co-Creation Projects"
+                data-fr="Participation aux projets de co-création"
+                data-ar="المشاركة في مشاريع الإبداع المشترك">
+                Participation in Co-Creation Projects
+              </h4>
+              <ul>
+                <li data-jp="オリジナル日本酒づくりプロジェクト" data-en="Original sake creation projects" data-fr="Projets de création de saké original" data-ar="مشاريع صنع الساكي الأصلية">Original sake creation projects</li>
+                <li data-jp="FOMUSと共同で行う空き家再生・文化拠点づくり" data-en="Vacant house revival and cultural hub creation with FOMUS" data-fr="Revitalisation de maisons vacantes et création de centres culturels avec FOMUS" data-ar="إحياء المنازل الشاغرة وإنشاء مراكز ثقافية مع فومس">Vacant house revival and cultural hub creation with FOMUS</li>
+                <li data-jp="日本文化を起点とした新規プロジェクトへの参画" data-en="Participation in new projects originating from Japanese culture" data-fr="Participation à de nouveaux projets issus de la culture japonaise" data-ar="المشاركة في مشاريع جديدة تنطلق من الثقافة اليابانية">Participation in new projects originating from Japanese culture</li>
+              </ul>
+            </div>
+
+            <div class="what-category">
+              <h4 class="what-category-title font-serif"
+                data-jp="日本滞在時のリアルなサポート"
+                data-en="Real Support During Your Stay in Japan"
+                data-fr="Soutien réel pendant votre séjour au Japon"
+                data-ar="دعم حقيقي أثناء إقامتك في اليابان">
+                Real Support During Your Stay in Japan
+              </h4>
+              <ul>
+                <li data-jp="滞在拠点（宿）の確保・紹介" data-en="Securing and introducing accommodation bases" data-fr="Sécurisation et introduction de bases d'hébergement" data-ar="تأمين وتقديم قواعد الإقامة">Securing and introducing accommodation bases</li>
+                <li data-jp="日本各地のFOMUSメンバーとの交流" data-en="Exchange with FOMUS members throughout Japan" data-fr="Échange avec les membres de FOMUS à travers le Japon" data-ar="التبادل مع أعضاء فومس في جميع أنحاء اليابان">Exchange with FOMUS members throughout Japan</li>
+                <li data-jp="観光ではない、日本の日常・暮らしへの接続" data-en="Connection to Japanese daily life, not tourism" data-fr="Connexion à la vie quotidienne japonaise, pas au tourisme" data-ar="الاتصال بالحياة اليومية اليابانية، وليس السياحة">Connection to Japanese daily life, not tourism</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="what-note"
+            data-jp="※ すべてが「保証」されるものではありません。信頼関係とタイミングによって開かれていきます。"
+            data-en="* Not everything is 'guaranteed.' Opportunities open based on trust and timing."
+            data-fr="* Tout n'est pas 'garanti.' Les opportunités s'ouvrent en fonction de la confiance et du timing."
+            data-ar="* ليس كل شيء 'مضموناً.' الفرص تنفتح بناءً على الثقة والتوقيت.">
+            * Not everything is 'guaranteed.' Opportunities open based on trust and timing.
+          </p>
+        </div>
+      </section>
+
+      <!-- DIFFERENCE -->
+      <section class="section section-dark">
+        <div class="container fade">
+          <div class="label">DIFFERENCE</div>
+          <h2 class="section-title font-serif"
+            data-jp="FOMUSが大切にしていること"
+            data-en="What FOMUS Values"
+            data-fr="Ce que FOMUS valorise"
+            data-ar="ما تقدره فومس">
+            What FOMUS Values
+          </h2>
+          <div class="diff-list">
+            <div class="diff-item">
+              <div class="diff-num">01</div>
+              <div>
+                <h3 class="diff-title font-serif"
+                  data-jp="体験で終わらせない"
+                  data-en="Beyond Experience"
+                  data-fr="Au-delà de l'expérience"
+                  data-ar="ما وراء التجربة">
+                  Beyond Experience
+                </h3>
+                <p class="diff-desc"
+                  data-jp="一度きりの感動ではなく、続いていく関係をつくります。"
+                  data-en="We build lasting relationships, not one-time moments of excitement."
+                  data-fr="Nous construisons des relations durables, pas des moments d'excitation ponctuels."
+                  data-ar="نبني علاقات دائمة، وليس لحظات إثارة لمرة واحدة.">
+                  We build lasting relationships, not one-time moments of excitement.
+                </p>
+              </div>
+            </div>
+            <div class="diff-item">
+              <div class="diff-num">02</div>
+              <div>
+                <h3 class="diff-title font-serif"
+                  data-jp="内側から関わる"
+                  data-en="Engage from the Inside"
+                  data-fr="S'engager de l'intérieur"
+                  data-ar="المشاركة من الداخل">
+                  Engage from the Inside
+                </h3>
+                <p class="diff-desc"
+                  data-jp="外向けにつくられた場ではなく、本来の現場・対話・判断の場に関わります。"
+                  data-en="Engage in authentic workshops, dialogues, and decision-making spaces—not those created for outsiders."
+                  data-fr="Participez à des ateliers, dialogues et espaces de décision authentiques—pas ceux créés pour les étrangers."
+                  data-ar="شارك في ورش العمل والحوارات ومساحات صنع القرار الأصيلة—وليس تلك المصممة للغرباء.">
+                  Engage in authentic workshops, dialogues, and decision-making spaces—not those created for outsiders.
+                </p>
+              </div>
+            </div>
+            <div class="diff-item">
+              <div class="diff-num">03</div>
+              <div>
+                <h3 class="diff-title font-serif"
+                  data-jp="共につくる"
+                  data-en="Co-Create"
+                  data-fr="Co-créer"
+                  data-ar="الإبداع المشترك">
+                  Co-Create
+                </h3>
+                <p class="diff-desc"
+                  data-jp="参加者は「顧客」ではなく、プロジェクトの一員・関係者です。"
+                  data-en="Participants are not 'customers' but members and stakeholders of projects."
+                  data-fr="Les participants ne sont pas des 'clients' mais des membres et des parties prenantes des projets."
+                  data-ar="المشاركون ليسوا 'عملاء' بل أعضاء وأصحاب مصلحة في المشاريع.">
+                  Participants are not 'customers' but members and stakeholders of projects.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLANS -->
+      <section class="section" id="plans">
+        <div class="container fade">
+          <div class="label" data-jp="PARTNERSHIP PLANS" data-en="PARTNERSHIP PLANS" data-fr="PLANS DE PARTENARIAT" data-ar="خطط الشراكة">PARTNERSHIP PLANS</div>
+          <h2 class="section-title font-serif"
+            data-jp="プランを選択する"
+            data-en="Select Your Plan"
+            data-fr="Sélectionnez votre plan"
+            data-ar="اختر خطتك">
+            Select Your Plan
+          </h2>
+
+          <div class="plans-grid">
+            <div class="plan-card">
+              <div class="plan-label" data-jp="個人" data-en="Individual" data-fr="Individuel" data-ar="فردي">Individual</div>
+              <h3 class="plan-title font-serif">PERSONAL PARTNERSHIP</h3>
+              <div class="plan-price">$10,000</div>
+              <div class="plan-period" data-jp="/ 年" data-en="/ Year" data-fr="/ An" data-ar="/ سنة">/ Year</div>
+              <p class="plan-note" data-jp="※ 2026年3月まで（以降 $15,000 / 年）" data-en="* Until March 2026 (then $15,000/year)" data-fr="* Jusqu'en mars 2026 (puis 15 000$/an)" data-ar="* حتى مارس 2026 (ثم 15,000$/سنة)">* Until March 2026 (then $15,000/year)</p>
+              <ul class="plan-features">
+                <li data-jp="年1回のプライベート・ホスティング" data-en="Annual Private Hosting (1x)" data-fr="Hébergement privé annuel (1x)" data-ar="استضافة خاصة سنوية (1x)">Annual Private Hosting (1x)</li>
+                <li data-jp="日本滞在時の関係者ネットワーク接続" data-en="Network connections during Japan stays" data-fr="Connexions réseau pendant les séjours au Japon" data-ar="اتصالات الشبكة أثناء الإقامة في اليابان">Network connections during Japan stays</li>
+                <li data-jp="共創プロジェクトへの参加権" data-en="Rights to join co-creation projects" data-fr="Droits de participation aux projets de co-création" data-ar="حقوق الانضمام لمشاريع الإبداع المشترك">Rights to join co-creation projects</li>
+                <li data-jp="非公開の場・対話への招待" data-en="Invitations to private settings and dialogues" data-fr="Invitations à des cadres privés et dialogues" data-ar="دعوات للأماكن الخاصة والحوارات">Invitations to private settings and dialogues</li>
+              </ul>
+              <a href="#agreement" class="plan-btn" data-jp="個人で参加する" data-en="Join as Individual" data-fr="Rejoindre en tant qu'individu" data-ar="انضم كفرد">Join as Individual</a>
+            </div>
+
+            <div class="plan-card featured">
+              <div class="plan-label" data-jp="法人" data-en="Corporate" data-fr="Entreprise" data-ar="مؤسسي">Corporate</div>
+              <h3 class="plan-title font-serif">CORPORATE PARTNERSHIP</h3>
+              <div class="plan-price">$15,000</div>
+              <div class="plan-period" data-jp="/ 年" data-en="/ Year" data-fr="/ An" data-ar="/ سنة">/ Year</div>
+              <p class="plan-note" data-jp="※ 2026年3月まで（以降 $20,000 / 年）" data-en="* Until March 2026 (then $20,000/year)" data-fr="* Jusqu'en mars 2026 (puis 20 000$/an)" data-ar="* حتى مارس 2026 (ثم 20,000$/سنة)">* Until March 2026 (then $20,000/year)</p>
+              <ul class="plan-features">
+                <li data-jp="個人プランの全内容を含む" data-en="Includes all Personal Plan benefits" data-fr="Inclut tous les avantages du plan personnel" data-ar="يشمل جميع مزايا الخطة الشخصية">Includes all Personal Plan benefits</li>
+                <li data-jp="経営チーム同行（最大3名）" data-en="Executive team access (up to 3)" data-fr="Accès équipe dirigeante (jusqu'à 3)" data-ar="وصول الفريق التنفيذي (حتى 3)">Executive team access (up to 3)</li>
+                <li data-jp="事業視察・共同プロジェクト設計" data-en="Business inspections & joint project design" data-fr="Inspections commerciales et conception de projets conjoints" data-ar="عمليات فحص الأعمال وتصميم المشاريع المشتركة">Business inspections & joint project design</li>
+                <li data-jp="法人名義での契約・支払い（経費対応）" data-en="Corporate contracts & payments (expense eligible)" data-fr="Contrats et paiements d'entreprise (éligibles aux dépenses)" data-ar="عقود ومدفوعات الشركات (مؤهلة للنفقات)">Corporate contracts & payments (expense eligible)</li>
+              </ul>
+              <a href="#agreement" class="plan-btn" data-jp="法人として参加する" data-en="Join as Corporate" data-fr="Rejoindre en tant qu'entreprise" data-ar="انضم كمؤسسة">Join as Corporate</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AGREEMENT -->
+      <section class="section section-white" id="agreement">
+        <div class="container fade">
+          <div class="label" data-jp="AGREEMENT" data-en="AGREEMENT" data-fr="ACCORD" data-ar="الاتفاقية">AGREEMENT</div>
+          <h2 class="section-title font-serif"
+            data-jp="パートナーシップ契約について"
+            data-en="About the Partnership Agreement"
+            data-fr="À propos de l'accord de partenariat"
+            data-ar="حول اتفاقية الشراكة">
+            About the Partnership Agreement
+          </h2>
+
+          <div class="agreement-intro">
+            <p data-jp="FOMUS GLOBAL PARTNERSHIP は、サービス利用契約ではありません。これは、信頼関係を前提としたパートナーシップ契約です。以下の内容をご確認のうえ、ご同意いただいた方のみ、次に進むことができます。"
+              data-en="FOMUS GLOBAL PARTNERSHIP is not a service agreement. It is a partnership agreement based on mutual trust. Only those who confirm and agree to the following may proceed."
+              data-fr="FOMUS GLOBAL PARTNERSHIP n'est pas un accord de service. C'est un accord de partenariat basé sur la confiance mutuelle. Seuls ceux qui confirment et acceptent ce qui suit peuvent continuer."
+              data-ar="شراكة فومس العالمية ليست اتفاقية خدمة. إنها اتفاقية شراكة قائمة على الثقة المتبادلة. فقط من يؤكدون ويوافقون على ما يلي يمكنهم المتابعة.">
+              FOMUS GLOBAL PARTNERSHIP is not a service agreement. It is a partnership agreement based on mutual trust. Only those who confirm and agree to the following may proceed.
+            </p>
+          </div>
+
+          <div class="agreement-points">
+            <ul>
+              <li data-jp="本契約は成果や体験を保証するものではありません" data-en="This agreement does not guarantee outcomes or experiences" data-fr="Cet accord ne garantit pas les résultats ou les expériences" data-ar="هذه الاتفاقية لا تضمن النتائج أو التجارب">This agreement does not guarantee outcomes or experiences</li>
+              <li data-jp="非公開情報・関係性の尊重が求められます" data-en="Respect for confidential information and relationships is required" data-fr="Le respect des informations confidentielles et des relations est requis" data-ar="احترام المعلومات السرية والعلاقات مطلوب">Respect for confidential information and relationships is required</li>
+              <li data-jp="信頼を損なう行為があった場合、参加は解除されます" data-en="Participation may be terminated if trust is breached" data-fr="La participation peut être résiliée en cas de violation de la confiance" data-ar="قد يتم إنهاء المشاركة في حالة خرق الثقة">Participation may be terminated if trust is breached</li>
+              <li data-jp="契約期間は1年間です" data-en="The contract period is one year" data-fr="La période du contrat est d'un an" data-ar="فترة العقد سنة واحدة">The contract period is one year</li>
+            </ul>
+          </div>
+
+          <div class="agreement-full">
+            <button class="agreement-toggle" id="agreementToggle"
+              data-jp="契約書全文を読む" data-en="Read Full Agreement" data-fr="Lire l'accord complet" data-ar="قراءة الاتفاقية الكاملة">
+              Read Full Agreement
+            </button>
+            <div class="agreement-content" id="agreementContent">
+              <p data-jp="【FOMUS GLOBAL PARTNERSHIP 契約条項】<br><br>第1条（目的）<br>本契約は、FOMUS GLOBAL PARTNERSHIP（以下「本パートナーシップ」）への参加に関する条件を定めるものです。<br><br>第2条（契約の性質）<br>本契約は、特定の成果、体験、または結果を保証するものではありません。本パートナーシップは、信頼関係に基づく継続的な関係構築を目的としています。<br><br>第3条（守秘義務）<br>参加者は、本パートナーシップを通じて得た非公開情報、関係者の個人情報、および内部プロセスに関する情報を第三者に開示してはなりません。<br><br>第4条（信頼関係の維持）<br>参加者は、FOMUS、その関係者、および他のパートナーとの信頼関係を維持する義務を負います。信頼を損なう行為が認められた場合、FOMUSは参加を解除する権利を有します。<br><br>第5条（契約期間）<br>本契約の有効期間は、契約締結日から1年間とします。<br><br>第6条（返金）<br>本パートナーシップの性質上、参加費用の返金は原則として行いません。<br><br>第7条（準拠法）<br>本契約は日本法に準拠します。"
+                data-en="【FOMUS GLOBAL PARTNERSHIP Agreement Terms】<br><br>Article 1 (Purpose)<br>This agreement defines the terms for participation in FOMUS GLOBAL PARTNERSHIP (hereinafter 'the Partnership').<br><br>Article 2 (Nature of Agreement)<br>This agreement does not guarantee specific outcomes, experiences, or results. The Partnership aims to build ongoing relationships based on mutual trust.<br><br>Article 3 (Confidentiality)<br>Participants shall not disclose confidential information, personal information of related parties, or internal process information obtained through the Partnership to third parties.<br><br>Article 4 (Maintaining Trust)<br>Participants are obligated to maintain trust with FOMUS, its associates, and other partners. FOMUS reserves the right to terminate participation if trust-damaging behavior is identified.<br><br>Article 5 (Contract Period)<br>This agreement is valid for one year from the date of execution.<br><br>Article 6 (Refunds)<br>Due to the nature of the Partnership, refunds are generally not provided.<br><br>Article 7 (Governing Law)<br>This agreement shall be governed by Japanese law."
+                data-fr="【Termes de l'accord FOMUS GLOBAL PARTNERSHIP】<br><br>Article 1 (Objet)<br>Cet accord définit les conditions de participation à FOMUS GLOBAL PARTNERSHIP (ci-après « le Partenariat »).<br><br>Article 2 (Nature de l'accord)<br>Cet accord ne garantit pas de résultats, d'expériences ou de résultats spécifiques. Le Partenariat vise à construire des relations continues basées sur la confiance mutuelle.<br><br>Article 3 (Confidentialité)<br>Les participants ne doivent pas divulguer les informations confidentielles, les informations personnelles des parties liées ou les informations sur les processus internes obtenues par le biais du Partenariat à des tiers.<br><br>Article 4 (Maintien de la confiance)<br>Les participants sont tenus de maintenir la confiance avec FOMUS, ses associés et les autres partenaires. FOMUS se réserve le droit de mettre fin à la participation si un comportement portant atteinte à la confiance est identifié.<br><br>Article 5 (Durée du contrat)<br>Cet accord est valable un an à compter de la date d'exécution.<br><br>Article 6 (Remboursements)<br>En raison de la nature du Partenariat, les remboursements ne sont généralement pas fournis.<br><br>Article 7 (Droit applicable)<br>Cet accord est régi par le droit japonais."
+                data-ar="【شروط اتفاقية شراكة فومس العالمية】<br><br>المادة 1 (الغرض)<br>تحدد هذه الاتفاقية شروط المشاركة في شراكة فومس العالمية (يشار إليها فيما بعد بـ 'الشراكة').<br><br>المادة 2 (طبيعة الاتفاقية)<br>لا تضمن هذه الاتفاقية نتائج أو تجارب محددة. تهدف الشراكة إلى بناء علاقات مستمرة قائمة على الثقة المتبادلة.<br><br>المادة 3 (السرية)<br>لا يجوز للمشاركين الكشف عن المعلومات السرية أو المعلومات الشخصية للأطراف ذات الصلة أو معلومات العمليات الداخلية التي تم الحصول عليها من خلال الشراكة لأطراف ثالثة.<br><br>المادة 4 (الحفاظ على الثقة)<br>يلتزم المشاركون بالحفاظ على الثقة مع فومس وشركائها والشركاء الآخرين. تحتفظ فومس بالحق في إنهاء المشاركة إذا تم تحديد سلوك يضر بالثقة.<br><br>المادة 5 (فترة العقد)<br>هذه الاتفاقية صالحة لمدة سنة واحدة من تاريخ التنفيذ.<br><br>المادة 6 (الاسترداد)<br>نظراً لطبيعة الشراكة، لا يتم تقديم المبالغ المستردة بشكل عام.<br><br>المادة 7 (القانون الحاكم)<br>تخضع هذه الاتفاقية للقانون الياباني.">
+                【FOMUS GLOBAL PARTNERSHIP Agreement Terms】<br><br>Article 1 (Purpose)<br>This agreement defines the terms for participation in FOMUS GLOBAL PARTNERSHIP (hereinafter 'the Partnership').<br><br>Article 2 (Nature of Agreement)<br>This agreement does not guarantee specific outcomes, experiences, or results. The Partnership aims to build ongoing relationships based on mutual trust.<br><br>Article 3 (Confidentiality)<br>Participants shall not disclose confidential information, personal information of related parties, or internal process information obtained through the Partnership to third parties.<br><br>Article 4 (Maintaining Trust)<br>Participants are obligated to maintain trust with FOMUS, its associates, and other partners. FOMUS reserves the right to terminate participation if trust-damaging behavior is identified.<br><br>Article 5 (Contract Period)<br>This agreement is valid for one year from the date of execution.<br><br>Article 6 (Refunds)<br>Due to the nature of the Partnership, refunds are generally not provided.<br><br>Article 7 (Governing Law)<br>This agreement shall be governed by Japanese law.
+              </p>
+            </div>
+          </div>
+
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="check1" />
+              <label for="check1" data-jp="契約内容を読み、理解しました" data-en="I have read and understood the agreement" data-fr="J'ai lu et compris l'accord" data-ar="لقد قرأت وفهمت الاتفاقية">I have read and understood the agreement</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="check2" />
+              <label for="check2" data-jp="本パートナーシップが成果保証型ではないことを理解しています" data-en="I understand this partnership does not guarantee outcomes" data-fr="Je comprends que ce partenariat ne garantit pas les résultats" data-ar="أفهم أن هذه الشراكة لا تضمن النتائج">I understand this partnership does not guarantee outcomes</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="check3" />
+              <label for="check3" data-jp="非公開情報・関係性を尊重します" data-en="I will respect confidential information and relationships" data-fr="Je respecterai les informations confidentielles et les relations" data-ar="سأحترم المعلومات السرية والعلاقات">I will respect confidential information and relationships</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="check4" />
+              <label for="check4" data-jp="FOMUSの判断による参加解除の可能性を理解しています" data-en="I understand participation may be terminated at FOMUS's discretion" data-fr="Je comprends que la participation peut être résiliée à la discrétion de FOMUS" data-ar="أفهم أنه يمكن إنهاء المشاركة وفقاً لتقدير فومس">I understand participation may be terminated at FOMUS's discretion</label>
+            </div>
+            <div class="checkbox-item checkbox-all">
+              <input type="checkbox" id="checkAll" />
+              <label for="checkAll" data-jp="上記すべてに同意します" data-en="I agree to all of the above" data-fr="J'accepte tout ce qui précède" data-ar="أوافق على كل ما سبق">I agree to all of the above</label>
+            </div>
+          </div>
+
+          <div class="final-cta">
+            <button class="final-btn" id="finalBtn"
+              data-jp="同意のうえ、参加を確定し、決済へ進む"
+              data-en="Agree and proceed to payment"
+              data-fr="Accepter et procéder au paiement"
+              data-ar="الموافقة والمتابعة للدفع">
+              Agree and proceed to payment
+            </button>
+            <p class="final-note" data-jp="※ チェックボックスすべてにチェックを入れると、ボタンが有効になります" data-en="* Check all boxes to enable the button" data-fr="* Cochez toutes les cases pour activer le bouton" data-ar="* حدد جميع المربعات لتفعيل الزر">* Check all boxes to enable the button</p>
+          </div>
+
+          <div class="contact-box">
+            <h4 class="font-serif" data-jp="ご質問はありますか？" data-en="Have Questions?" data-fr="Des questions ?" data-ar="هل لديك أسئلة؟">Have Questions?</h4>
+            <p data-jp="参加前のご質問やご相談は、お気軽にWhatsAppでお問い合わせください。" data-en="Feel free to reach out via WhatsApp for any questions before joining." data-fr="N'hésitez pas à nous contacter via WhatsApp pour toute question avant de rejoindre." data-ar="لا تتردد في التواصل عبر واتساب لأي أسئلة قبل الانضمام.">Feel free to reach out via WhatsApp for any questions before joining.</p>
+            <a href="https://wa.me/971524109747" class="whatsapp-btn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span>+971 524109747</span>
+            </a>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
       <div class="container">
-        <h2 class="font-serif" style="font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;">FOMUS</h2>
-        <p data-en="Enter the inner circle of Japanese culture and co-create the future." data-jp="日本文化の&quot;内側&quot;に入り、共に未来をつくるための関係性。" data-fr="Entrez dans le cercle intérieur de la culture japonaise et co-créez l'avenir." data-ar="ادخل إلى الدائرة الداخلية للثقافة اليابانية واصنع المستقبل معاً.">Enter the inner circle of Japanese culture and co-create the future.</p>
+        <p class="footer-message font-serif"
+          data-jp="FOMUS GLOBAL PARTNERSHIP は、売るものではなく、迎え入れる関係です。静かに、誠実に、そして長く続く関係を築ける方とお会いできることを楽しみにしています。"
+          data-en="FOMUS GLOBAL PARTNERSHIP is not something we sell—it is a relationship we welcome you into. We look forward to meeting those who can build quiet, sincere, and lasting relationships."
+          data-fr="FOMUS GLOBAL PARTNERSHIP n'est pas quelque chose que nous vendons—c'est une relation dans laquelle nous vous accueillons. Nous avons hâte de rencontrer ceux qui peuvent construire des relations calmes, sincères et durables."
+          data-ar="شراكة فومس العالمية ليست شيئاً نبيعه—إنها علاقة نرحب بك فيها. نتطلع لمقابلة أولئك الذين يمكنهم بناء علاقات هادئة وصادقة ودائمة.">
+          FOMUS GLOBAL PARTNERSHIP is not something we sell—it is a relationship we welcome you into. We look forward to meeting those who can build quiet, sincere, and lasting relationships.
+        </p>
+        <div class="footer-brand">FOMUS GLOBAL PARTNERSHIP</div>
       </div>
     </footer>
 
     <script>
-      // Language toggle functionality
+      // Language toggle
       const langs = ["en", "jp", "fr", "ar"];
       let currentLang = localStorage.getItem("fomus-lang") || "en";
 
@@ -757,8 +1185,6 @@
           if (!value) return;
           if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
             el.setAttribute("placeholder", value);
-          } else if (el.tagName === "OPTION") {
-            el.textContent = value;
           } else if (el.tagName === "TITLE") {
             document.title = value;
           } else {
@@ -773,9 +1199,9 @@
         setLang(langs[nextIndex]);
       }
 
-      // Initialize language on page load
       setLang(currentLang);
 
+      // Fade in animation
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -785,10 +1211,55 @@
             }
           });
         },
-        { threshold: 0.15 }
+        { threshold: 0.1 }
       );
 
       document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
+
+      // Agreement toggle
+      const agreementToggle = document.getElementById("agreementToggle");
+      const agreementContent = document.getElementById("agreementContent");
+
+      agreementToggle.addEventListener("click", () => {
+        agreementToggle.classList.toggle("active");
+        agreementContent.classList.toggle("show");
+      });
+
+      // Checkbox logic
+      const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]:not(#checkAll)');
+      const checkAll = document.getElementById("checkAll");
+      const finalBtn = document.getElementById("finalBtn");
+
+      function updateButtonState() {
+        const allChecked = Array.from(checkboxes).every((cb) => cb.checked);
+        checkAll.checked = allChecked;
+        if (allChecked) {
+          finalBtn.classList.add("enabled");
+        } else {
+          finalBtn.classList.remove("enabled");
+        }
+      }
+
+      checkboxes.forEach((cb) => {
+        cb.addEventListener("change", updateButtonState);
+      });
+
+      checkAll.addEventListener("change", () => {
+        checkboxes.forEach((cb) => {
+          cb.checked = checkAll.checked;
+        });
+        updateButtonState();
+      });
+
+      // Final button click
+      finalBtn.addEventListener("click", () => {
+        if (finalBtn.classList.contains("enabled")) {
+          // Redirect to Stripe or payment page
+          // Replace with actual Stripe payment link
+          alert("Stripe決済ページへ遷移します（実際のStripeリンクを設定してください）");
+          // window.location.href = "YOUR_STRIPE_PAYMENT_LINK";
+        }
+      });
     </script>
   </body>
 </html>
