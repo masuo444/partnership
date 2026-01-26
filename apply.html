@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title data-en="Partnership Application | FOMUS GLOBAL PARTNERSHIP" data-jp="パートナーシップ申請 | FOMUS GLOBAL PARTNERSHIP">Partnership Application | FOMUS GLOBAL PARTNERSHIP</title>
+    <title data-en="Partnership Application | FOMUS GLOBAL PARTNERSHIP" data-jp="パートナーシップ申請 | FOMUS GLOBAL PARTNERSHIP" data-fr="Candidature Partenariat | FOMUS GLOBAL PARTNERSHIP" data-ar="طلب الشراكة | شراكة فومس العالمية">Partnership Application | FOMUS GLOBAL PARTNERSHIP</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Shippori+Mincho:wght@400;500&family=Inter:wght@300;400;500&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Shippori+Mincho:wght@400;500&family=Inter:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap");
 
       :root {
         --bg: #f9f9f7;
@@ -43,6 +43,40 @@
       body.en {
         --serif-font: "Cormorant Garamond", serif;
         font-family: "Inter", sans-serif;
+      }
+
+      body.fr {
+        --serif-font: "Playfair Display", serif;
+        font-family: "Inter", sans-serif;
+      }
+
+      body.ar {
+        --serif-font: "Noto Naskh Arabic", serif;
+        font-family: "Noto Naskh Arabic", "Inter", sans-serif;
+        direction: rtl;
+        text-align: right;
+      }
+
+      body.ar .nav-inner,
+      body.ar .nav-actions {
+        flex-direction: row-reverse;
+      }
+
+      body.ar .logo-row {
+        flex-direction: row-reverse;
+      }
+
+      body.ar .form-shell {
+        direction: rtl;
+      }
+
+      body.ar .submit-row {
+        flex-direction: row-reverse;
+      }
+
+      body.ar .flow-card::before {
+        left: auto;
+        right: -1px;
       }
 
       .font-serif {
@@ -190,22 +224,6 @@
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 40px;
         align-items: center;
-      }
-
-      .hero-card {
-        padding: 32px;
-        background: #fff;
-        border: 1px solid var(--stone-200);
-        box-shadow: 0 18px 40px rgba(17, 17, 17, 0.08);
-        position: relative;
-      }
-
-      .hero-card::after {
-        content: "";
-        position: absolute;
-        inset: 20px;
-        border: 1px solid var(--stone-100);
-        pointer-events: none;
       }
 
       .hero-eyebrow {
@@ -366,7 +384,7 @@
         border: 1px solid var(--stone-300);
         background: var(--bg);
         font-size: 0.95rem;
-        font-family: "Inter", "Noto Serif JP", serif;
+        font-family: "Inter", "Noto Serif JP", "Noto Naskh Arabic", serif;
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
       }
 
@@ -433,10 +451,6 @@
         .form-aside {
           position: static;
         }
-
-        .hero-card::after {
-          inset: 12px;
-        }
       }
     </style>
   </head>
@@ -452,12 +466,16 @@
         </a>
         <div class="nav-actions">
           <a class="nav-link" href="index.html">HOME</a>
-          <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+          <button class="lang-toggle" id="langToggle" onclick="cycleLang()">
             <span id="langEn" class="active">EN</span>
             <span style="color:var(--stone-300);"> / </span>
             <span id="langJp">JP</span>
+            <span style="color:var(--stone-300);"> / </span>
+            <span id="langFr">FR</span>
+            <span style="color:var(--stone-300);"> / </span>
+            <span id="langAr">AR</span>
           </button>
-          <a class="nav-cta" href="index.html#gate" data-en="Back" data-jp="戻る">Back</a>
+          <a class="nav-cta" href="index.html#gate" data-en="Back" data-jp="戻る" data-fr="Retour" data-ar="رجوع">Back</a>
         </div>
       </div>
     </nav>
@@ -466,16 +484,16 @@
       <section class="hero">
         <div class="container hero-grid fade">
           <div>
-            <div class="hero-eyebrow">PARTNERSHIP APPLICATION</div>
-            <h1 class="hero-title font-serif" data-en="A first conversation<br />to begin co-creation" data-jp="共創を始めるための<br />申請ページ">A first conversation<br />to begin co-creation</h1>
-            <p class="hero-text" data-en="This application is not about approval alone. It is a starting point for a thoughtful dialogue, where we explore how our values align and what kind of future we can build together." data-jp="この申請は、参加可否を判断するためのものではなく、互いに向き合い、最適な関係性を探るための最初の対話です。あなたが大切にしたい価値、創りたい未来、そして日本文化への敬意について聞かせてください。">
+            <div class="hero-eyebrow" data-en="PARTNERSHIP APPLICATION" data-jp="パートナーシップ申請" data-fr="CANDIDATURE PARTENARIAT" data-ar="طلب الشراكة">PARTNERSHIP APPLICATION</div>
+            <h1 class="hero-title font-serif" data-en="A first conversation<br />to begin co-creation" data-jp="共創を始めるための<br />申請ページ" data-fr="Une première conversation<br />pour commencer la co-création" data-ar="محادثة أولى<br />لبدء الإبداع المشترك">A first conversation<br />to begin co-creation</h1>
+            <p class="hero-text" data-en="This application is not about approval alone. It is a starting point for a thoughtful dialogue, where we explore how our values align and what kind of future we can build together." data-jp="この申請は、参加可否を判断するためのものではなく、互いに向き合い、最適な関係性を探るための最初の対話です。あなたが大切にしたい価値、創りたい未来、そして日本文化への敬意について聞かせてください。" data-fr="Cette candidature n'est pas seulement une question d'approbation. C'est un point de départ pour un dialogue réfléchi, où nous explorons comment nos valeurs s'alignent et quel type d'avenir nous pouvons construire ensemble." data-ar="هذا الطلب ليس فقط للموافقة. إنه نقطة انطلاق لحوار مدروس، حيث نستكشف كيف تتوافق قيمنا وأي نوع من المستقبل يمكننا بناؤه معاً.">
               This application is not about approval alone. It is a starting point for a thoughtful dialogue,
               where we explore how our values align and what kind of future we can build together.
             </p>
             <div class="hero-badges">
-              <span class="badge">Invitation & Review</span>
-              <span class="badge">Private Conversation</span>
-              <span class="badge">Co-Creation</span>
+              <span class="badge" data-en="Invitation & Review" data-jp="招待＆審査" data-fr="Invitation & Examen" data-ar="دعوة ومراجعة">Invitation & Review</span>
+              <span class="badge" data-en="Private Conversation" data-jp="プライベート対話" data-fr="Conversation Privée" data-ar="محادثة خاصة">Private Conversation</span>
+              <span class="badge" data-en="Co-Creation" data-jp="共創" data-fr="Co-Création" data-ar="إبداع مشترك">Co-Creation</span>
             </div>
           </div>
           <div class="hero-visual">
@@ -487,22 +505,22 @@
 
       <section class="section">
         <div class="container">
-          <h2 class="section-title font-serif fade" data-en="Process" data-jp="申請までの流れ">Process</h2>
+          <h2 class="section-title font-serif fade" data-en="Process" data-jp="申請までの流れ" data-fr="Processus" data-ar="العملية">Process</h2>
           <div class="flow-grid">
             <div class="flow-card fade">
               <div class="flow-label">Step 01</div>
-              <div class="flow-title font-serif" data-en="Share your profile" data-jp="プロフィールの共有">Share your profile</div>
-              <p class="flow-text" data-en="Tell us about your background and intention so we can build a foundation for dialogue." data-jp="ご自身・組織の背景や目的を教えてください。対話の基盤をつくります。">Tell us about your background and intention so we can build a foundation for dialogue.</p>
+              <div class="flow-title font-serif" data-en="Share your profile" data-jp="プロフィールの共有" data-fr="Partagez votre profil" data-ar="شارك ملفك الشخصي">Share your profile</div>
+              <p class="flow-text" data-en="Tell us about your background and intention so we can build a foundation for dialogue." data-jp="ご自身・組織の背景や目的を教えてください。対話の基盤をつくります。" data-fr="Parlez-nous de votre parcours et de vos intentions afin que nous puissions construire une base de dialogue." data-ar="أخبرنا عن خلفيتك ونيتك حتى نتمكن من بناء أساس للحوار.">Tell us about your background and intention so we can build a foundation for dialogue.</p>
             </div>
             <div class="flow-card fade">
               <div class="flow-label">Step 02</div>
-              <div class="flow-title font-serif" data-en="Interview invitation" data-jp="面談のご案内">Interview invitation</div>
-              <p class="flow-text" data-en="We will review your submission and follow up with potential times within a few days." data-jp="内容を拝見のうえ、数日以内に面談の候補日をご案内します。">We will review your submission and follow up with potential times within a few days.</p>
+              <div class="flow-title font-serif" data-en="Interview invitation" data-jp="面談のご案内" data-fr="Invitation à l'entretien" data-ar="دعوة للمقابلة">Interview invitation</div>
+              <p class="flow-text" data-en="We will review your submission and follow up with potential times within a few days." data-jp="内容を拝見のうえ、数日以内に面談の候補日をご案内します。" data-fr="Nous examinerons votre candidature et vous proposerons des créneaux dans quelques jours." data-ar="سنراجع طلبك ونتابع معك بمواعيد محتملة خلال أيام قليلة.">We will review your submission and follow up with potential times within a few days.</p>
             </div>
             <div class="flow-card fade">
               <div class="flow-label">Step 03</div>
-              <div class="flow-title font-serif" data-en="Design the relationship" data-jp="関係性の設計">Design the relationship</div>
-              <p class="flow-text" data-en="Together we explore the ideal partnership form and how we can co-create." data-jp="面談を通じて、パートナーシップの形を共に設計していきます。">Together we explore the ideal partnership form and how we can co-create.</p>
+              <div class="flow-title font-serif" data-en="Design the relationship" data-jp="関係性の設計" data-fr="Concevoir la relation" data-ar="تصميم العلاقة">Design the relationship</div>
+              <p class="flow-text" data-en="Together we explore the ideal partnership form and how we can co-create." data-jp="面談を通じて、パートナーシップの形を共に設計していきます。" data-fr="Ensemble, nous explorons la forme de partenariat idéale et comment nous pouvons co-créer." data-ar="معاً نستكشف شكل الشراكة المثالي وكيف يمكننا الإبداع المشترك.">Together we explore the ideal partnership form and how we can co-create.</p>
             </div>
           </div>
         </div>
@@ -511,73 +529,73 @@
       <section class="section">
         <div class="container form-shell">
           <aside class="form-aside fade">
-            <h3 class="font-serif" style="margin-top: 0;" data-en="How to respond" data-jp="ご記入の目安">How to respond</h3>
-            <p data-en="We value clarity of intention more than length. Share what matters most to you." data-jp="回答の量よりも、あなたが大切にしている価値観が伝わることを重視しています。">We value clarity of intention more than length. Share what matters most to you.</p>
-            <p data-en="Individuals and organizations are both welcome. If some details are undecided, that is fine." data-jp="法人・個人いずれも歓迎です。未定項目があっても構いません。">Individuals and organizations are both welcome. If some details are undecided, that is fine.</p>
-            <p data-en="Questions or consultations via WhatsApp are welcome: +971 524109747" data-jp="ご質問やご相談はWhatsAppでも承ります: +971 524109747">Questions or consultations via WhatsApp are welcome: +971 524109747</p>
-            <p class="form-note" data-en="Response estimate: 3-5 business days" data-jp="返信目安: 3〜5営業日">Response estimate: 3-5 business days</p>
+            <h3 class="font-serif" style="margin-top: 0;" data-en="How to respond" data-jp="ご記入の目安" data-fr="Comment répondre" data-ar="كيفية الرد">How to respond</h3>
+            <p data-en="We value clarity of intention more than length. Share what matters most to you." data-jp="回答の量よりも、あなたが大切にしている価値観が伝わることを重視しています。" data-fr="Nous valorisons la clarté d'intention plus que la longueur. Partagez ce qui compte le plus pour vous." data-ar="نقدر وضوح النية أكثر من الطول. شارك ما يهمك أكثر.">We value clarity of intention more than length. Share what matters most to you.</p>
+            <p data-en="Individuals and organizations are both welcome. If some details are undecided, that is fine." data-jp="法人・個人いずれも歓迎です。未定項目があっても構いません。" data-fr="Les particuliers et les organisations sont les bienvenus. Si certains détails ne sont pas décidés, ce n'est pas grave." data-ar="الأفراد والمؤسسات مرحب بهم. إذا كانت بعض التفاصيل غير محددة، فلا بأس.">Individuals and organizations are both welcome. If some details are undecided, that is fine.</p>
+            <p data-en="Questions or consultations via WhatsApp are welcome: +971 524109747" data-jp="ご質問やご相談はWhatsAppでも承ります: +971 524109747" data-fr="Questions ou consultations via WhatsApp bienvenues: +971 524109747" data-ar="الأسئلة أو الاستشارات عبر واتساب مرحب بها: +971 524109747">Questions or consultations via WhatsApp are welcome: +971 524109747</p>
+            <p class="form-note" data-en="Response estimate: 3-5 business days" data-jp="返信目安: 3〜5営業日" data-fr="Délai de réponse estimé: 3-5 jours ouvrables" data-ar="تقدير الرد: 3-5 أيام عمل">Response estimate: 3-5 business days</p>
           </aside>
 
           <div class="form-card fade">
             <form action="mailto:fomus.official@gmail.com?subject=FOMUS%20Partnership%20Application" method="post" enctype="text/plain">
               <div class="form-grid">
                 <div>
-                  <label for="name" data-en="Full Name *" data-jp="お名前 *">Full Name *</label>
+                  <label for="name" data-en="Full Name *" data-jp="お名前 *" data-fr="Nom complet *" data-ar="الاسم الكامل *">Full Name *</label>
                   <input id="name" name="name" type="text" required />
                 </div>
                 <div>
-                  <label for="email" data-en="Email *" data-jp="メールアドレス *">Email *</label>
+                  <label for="email" data-en="Email *" data-jp="メールアドレス *" data-fr="Email *" data-ar="البريد الإلكتروني *">Email *</label>
                   <input id="email" name="email" type="email" required />
                 </div>
                 <div>
-                  <label for="organization" data-en="Organization" data-jp="所属 / 会社名">Organization</label>
+                  <label for="organization" data-en="Organization" data-jp="所属 / 会社名" data-fr="Organisation" data-ar="المؤسسة">Organization</label>
                   <input id="organization" name="organization" type="text" />
                 </div>
                 <div>
-                  <label for="role" data-en="Role / Title" data-jp="役職 / 立場">Role / Title</label>
+                  <label for="role" data-en="Role / Title" data-jp="役職 / 立場" data-fr="Rôle / Titre" data-ar="الدور / المنصب">Role / Title</label>
                   <input id="role" name="role" type="text" />
                 </div>
                 <div>
-                  <label for="country" data-en="Country / Region" data-jp="国 / 地域">Country / Region</label>
+                  <label for="country" data-en="Country / Region" data-jp="国 / 地域" data-fr="Pays / Région" data-ar="البلد / المنطقة">Country / Region</label>
                   <input id="country" name="country" type="text" />
                 </div>
                 <div>
-                  <label for="site" data-en="Website / Social" data-jp="Web / SNS">Website / Social</label>
+                  <label for="site" data-en="Website / Social" data-jp="Web / SNS" data-fr="Site web / Réseaux sociaux" data-ar="الموقع / وسائل التواصل">Website / Social</label>
                   <input id="site" name="site" type="url" placeholder="https://" />
                 </div>
                 <div>
-                  <label for="type" data-en="Partnership Type" data-jp="ご希望の形">Partnership Type</label>
+                  <label for="type" data-en="Partnership Type" data-jp="ご希望の形" data-fr="Type de partenariat" data-ar="نوع الشراكة">Partnership Type</label>
                   <select id="type" name="type">
-                    <option value="" data-en="Select" data-jp="選択してください">Select</option>
-                    <option value="personal">Personal Partnership</option>
-                    <option value="corporate">Corporate Partnership</option>
-                    <option value="undecided" data-en="Undecided / Consultation" data-jp="未定 / 相談したい">Undecided / Consultation</option>
+                    <option value="" data-en="Select" data-jp="選択してください" data-fr="Sélectionner" data-ar="اختر">Select</option>
+                    <option value="personal" data-en="Personal Partnership" data-jp="個人パートナーシップ" data-fr="Partenariat Personnel" data-ar="شراكة شخصية">Personal Partnership</option>
+                    <option value="corporate" data-en="Corporate Partnership" data-jp="法人パートナーシップ" data-fr="Partenariat Entreprise" data-ar="شراكة مؤسسية">Corporate Partnership</option>
+                    <option value="undecided" data-en="Undecided / Consultation" data-jp="未定 / 相談したい" data-fr="Indécis / Consultation" data-ar="غير محدد / استشارة">Undecided / Consultation</option>
                   </select>
                 </div>
                 <div>
-                  <label for="contact" data-en="Preferred Contact" data-jp="ご希望の連絡方法">Preferred Contact</label>
+                  <label for="contact" data-en="Preferred Contact" data-jp="ご希望の連絡方法" data-fr="Contact préféré" data-ar="طريقة التواصل المفضلة">Preferred Contact</label>
                   <select id="contact" name="contact">
-                    <option value="" data-en="Select" data-jp="選択してください">Select</option>
-                    <option value="email" data-en="Email" data-jp="メール">Email</option>
-                    <option value="online" data-en="Online Meeting" data-jp="オンライン面談">Online Meeting</option>
-                    <option value="phone" data-en="Phone" data-jp="電話">Phone</option>
+                    <option value="" data-en="Select" data-jp="選択してください" data-fr="Sélectionner" data-ar="اختر">Select</option>
+                    <option value="email" data-en="Email" data-jp="メール" data-fr="Email" data-ar="البريد الإلكتروني">Email</option>
+                    <option value="online" data-en="Online Meeting" data-jp="オンライン面談" data-fr="Réunion en ligne" data-ar="اجتماع عبر الإنترنت">Online Meeting</option>
+                    <option value="phone" data-en="Phone" data-jp="電話" data-fr="Téléphone" data-ar="الهاتف">Phone</option>
                   </select>
                 </div>
               </div>
 
               <div style="margin-top: 20px;">
-                <label for="vision" data-en="What would you like to create together? *" data-jp="共に創りたいこと *">What would you like to create together? *</label>
-                <textarea id="vision" name="vision" required data-en="Share the relationship or projects you wish to build." data-jp="どのような関係性やプロジェクトを望んでいますか？"></textarea>
+                <label for="vision" data-en="What would you like to create together? *" data-jp="共に創りたいこと *" data-fr="Que souhaitez-vous créer ensemble ? *" data-ar="ماذا تريد أن تبدع معاً؟ *">What would you like to create together? *</label>
+                <textarea id="vision" name="vision" required data-en="Share the relationship or projects you wish to build." data-jp="どのような関係性やプロジェクトを望んでいますか？" data-fr="Partagez la relation ou les projets que vous souhaitez construire." data-ar="شارك العلاقة أو المشاريع التي ترغب في بنائها."></textarea>
               </div>
 
               <div style="margin-top: 20px;">
-                <label for="notes" data-en="Anything else to share" data-jp="その他共有したいこと">Anything else to share</label>
-                <textarea id="notes" name="notes" data-en="Timing, cultural domains, or questions." data-jp="ご都合の良い時期、文化領域、質問など"></textarea>
+                <label for="notes" data-en="Anything else to share" data-jp="その他共有したいこと" data-fr="Autre chose à partager" data-ar="أي شيء آخر للمشاركة">Anything else to share</label>
+                <textarea id="notes" name="notes" data-en="Timing, cultural domains, or questions." data-jp="ご都合の良い時期、文化領域、質問など" data-fr="Calendrier, domaines culturels ou questions." data-ar="التوقيت، المجالات الثقافية، أو الأسئلة."></textarea>
               </div>
 
               <div class="submit-row">
-                <button class="submit-btn" type="submit" data-en="Send Application" data-jp="申請内容を送信">Send Application</button>
-                <span class="form-note" data-en="Your email client will open for sending. Please review before sending." data-jp="送信はメールクライアントが起動します。送信前に内容をご確認ください。">Your email client will open for sending. Please review before sending.</span>
+                <button class="submit-btn" type="submit" data-en="Send Application" data-jp="申請内容を送信" data-fr="Envoyer la candidature" data-ar="إرسال الطلب">Send Application</button>
+                <span class="form-note" data-en="Your email client will open for sending. Please review before sending." data-jp="送信はメールクライアントが起動します。送信前に内容をご確認ください。" data-fr="Votre client mail s'ouvrira pour l'envoi. Veuillez vérifier avant d'envoyer." data-ar="سيفتح برنامج البريد الإلكتروني للإرسال. يرجى المراجعة قبل الإرسال.">Your email client will open for sending. Please review before sending.</span>
               </div>
             </form>
           </div>
@@ -588,24 +606,29 @@
     <footer class="footer">
       <div class="container">
         <h2 class="font-serif" style="font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;">FOMUS</h2>
-        <p data-en="Enter the inner circle of Japanese culture and co-create the future." data-jp="日本文化の"内側"に入り、共に未来をつくるための関係性。">Enter the inner circle of Japanese culture and co-create the future.</p>
+        <p data-en="Enter the inner circle of Japanese culture and co-create the future." data-jp="日本文化の"内側"に入り、共に未来をつくるための関係性。" data-fr="Entrez dans le cercle intérieur de la culture japonaise et co-créez l'avenir." data-ar="ادخل إلى الدائرة الداخلية للثقافة اليابانية واصنع المستقبل معاً.">Enter the inner circle of Japanese culture and co-create the future.</p>
       </div>
     </footer>
 
     <script>
       // Language toggle functionality
+      const langs = ["en", "jp", "fr", "ar"];
       let currentLang = localStorage.getItem("fomus-lang") || "en";
 
       function setLang(lang) {
         currentLang = lang;
         localStorage.setItem("fomus-lang", lang);
-        document.body.classList.remove("en", "jp");
+        document.body.classList.remove("en", "jp", "fr", "ar");
         document.body.classList.add(lang);
+        document.documentElement.lang = lang === "jp" ? "ja" : lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 
         document.getElementById("langEn").classList.toggle("active", lang === "en");
         document.getElementById("langJp").classList.toggle("active", lang === "jp");
+        document.getElementById("langFr").classList.toggle("active", lang === "fr");
+        document.getElementById("langAr").classList.toggle("active", lang === "ar");
 
-        document.querySelectorAll("[data-en][data-jp]").forEach((el) => {
+        document.querySelectorAll("[data-" + lang + "]").forEach((el) => {
           const value = el.getAttribute("data-" + lang);
           if (!value) return;
           if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
@@ -620,8 +643,10 @@
         });
       }
 
-      function toggleLang() {
-        setLang(currentLang === "en" ? "jp" : "en");
+      function cycleLang() {
+        const currentIndex = langs.indexOf(currentLang);
+        const nextIndex = (currentIndex + 1) % langs.length;
+        setLang(langs[nextIndex]);
       }
 
       // Initialize language on page load

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FOMUS GLOBAL PARTNERSHIP</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Shippori+Mincho:wght@400;500&family=Inter:wght@300;400;500&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Shippori+Mincho:wght@400;500&family=Inter:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap");
 
       :root {
         --bg: #f9f9f7;
@@ -40,6 +40,44 @@
       body.en {
         --serif-font: "Cormorant Garamond", serif;
         font-family: "Inter", sans-serif;
+      }
+
+      body.fr {
+        --serif-font: "Playfair Display", serif;
+        font-family: "Inter", sans-serif;
+      }
+
+      body.ar {
+        --serif-font: "Noto Naskh Arabic", serif;
+        font-family: "Noto Naskh Arabic", "Inter", sans-serif;
+        direction: rtl;
+        text-align: right;
+      }
+
+      body.ar .nav-inner,
+      body.ar .nav-actions {
+        flex-direction: row-reverse;
+      }
+
+      body.ar .logo-row {
+        flex-direction: row-reverse;
+      }
+
+      body.ar .intro-quote,
+      body.ar .intro-body .lead {
+        padding-left: 0;
+        padding-right: 18px;
+        border-left: none;
+        border-right: 1px solid var(--stone-300);
+      }
+
+      body.ar .hero-content,
+      body.ar .gate {
+        text-align: center;
+      }
+
+      body.ar .membership-note {
+        text-align: left;
       }
 
       .font-serif {
@@ -639,12 +677,16 @@
           <span class="logo-sub">Global Partnership</span>
         </div>
         <div class="nav-actions">
-          <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+          <button class="lang-toggle" id="langToggle" onclick="cycleLang()">
             <span id="langEn" class="active">EN</span>
             <span style="color:var(--stone-300);"> / </span>
             <span id="langJp">JP</span>
+            <span style="color:var(--stone-300);"> / </span>
+            <span id="langFr">FR</span>
+            <span style="color:var(--stone-300);"> / </span>
+            <span id="langAr">AR</span>
           </button>
-          <a class="nav-cta" href="apply.html" data-jp="参加を希望する" data-en="Request Interview">Request Interview</a>
+          <a class="nav-cta" href="apply.html" data-jp="参加を希望する" data-en="Request Interview" data-fr="Demander un entretien" data-ar="طلب مقابلة">Request Interview</a>
         </div>
       </div>
     </nav>
@@ -653,18 +695,20 @@
       <section class="hero" id="intro">
         <div class="hero-texture"></div>
         <div class="container hero-content fade">
-          <div class="hero-brand" data-jp="FOMUS GLOBAL PARTNERSHIP" data-en="FOMUS GLOBAL PARTNERSHIP">
+          <div class="hero-brand" data-jp="FOMUS GLOBAL PARTNERSHIP" data-en="FOMUS GLOBAL PARTNERSHIP" data-fr="FOMUS GLOBAL PARTNERSHIP" data-ar="شراكة فومس العالمية">
             FOMUS GLOBAL PARTNERSHIP
           </div>
           <h1
             class="hero-title font-serif"
-            data-jp="日本文化の<span style='color:#b5b5ad;'>“内側”</span>に入り、<br>共に未来をつくるための関係性。"
+            data-jp="日本文化の<span style='color:#b5b5ad;'>"内側"</span>に入り、<br>共に未来をつくるための関係性。"
             data-en="Enter the <span style='color:#b5b5ad;font-style:italic;'>inner circle</span> of Japanese culture,<br>a relationship to co-create the future."
+            data-fr="Entrez dans le <span style='color:#b5b5ad;font-style:italic;'>cercle intérieur</span> de la culture japonaise,<br>une relation pour co-créer l'avenir."
+            data-ar="ادخل إلى <span style='color:#b5b5ad;'>الدائرة الداخلية</span> للثقافة اليابانية،<br>علاقة لصنع المستقبل معاً."
           >
-            日本文化の<span style="color:#b5b5ad;">“内側”</span>に入り、<br>共に未来をつくるための関係性。
+            Enter the <span style="color:#b5b5ad;font-style:italic;">inner circle</span> of Japanese culture,<br>a relationship to co-create the future.
           </h1>
           <div class="hero-scroll">
-            <span data-jp="Scroll" data-en="Scroll">Scroll</span>
+            <span data-jp="Scroll" data-en="Scroll" data-fr="Défiler" data-ar="تصفح">Scroll</span>
             <span></span>
           </div>
         </div>
@@ -673,27 +717,35 @@
       <section class="intro-section">
         <div class="container">
           <div class="fade" style="margin-bottom: 48px;">
-            <span class="label" data-jp="01 / INTRODUCTION" data-en="01 / INTRODUCTION">01 / INTRODUCTION</span>
-            <h2 class="section-title font-serif" data-jp="体験の先にある、<br>静かな共創。" data-en="Quiet Co-Creation<br>Beyond Experience.">
-              体験の先にある、<br>静かな共創。
+            <span class="label" data-jp="01 / INTRODUCTION" data-en="01 / INTRODUCTION" data-fr="01 / INTRODUCTION" data-ar="01 / مقدمة">01 / INTRODUCTION</span>
+            <h2 class="section-title font-serif" data-jp="体験の先にある、<br>静かな共創。" data-en="Quiet Co-Creation<br>Beyond Experience." data-fr="Co-création silencieuse<br>Au-delà de l'expérience." data-ar="إبداع مشترك هادئ<br>ما وراء التجربة.">
+              Quiet Co-Creation<br>Beyond Experience.
             </h2>
           </div>
           <div class="split">
             <div class="intro-body fade">
-              <p class="intro-quote" data-jp="このパートナーシップは、特別な体験“だけ”を求めるものではありません。"
-                data-en="This partnership is not merely about seeking exclusive experiences.">
-                このパートナーシップは、特別な体験“だけ”を求めるものではありません。
+              <p class="intro-quote" data-jp="このパートナーシップは、特別な体験"だけ"を求めるものではありません。"
+                data-en="This partnership is not merely about seeking exclusive experiences."
+                data-fr="Ce partenariat ne se limite pas à la recherche d'expériences exclusives."
+                data-ar="هذه الشراكة ليست مجرد بحث عن تجارب حصرية.">
+                This partnership is not merely about seeking exclusive experiences.
               </p>
               <p data-jp="文化に触れ、心を動かされる体験は、確かに価値があります。しかしFOMUSが大切にしているのは、その先に生まれる「関係」と「共創」です。"
-                data-en="Touching culture and being moved by it has immense value. However, what FOMUS cherishes is the 'Relationship' and 'Co-Creation' born beyond that.">
-                文化に触れ、心を動かされる体験は、確かに価値があります。しかしFOMUSが大切にしているのは、その先に生まれる「関係」と「共創」です。
+                data-en="Touching culture and being moved by it has immense value. However, what FOMUS cherishes is the 'Relationship' and 'Co-Creation' born beyond that."
+                data-fr="Toucher la culture et en être ému a une valeur immense. Cependant, ce que FOMUS chérit, c'est la 'Relation' et la 'Co-Création' qui naissent au-delà."
+                data-ar="لمس الثقافة والتأثر بها له قيمة هائلة. ومع ذلك، ما تعتز به فومس هو 'العلاقة' و'الإبداع المشترك' الذي يولد بعد ذلك.">
+                Touching culture and being moved by it has immense value. However, what FOMUS cherishes is the 'Relationship' and 'Co-Creation' born beyond that.
               </p>
               <p class="lead" data-jp="一度きりの訪問ではなく、時間を重ね、信頼を育み、未来を共につくること。"
-                data-en="Not a single visit, but deepening time, nurturing trust, and building the future together.">
-                一度きりの訪問ではなく、時間を重ね、信頼を育み、未来を共につくること。
+                data-en="Not a single visit, but deepening time, nurturing trust, and building the future together."
+                data-fr="Pas une simple visite, mais approfondir le temps, nourrir la confiance et construire l'avenir ensemble."
+                data-ar="ليست زيارة واحدة، بل تعميق الوقت، ورعاية الثقة، وبناء المستقبل معاً.">
+                Not a single visit, but deepening time, nurturing trust, and building the future together.
               </p>
-              <p style="color:#111111" data-jp="FOMUSは、日本文化の“内側”へと続く入口です。" data-en="FOMUS is the gateway to the 'Inside' of Japanese culture.">
-                FOMUSは、日本文化の“内側”へと続く入口です。
+              <p style="color:#111111" data-jp="FOMUSは、日本文化の"内側"へと続く入口です。" data-en="FOMUS is the gateway to the 'Inside' of Japanese culture."
+                data-fr="FOMUS est la porte d'entrée vers l'intérieur de la culture japonaise."
+                data-ar="فومس هي البوابة إلى 'الداخل' من الثقافة اليابانية.">
+                FOMUS is the gateway to the 'Inside' of Japanese culture.
               </p>
             </div>
             <div class="fade intro-image">
@@ -706,9 +758,9 @@
       <section style="background:#fff;">
         <div class="container">
           <div class="fade" style="margin-bottom: 48px;">
-            <span class="label" data-jp="02 / WHAT IS FOMUS" data-en="02 / WHAT IS FOMUS">02 / WHAT IS FOMUS</span>
-            <h2 class="section-title font-serif" data-jp="関係を結び、<br>共に創るプロセス。" data-en="Connecting & Creating<br>Together.">
-              関係を結び、<br>共に創るプロセス。
+            <span class="label" data-jp="02 / WHAT IS FOMUS" data-en="02 / WHAT IS FOMUS" data-fr="02 / QU'EST-CE QUE FOMUS" data-ar="02 / ما هي فومس">02 / WHAT IS FOMUS</span>
+            <h2 class="section-title font-serif" data-jp="関係を結び、<br>共に創るプロセス。" data-en="Connecting & Creating<br>Together." data-fr="Connecter & Créer<br>Ensemble." data-ar="التواصل والإبداع<br>معاً.">
+              Connecting & Creating<br>Together.
             </h2>
           </div>
           <div class="split">
@@ -716,15 +768,15 @@
               <img src="FOMUS枡.png" alt="FOMUS Masu" />
             </div>
             <div class="fade" style="align-self:center;">
-              <h3 class="font-serif" style="font-size:1.4rem; line-height:1.8;" data-jp="FOMUS GLOBAL PARTNERSHIPは、日本文化の担い手たちと世界をつなぐための会員制パートナーシップです。" data-en="FOMUS GLOBAL PARTNERSHIP is a membership alliance connecting the custodians of Japanese culture with the world.">
-                FOMUS GLOBAL PARTNERSHIPは、日本文化の担い手たちと世界をつなぐための会員制パートナーシップです。
+              <h3 class="font-serif" style="font-size:1.4rem; line-height:1.8;" data-jp="FOMUS GLOBAL PARTNERSHIPは、日本文化の担い手たちと世界をつなぐための会員制パートナーシップです。" data-en="FOMUS GLOBAL PARTNERSHIP is a membership alliance connecting the custodians of Japanese culture with the world." data-fr="FOMUS GLOBAL PARTNERSHIP est une alliance de membres reliant les gardiens de la culture japonaise au monde." data-ar="شراكة فومس العالمية هي تحالف عضوية يربط حراس الثقافة اليابانية بالعالم.">
+                FOMUS GLOBAL PARTNERSHIP is a membership alliance connecting the custodians of Japanese culture with the world.
               </h3>
               <div style="margin-top: 24px; color: var(--stone-600); line-height: 2;">
-                <p data-jp="ここで生まれるのは、「見る」「知る」体験ではなく、関係を結び、共に創るプロセス。" data-en="What is born here is not the experience of 'seeing' or 'knowing', but the process of connecting and creating together.">
-                  ここで生まれるのは、「見る」「知る」体験ではなく、関係を結び、共に創るプロセス。
+                <p data-jp="ここで生まれるのは、「見る」「知る」体験ではなく、関係を結び、共に創るプロセス。" data-en="What is born here is not the experience of 'seeing' or 'knowing', but the process of connecting and creating together." data-fr="Ce qui naît ici n'est pas l'expérience de 'voir' ou 'connaître', mais le processus de connexion et de création ensemble." data-ar="ما يولد هنا ليس تجربة 'الرؤية' أو 'المعرفة'، بل عملية التواصل والإبداع معاً.">
+                  What is born here is not the experience of 'seeing' or 'knowing', but the process of connecting and creating together.
                 </p>
-                <p data-jp="文化・技術・思想・人。それらが交差する“内側”に身を置くことで、新しい価値が静かに立ち上がります。" data-en="Culture, technique, philosophy, people. By placing yourself 'Inside' where these intersect, new value quietly arises.">
-                  文化・技術・思想・人。それらが交差する“内側”に身を置くことで、新しい価値が静かに立ち上がります。
+                <p data-jp="文化・技術・思想・人。それらが交差する"内側"に身を置くことで、新しい価値が静かに立ち上がります。" data-en="Culture, technique, philosophy, people. By placing yourself 'Inside' where these intersect, new value quietly arises." data-fr="Culture, technique, philosophie, personnes. En vous plaçant à l'intérieur où ceux-ci se croisent, une nouvelle valeur émerge tranquillement." data-ar="الثقافة، التقنية، الفلسفة، الناس. بوضع نفسك في 'الداخل' حيث تتقاطع هذه، تنشأ قيمة جديدة بهدوء.">
+                  Culture, technique, philosophy, people. By placing yourself 'Inside' where these intersect, new value quietly arises.
                 </p>
               </div>
             </div>
@@ -735,7 +787,7 @@
       <section>
         <div class="container" style="max-width: 980px;">
           <div class="fade" style="text-align:center; margin-bottom: 40px;">
-            <span class="label" data-jp="03 / WHO" data-en="03 / WHO">03 / WHO</span>
+            <span class="label" data-jp="03 / WHO" data-en="03 / WHO" data-fr="03 / QUI" data-ar="03 / من نحن">03 / WHO</span>
           </div>
           <div class="who-card fade">
             <div class="who-seal">MASU</div>
@@ -744,25 +796,31 @@
                 <img src="プロフィール.png" alt="MaSU portrait" style="filter: none;" />
               </div>
               <div>
-                <h3 class="font-serif" style="font-size: 1.8rem; margin: 0;" data-jp="まっすー (MaSU)" data-en="MaSU">まっすー (MaSU)</h3>
-                <p style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone-400); margin-top: 10px;" data-jp="FOMUS代表" data-en="FOMUS Founder">
-                  FOMUS代表
+                <h3 class="font-serif" style="font-size: 1.8rem; margin: 0;" data-jp="まっすー (MaSU)" data-en="MaSU" data-fr="MaSU" data-ar="ماسو">MaSU</h3>
+                <p style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone-400); margin-top: 10px;" data-jp="FOMUS代表" data-en="FOMUS Founder" data-fr="Fondateur de FOMUS" data-ar="مؤسس فومس">
+                  FOMUS Founder
                 </p>
                 <div style="margin-top: 20px; color: var(--stone-600); line-height: 1.9;">
                   <p data-jp="日本全国を巡りながら、職人・蔵元・作り手たちと長年にわたり関係を築いてきました。また、日本の伝統工芸「枡」を軸に、40カ国以上で文化とビジネスをつないできた実践者でもあります。"
-                    data-en="MaSU has traveled across Japan building long-term relationships with artisans and brewers. Simultaneously, he is a practitioner who has connected culture and business in over 40 countries, using the traditional 'Masu' craft as his axis.">
-                    日本全国を巡りながら、職人・蔵元・作り手たちと長年にわたり関係を築いてきました。また、日本の伝統工芸「枡」を軸に、40カ国以上で文化とビジネスをつないできた実践者でもあります。
+                    data-en="MaSU has traveled across Japan building long-term relationships with artisans and brewers. Simultaneously, he is a practitioner who has connected culture and business in over 40 countries, using the traditional 'Masu' craft as his axis."
+                    data-fr="MaSU a parcouru le Japon en établissant des relations durables avec des artisans et des brasseurs. Simultanément, il est un praticien qui a connecté culture et affaires dans plus de 40 pays, utilisant l'artisanat traditionnel 'Masu' comme axe."
+                    data-ar="سافر ماسو عبر اليابان لبناء علاقات طويلة الأمد مع الحرفيين وصانعي الخمور. في الوقت نفسه، هو ممارس ربط بين الثقافة والأعمال في أكثر من 40 دولة، باستخدام حرفة 'ماسو' التقليدية كمحور.">
+                    MaSU has traveled across Japan building long-term relationships with artisans and brewers. Simultaneously, he is a practitioner who has connected culture and business in over 40 countries, using the traditional 'Masu' craft as his axis.
                   </p>
                   <p data-jp="表に出ることのない工房。語られてこなかった哲学。積み重ねられてきた、静かな誇り。それらは、信頼関係の中でしか開かれません。"
-                    data-en="Workshops that remain hidden. Philosophies left unspoken. Quiet pride built over generations. These only open within a relationship of trust.">
-                    表に出ることのない工房。語られてこなかった哲学。積み重ねられてきた、静かな誇り。それらは、信頼関係の中でしか開かれません。
+                    data-en="Workshops that remain hidden. Philosophies left unspoken. Quiet pride built over generations. These only open within a relationship of trust."
+                    data-fr="Des ateliers qui restent cachés. Des philosophies non exprimées. Une fierté tranquille construite au fil des générations. Ceux-ci ne s'ouvrent que dans une relation de confiance."
+                    data-ar="ورش عمل تبقى مخفية. فلسفات لم يُعبر عنها. فخر هادئ بُني عبر الأجيال. هذه لا تنفتح إلا في علاقة ثقة.">
+                    Workshops that remain hidden. Philosophies left unspoken. Quiet pride built over generations. These only open within a relationship of trust.
                   </p>
                   <p data-jp="FOMUSを通じてあなたが出会うのは、「案内された場所」ではなく、信頼によって迎え入れられる世界です。"
-                    data-en="Through FOMUS, you encounter not a 'guided destination,' but a world that welcomes you through trust.">
-                    FOMUSを通じてあなたが出会うのは、「案内された場所」ではなく、信頼によって迎え入れられる世界です。
+                    data-en="Through FOMUS, you encounter not a 'guided destination,' but a world that welcomes you through trust."
+                    data-fr="À travers FOMUS, vous ne rencontrez pas une 'destination guidée', mais un monde qui vous accueille par la confiance."
+                    data-ar="من خلال فومس، لا تواجه 'وجهة موجهة'، بل عالم يرحب بك من خلال الثقة.">
+                    Through FOMUS, you encounter not a 'guided destination,' but a world that welcomes you through trust.
                   </p>
-                  <p class="font-serif" style="font-style: italic; color: var(--ink); margin-top: 16px;" data-jp="まっすーは、その境界に立ち、文化と人をつなぐ存在です。" data-en="MaSU stands at that boundary, connecting culture and people.">
-                    まっすーは、その境界に立ち、文化と人をつなぐ存在です。
+                  <p class="font-serif" style="font-style: italic; color: var(--ink); margin-top: 16px;" data-jp="まっすーは、その境界に立ち、文化と人をつなぐ存在です。" data-en="MaSU stands at that boundary, connecting culture and people." data-fr="MaSU se tient à cette frontière, reliant la culture et les personnes." data-ar="يقف ماسو على تلك الحدود، يربط بين الثقافة والناس.">
+                    MaSU stands at that boundary, connecting culture and people.
                   </p>
                 </div>
               </div>
@@ -774,29 +832,29 @@
       <section class="diff" id="diff">
         <div class="container">
           <div class="fade" style="margin-bottom: 40px;">
-            <span class="label" data-jp="04 / DIFFERENCE" data-en="04 / DIFFERENCE">04 / DIFFERENCE</span>
-            <h2 class="section-title font-serif" data-jp="DIFFERENCE" data-en="DIFFERENCE">DIFFERENCE</h2>
+            <span class="label" data-jp="04 / DIFFERENCE" data-en="04 / DIFFERENCE" data-fr="04 / DIFFÉRENCE" data-ar="04 / الاختلاف">04 / DIFFERENCE</span>
+            <h2 class="section-title font-serif" data-jp="DIFFERENCE" data-en="DIFFERENCE" data-fr="DIFFÉRENCE" data-ar="الاختلاف">DIFFERENCE</h2>
           </div>
           <div class="diff-list">
             <div class="diff-item fade">
               <div class="diff-id">01</div>
-              <div class="diff-title font-serif" data-jp="体験で終わらせない" data-en="Beyond Experience">体験で終わらせない</div>
-              <div class="diff-desc" data-jp="一過性の感動ではなく、継続する関係と信頼を築きます。" data-en="We build lasting relationships and trust, not just transient excitement.">
-                一過性の感動ではなく、継続する関係と信頼を築きます。
+              <div class="diff-title font-serif" data-jp="体験で終わらせない" data-en="Beyond Experience" data-fr="Au-delà de l'expérience" data-ar="ما وراء التجربة">Beyond Experience</div>
+              <div class="diff-desc" data-jp="一過性の感動ではなく、継続する関係と信頼を築きます。" data-en="We build lasting relationships and trust, not just transient excitement." data-fr="Nous construisons des relations durables et de la confiance, pas seulement une excitation passagère." data-ar="نبني علاقات دائمة وثقة، وليس مجرد إثارة عابرة.">
+                We build lasting relationships and trust, not just transient excitement.
               </div>
             </div>
             <div class="diff-item fade">
               <div class="diff-id">02</div>
-              <div class="diff-title font-serif" data-jp="内側から関わる" data-en="Engage from the Inside">内側から関わる</div>
-              <div class="diff-desc" data-jp="表には出ない現場、思想、対話。限られた人だけが触れられる領域へ。" data-en="Unseen sites, philosophies, dialogues. Access to realms only a few can touch.">
-                表には出ない現場、思想、対話。限られた人だけが触れられる領域へ。
+              <div class="diff-title font-serif" data-jp="内側から関わる" data-en="Engage from the Inside" data-fr="S'engager de l'intérieur" data-ar="المشاركة من الداخل">Engage from the Inside</div>
+              <div class="diff-desc" data-jp="表には出ない現場、思想、対話。限られた人だけが触れられる領域へ。" data-en="Unseen sites, philosophies, dialogues. Access to realms only a few can touch." data-fr="Sites invisibles, philosophies, dialogues. Accès à des domaines que seuls quelques-uns peuvent toucher." data-ar="مواقع غير مرئية، فلسفات، حوارات. الوصول إلى عوالم لا يستطيع لمسها سوى قلة.">
+                Unseen sites, philosophies, dialogues. Access to realms only a few can touch.
               </div>
             </div>
             <div class="diff-item fade">
               <div class="diff-id">03</div>
-              <div class="diff-title font-serif" data-jp="共につくる" data-en="Co-Create">共につくる</div>
-              <div class="diff-desc" data-jp="プロジェクト、文化、未来。参加者は“顧客”ではなく“共創者”です。" data-en="Projects, culture, future. Participants are not 'customers' but 'co-creators'.">
-                プロジェクト、文化、未来。参加者は“顧客”ではなく“共創者”です。
+              <div class="diff-title font-serif" data-jp="共につくる" data-en="Co-Create" data-fr="Co-créer" data-ar="الإبداع المشترك">Co-Create</div>
+              <div class="diff-desc" data-jp="プロジェクト、文化、未来。参加者は"顧客"ではなく"共創者"です。" data-en="Projects, culture, future. Participants are not 'customers' but 'co-creators'." data-fr="Projets, culture, avenir. Les participants ne sont pas des 'clients' mais des 'co-créateurs'." data-ar="المشاريع، الثقافة، المستقبل. المشاركون ليسوا 'عملاء' بل 'مبدعون مشتركون'.">
+                Projects, culture, future. Participants are not 'customers' but 'co-creators'.
               </div>
             </div>
           </div>
@@ -806,47 +864,47 @@
       <section class="membership" id="alliance">
         <div class="container" style="max-width: 980px;">
           <div class="fade" style="text-align: center; margin-bottom: 60px;">
-            <span class="label" data-jp="05 / ALLIANCE" data-en="05 / ALLIANCE">05 / ALLIANCE</span>
-            <h2 class="section-title font-serif" data-jp="PARTNERSHIP ALLIANCE" data-en="PARTNERSHIP ALLIANCE">PARTNERSHIP ALLIANCE</h2>
+            <span class="label" data-jp="05 / ALLIANCE" data-en="05 / ALLIANCE" data-fr="05 / ALLIANCE" data-ar="05 / التحالف">05 / ALLIANCE</span>
+            <h2 class="section-title font-serif" data-jp="PARTNERSHIP ALLIANCE" data-en="PARTNERSHIP ALLIANCE" data-fr="ALLIANCE DE PARTENARIAT" data-ar="تحالف الشراكة">PARTNERSHIP ALLIANCE</h2>
           </div>
 
           <div class="membership-grid">
             <div class="membership-card fade">
               <div class="membership-meta">
-                <h3 class="font-serif" data-jp="PERSONAL PARTNERSHIP" data-en="PERSONAL PARTNERSHIP">PERSONAL PARTNERSHIP</h3>
-                <p style="font-size: 11px; letter-spacing: 0.2em; color: var(--stone-500); text-transform: uppercase;" data-jp="個人向け" data-en="Individual">個人向け</p>
+                <h3 class="font-serif" data-jp="PERSONAL PARTNERSHIP" data-en="PERSONAL PARTNERSHIP" data-fr="PARTENARIAT PERSONNEL" data-ar="شراكة شخصية">PERSONAL PARTNERSHIP</h3>
+                <p style="font-size: 11px; letter-spacing: 0.2em; color: var(--stone-500); text-transform: uppercase;" data-jp="個人向け" data-en="Individual" data-fr="Individuel" data-ar="فردي">Individual</p>
               </div>
               <div class="membership-price font-serif">
-                <span data-jp="$10,000" data-en="$10,000">$10,000</span>
-                <span style="font-size: 11px; color: var(--stone-500);">/ Year</span>
+                <span data-jp="$10,000" data-en="$10,000" data-fr="10 000 $" data-ar="10,000 $">$10,000</span>
+                <span style="font-size: 11px; color: var(--stone-500);" data-jp="/ 年" data-en="/ Year" data-fr="/ An" data-ar="/ سنة">/ Year</span>
               </div>
               <div class="feature-grid">
-                <div class="feature-chip" data-jp="年1回のプライベート・ホスティング" data-en="Annual Private Hosting (1x)">年1回のプライベート・ホスティング</div>
-                <div class="feature-chip" data-jp="ご家族向けコンシェルジュサポート" data-en="Concierge Support for Family">ご家族向けコンシェルジュサポート</div>
-                <div class="feature-chip" data-jp="限定イベント・非公開の場への参加権" data-en="Access to Closed Events">限定イベント・非公開の場への参加権</div>
+                <div class="feature-chip" data-jp="年1回のプライベート・ホスティング" data-en="Annual Private Hosting (1x)" data-fr="Hébergement privé annuel (1x)" data-ar="استضافة خاصة سنوية (1x)">Annual Private Hosting (1x)</div>
+                <div class="feature-chip" data-jp="ご家族向けコンシェルジュサポート" data-en="Concierge Support for Family" data-fr="Service de conciergerie pour la famille" data-ar="دعم الكونسيرج للعائلة">Concierge Support for Family</div>
+                <div class="feature-chip" data-jp="限定イベント・非公開の場への参加権" data-en="Access to Closed Events" data-fr="Accès aux événements fermés" data-ar="الوصول إلى الفعاليات المغلقة">Access to Closed Events</div>
               </div>
-              <a class="membership-cta" href="apply.html" data-jp="個人パートナーシップ申請" data-en="Apply for Personal">個人パートナーシップ申請</a>
+              <a class="membership-cta" href="apply.html" data-jp="個人パートナーシップ申請" data-en="Apply for Personal" data-fr="Postuler personnel" data-ar="تقديم طلب شخصي">Apply for Personal</a>
             </div>
 
             <div class="membership-card fade">
               <div class="membership-meta">
-                <h3 class="font-serif" data-jp="CORPORATE PARTNERSHIP" data-en="CORPORATE PARTNERSHIP">CORPORATE PARTNERSHIP</h3>
-                <p style="font-size: 11px; letter-spacing: 0.2em; color: var(--stone-500); text-transform: uppercase;" data-jp="法人・経営者向け" data-en="Corporate / Executive">法人・経営者向け</p>
-                <div class="membership-note" data-jp="法人契約・請求書対応可 / 経費処理を前提とした設計です" data-en="Corporate contracts and invoice billing available / Designed for expense processing">
-                  法人契約・請求書対応可 / 経費処理を前提とした設計です
+                <h3 class="font-serif" data-jp="CORPORATE PARTNERSHIP" data-en="CORPORATE PARTNERSHIP" data-fr="PARTENARIAT ENTREPRISE" data-ar="شراكة مؤسسية">CORPORATE PARTNERSHIP</h3>
+                <p style="font-size: 11px; letter-spacing: 0.2em; color: var(--stone-500); text-transform: uppercase;" data-jp="法人・経営者向け" data-en="Corporate / Executive" data-fr="Entreprise / Dirigeant" data-ar="مؤسسي / تنفيذي">Corporate / Executive</p>
+                <div class="membership-note" data-jp="法人契約・請求書対応可 / 経費処理を前提とした設計です" data-en="Corporate contracts and invoice billing available / Designed for expense processing" data-fr="Contrats d'entreprise et facturation disponibles / Conçu pour le traitement des dépenses" data-ar="عقود الشركات والفوترة متاحة / مصمم لمعالجة النفقات">
+                  Corporate contracts and invoice billing available / Designed for expense processing
                 </div>
               </div>
               <div class="membership-price font-serif">
-                <span data-jp="$15,000" data-en="$15,000">$15,000</span>
-                <span style="font-size: 11px; color: var(--stone-500);">/ Year</span>
+                <span data-jp="$15,000" data-en="$15,000" data-fr="15 000 $" data-ar="15,000 $">$15,000</span>
+                <span style="font-size: 11px; color: var(--stone-500);" data-jp="/ 年" data-en="/ Year" data-fr="/ An" data-ar="/ سنة">/ Year</span>
               </div>
               <div class="feature-grid">
-                <div class="feature-chip" data-jp="経営チームとの同行（最大3名）" data-en="Executive Team Access (Max 3)">経営チームとの同行（最大3名）</div>
-                <div class="feature-chip" data-jp="事業視察・共同プロジェクト設計" data-en="Business Inspection & Design">事業視察・共同プロジェクト設計</div>
-                <div class="feature-chip" data-jp="日本文化を起点とした事業創出支援" data-en="Business Creation Support">日本文化を起点とした事業創出支援</div>
-                <div class="feature-chip" data-jp="限定イベント・非公開の場への参加権" data-en="Access to Closed Events">限定イベント・非公開の場への参加権</div>
+                <div class="feature-chip" data-jp="経営チームとの同行（最大3名）" data-en="Executive Team Access (Max 3)" data-fr="Accès équipe dirigeante (Max 3)" data-ar="وصول الفريق التنفيذي (بحد أقصى 3)">Executive Team Access (Max 3)</div>
+                <div class="feature-chip" data-jp="事業視察・共同プロジェクト設計" data-en="Business Inspection & Design" data-fr="Inspection commerciale et conception" data-ar="فحص الأعمال والتصميم">Business Inspection & Design</div>
+                <div class="feature-chip" data-jp="日本文化を起点とした事業創出支援" data-en="Business Creation Support" data-fr="Soutien à la création d'entreprise" data-ar="دعم إنشاء الأعمال">Business Creation Support</div>
+                <div class="feature-chip" data-jp="限定イベント・非公開の場への参加権" data-en="Access to Closed Events" data-fr="Accès aux événements fermés" data-ar="الوصول إلى الفعاليات المغلقة">Access to Closed Events</div>
               </div>
-              <a class="membership-cta" href="apply.html" data-jp="法人パートナーシップ申請" data-en="Apply for Corporate">法人パートナーシップ申請</a>
+              <a class="membership-cta" href="apply.html" data-jp="法人パートナーシップ申請" data-en="Apply for Corporate" data-fr="Postuler entreprise" data-ar="تقديم طلب مؤسسي">Apply for Corporate</a>
             </div>
           </div>
         </div>
@@ -855,27 +913,27 @@
       <section class="gate" id="gate">
         <div class="container" style="max-width: 720px;">
           <div class="fade">
-            <span class="label" data-jp="06 / THE GATE" data-en="06 / THE GATE">06 / THE GATE</span>
+            <span class="label" data-jp="06 / THE GATE" data-en="06 / THE GATE" data-fr="06 / LA PORTE" data-ar="06 / البوابة">06 / THE GATE</span>
             <div style="margin-top: 32px; color: var(--stone-600); line-height: 2;">
-              <p data-jp="このパートナーシップは、誰にでも開かれているわけではありません。" data-en="This partnership is not open to everyone.">
-                このパートナーシップは、誰にでも開かれているわけではありません。
+              <p data-jp="このパートナーシップは、誰にでも開かれているわけではありません。" data-en="This partnership is not open to everyone." data-fr="Ce partenariat n'est pas ouvert à tous." data-ar="هذه الشراكة ليست مفتوحة للجميع.">
+                This partnership is not open to everyone.
               </p>
-              <p data-jp="私たちは「顧客」ではなく、共に未来をつくる仲間を求めています。" data-en="We seek partners, not customers. We seek allies to build the future together.">
-                私たちは「顧客」ではなく、共に未来をつくる仲間を求めています。
+              <p data-jp="私たちは「顧客」ではなく、共に未来をつくる仲間を求めています。" data-en="We seek partners, not customers. We seek allies to build the future together." data-fr="Nous cherchons des partenaires, pas des clients. Nous cherchons des alliés pour construire l'avenir ensemble." data-ar="نحن نبحث عن شركاء، وليس عملاء. نبحث عن حلفاء لبناء المستقبل معاً.">
+                We seek partners, not customers. We seek allies to build the future together.
               </p>
-              <p data-jp="静かに、しかし確かな関係を築くため、参加は招待制・審査制としています。" data-en="To build quiet but certain relationships, participation is by invitation/application only.">
-                静かに、しかし確かな関係を築くため、参加は招待制・審査制としています。
+              <p data-jp="静かに、しかし確かな関係を築くため、参加は招待制・審査制としています。" data-en="To build quiet but certain relationships, participation is by invitation/application only." data-fr="Pour construire des relations calmes mais certaines, la participation se fait uniquement sur invitation/candidature." data-ar="لبناء علاقات هادئة لكن أكيدة، المشاركة تكون بالدعوة/التقديم فقط.">
+                To build quiet but certain relationships, participation is by invitation/application only.
               </p>
             </div>
-            <h3 class="font-serif" style="font-size: 1.8rem; margin: 30px 0 18px;" data-jp="あなたは、何を創りたいですか？" data-en="What do you wish to create?">
-              あなたは、何を創りたいですか？
+            <h3 class="font-serif" style="font-size: 1.8rem; margin: 30px 0 18px;" data-jp="あなたは、何を創りたいですか？" data-en="What do you wish to create?" data-fr="Que souhaitez-vous créer ?" data-ar="ماذا تريد أن تبدع؟">
+              What do you wish to create?
             </h3>
-            <p class="gate-flow" data-jp="体験の先へ。関係の中へ。そして、未来へ。" data-en="Beyond Experience. Into Relationship. Towards the Future.">
-              体験の先へ。関係の中へ。そして、未来へ。
+            <p class="gate-flow" data-jp="体験の先へ。関係の中へ。そして、未来へ。" data-en="Beyond Experience. Into Relationship. Towards the Future." data-fr="Au-delà de l'expérience. Dans la relation. Vers l'avenir." data-ar="ما وراء التجربة. نحو العلاقة. نحو المستقبل.">
+              Beyond Experience. Into Relationship. Towards the Future.
             </p>
             <div style="margin-top: 36px;">
-              <a class="gate-button" href="apply.html" data-jp="参加を希望する（面談リクエスト）" data-en="Request to Join (Interview)">
-                参加を希望する（面談リクエスト）
+              <a class="gate-button" href="apply.html" data-jp="参加を希望する（面談リクエスト）" data-en="Request to Join (Interview)" data-fr="Demander à rejoindre (Entretien)" data-ar="طلب الانضمام (مقابلة)">
+                Request to Join (Interview)
               </a>
             </div>
           </div>
@@ -887,10 +945,10 @@
       <div class="container">
         <div style="width: 1px; height: 50px; background: var(--ink); margin: 0 auto 20px;"></div>
         <h2 class="font-serif" style="font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 20px;">FOMUS</h2>
-        <p data-jp="日本文化の“内側”に入り、共に未来をつくるための関係性。" data-en="Enter the 'Inner Circle' of Japanese Culture. A relationship to co-create the future.">
-          日本文化の“内側”に入り、共に未来をつくるための関係性。
+        <p data-jp="日本文化の"内側"に入り、共に未来をつくるための関係性。" data-en="Enter the 'Inner Circle' of Japanese Culture. A relationship to co-create the future." data-fr="Entrez dans le 'Cercle Intérieur' de la culture japonaise. Une relation pour co-créer l'avenir." data-ar="ادخل إلى 'الدائرة الداخلية' للثقافة اليابانية. علاقة لصنع المستقبل معاً.">
+          Enter the 'Inner Circle' of Japanese Culture. A relationship to co-create the future.
         </p>
-        <div class="footer-brand" data-jp="FOMUS GLOBAL PARTNERSHIP" data-en="FOMUS GLOBAL PARTNERSHIP">FOMUS GLOBAL PARTNERSHIP</div>
+        <div class="footer-brand" data-jp="FOMUS GLOBAL PARTNERSHIP" data-en="FOMUS GLOBAL PARTNERSHIP" data-fr="FOMUS GLOBAL PARTNERSHIP" data-ar="شراكة فومس العالمية">FOMUS GLOBAL PARTNERSHIP</div>
       </div>
     </footer>
 
@@ -901,21 +959,26 @@
       });
 
       // Language toggle functionality
+      const langs = ["en", "jp", "fr", "ar"];
       let currentLang = localStorage.getItem("fomus-lang") || "en";
 
       function setLang(lang) {
         currentLang = lang;
         localStorage.setItem("fomus-lang", lang);
-        document.body.classList.remove("en", "jp");
+        document.body.classList.remove("en", "jp", "fr", "ar");
         document.body.classList.add(lang);
+        document.documentElement.lang = lang === "jp" ? "ja" : lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 
         document.getElementById("langEn").classList.toggle("active", lang === "en");
         document.getElementById("langJp").classList.toggle("active", lang === "jp");
+        document.getElementById("langFr").classList.toggle("active", lang === "fr");
+        document.getElementById("langAr").classList.toggle("active", lang === "ar");
 
-        document.querySelectorAll("[data-en][data-jp]").forEach((el) => {
+        document.querySelectorAll("[data-" + lang + "]").forEach((el) => {
           const value = el.getAttribute("data-" + lang);
           if (!value) return;
-          if (el.tagName === "INPUT") {
+          if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
             el.setAttribute("placeholder", value);
           } else {
             el.innerHTML = value;
@@ -923,8 +986,10 @@
         });
       }
 
-      function toggleLang() {
-        setLang(currentLang === "en" ? "jp" : "en");
+      function cycleLang() {
+        const currentIndex = langs.indexOf(currentLang);
+        const nextIndex = (currentIndex + 1) % langs.length;
+        setLang(langs[nextIndex]);
       }
 
       // Initialize language on page load
