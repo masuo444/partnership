@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FOMUS Partnership - 決済フロー</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 40px 20px;
+      margin: 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-weight: 300;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: #888;
+      margin-bottom: 50px;
+    }
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .step-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 60px;
+      flex-shrink: 0;
+    }
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #C9A262;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .step-number.stripe {
+      background: #635BFF;
+    }
+    .step-number.success {
+      background: #2d7a4f;
+    }
+    .step-connector {
+      width: 3px;
+      height: 80px;
+      background: linear-gradient(to bottom, #C9A262, #C9A262 50%, transparent 50%);
+      background-size: 3px 8px;
+    }
+    .step:last-child .step-connector {
+      display: none;
+    }
+    .step-content {
+      flex: 1;
+      padding-bottom: 30px;
+    }
+    .step-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .step-file {
+      font-size: 12px;
+      color: #6BBCD4;
+      background: rgba(107, 188, 212, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .step-desc {
+      color: #aaa;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .step-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .action {
+      background: #2a2a2a;
+      border: 1px solid #444;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    .action-label {
+      color: #888;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .action-value {
+      color: #fff;
+    }
+    .note {
+      background: #2a2a2a;
+      border-left: 3px solid #C9A262;
+      padding: 16px 20px;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #aaa;
+    }
+    .note strong {
+      color: #fff;
+    }
+    .highlight {
+      color: #C9A262;
+    }
+    .improved {
+      background: rgba(45, 122, 79, 0.2);
+      border: 1px solid #2d7a4f;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: #6fcf97;
+    }
+    .data-flow {
+      margin-top: 50px;
+      padding-top: 40px;
+      border-top: 1px solid #333;
+    }
+    .data-flow h2 {
+      font-weight: 400;
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .data-box {
+      background: #2a2a2a;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .data-box-title {
+      font-size: 12px;
+      color: #6BBCD4;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .data-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #333;
+      font-size: 14px;
+    }
+    .data-item:last-child {
+      border-bottom: none;
+    }
+    .data-key {
+      color: #888;
+    }
+    .data-value {
+      color: #fff;
+      font-family: monospace;
+    }
+    .url-example {
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-family: monospace;
+      font-size: 13px;
+      color: #6BBCD4;
+      margin: 12px 0;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>FOMUS Partnership 決済フロー</h1>
+    <p class="subtitle">ユーザーの申し込みから決済完了までの流れ（改善版）</p>
+
+    <div class="improved">
+      ✓ 改善: トップページ→契約条件確認が1クリックで完了するようになりました
+    </div>
+
+    <div class="flow">
+      <!-- Step 1 -->
+      <div class="step">
+        <div class="step-line">
+          <div class="step-number">1</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">
+            トップページでプラン選択
+            <span class="step-file">index.html</span>
+          </div>
+          <p class="step-desc">
+            ユーザーがパートナーシップの内容を確認し、<br>
+            希望するプランの「参加を希望する」ボタンをクリック
+          </p>
+          <div class="step-actions">
+            <div class="action">
+              <div class="action-label">Personal</div>
+              <div class="action-value">apply.html?plan=personal#agreement</div>
+            </div>
+            <div class="action">
+              <div class="action-label">Corporate</div>
+              <div class="action-value">apply.html?plan=corporate#agreement</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step">
+        <div class="step-line">
+          <div class="step-number">2</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">
+            契約条件の確認（自動表示）
+            <span class="step-file">apply.html</span>
+          </div>
+          <p class="step-desc">
+            URLパラメータからプランを自動取得<br>
+            AGREEMENTセクションに自動スクロール・自動表示<br>
+            契約条件（全8条）をスクロールで確認
+          </p>
+          <div class="url-example">
+            https://partnership.fomusglobal.com/apply.html?plan=personal#agreement
+          </div>
+          <div class="step-actions">
+            <div class="action">
+              <div class="action-label">自動処理</div>
+              <div class="action-value">プラン選択済み</div>
+            </div>
+            <div class="action">
+              <div class="action-label">自動処理</div>
+              <div class="action-value">AGREEMENTセクション表示</div>
+            </div>
+            <div class="action">
+              <div class="action-label">Corporate時</div>
+              <div class="action-value">会社名フィールド表示</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step">
+        <div class="step-line">
+          <div class="step-number">3</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">
+            署名情報の入力
+          </div>
+          <p class="step-desc">
+            契約者情報を入力（必須）
+          </p>
+          <div class="step-actions">
+            <div class="action">
+              <div class="action-label">必須</div>
+              <div class="action-value">氏名</div>
+            </div>
+            <div class="action">
+              <div class="action-label">必須</div>
+              <div class="action-value">メールアドレス</div>
+            </div>
+            <div class="action">
+              <div class="action-label">法人のみ</div>
+              <div class="action-value">会社名</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step">
+        <div class="step-line">
+          <div class="step-number">4</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">
+            同意チェック & 決済へ
+          </div>
+          <p class="step-desc">
+            5項目すべてにチェック → 決済ボタン有効化<br>
+            クリックでlocalStorageに保存 → Stripeへ
+          </p>
+          <div class="step-actions">
+            <div class="action">
+              <div class="action-label">チェック項目</div>
+              <div class="action-value">5項目 + 全同意</div>
+            </div>
+            <div class="action">
+              <div class="action-label">保存先</div>
+              <div class="action-value">localStorage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="step">
+        <div class="step-line">
+          <div class="step-number stripe">5</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">
+            Stripe決済
+            <span class="step-file" style="background: rgba(99,91,255,0.2); color: #635BFF;">Stripe</span>
+          </div>
+          <p class="step-desc">
+            Stripeの決済ページでカード情報を入力<br>
+            決済完了後、success.htmlにリダイレクト
+          </p>
+          <div class="step-actions">
+            <div class="action">
+              <div class="action-label">Personal</div>
+              <div class="action-value">$10,000/年</div>
+            </div>
+            <div class="action">
+              <div class="action-label">Corporate</div>
+              <div class="action-value">$15,000/年</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="step">
+        <div class="step-line">
+          <div class="step-number success">6</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">
+            決済完了 & PDF発行
+            <span class="step-file">success.html</span>
+          </div>
+          <p class="step-desc">
+            localStorageから契約情報を取得<br>
+            契約書PDFをダウンロード可能
+          </p>
+          <div class="step-actions">
+            <div class="action">
+              <div class="action-label">表示</div>
+              <div class="action-value">契約情報確認</div>
+            </div>
+            <div class="action">
+              <div class="action-label">機能</div>
+              <div class="action-value">PDFダウンロード</div>
+            </div>
+            <div class="action">
+              <div class="action-label">連絡</div>
+              <div class="action-value">WhatsApp</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Flow -->
+    <div class="data-flow">
+      <h2>保存されるデータ (localStorage)</h2>
+      <div class="data-box">
+        <div class="data-box-title">fomus-contract</div>
+        <div class="data-item">
+          <span class="data-key">name</span>
+          <span class="data-value">"山田太郎"</span>
+        </div>
+        <div class="data-item">
+          <span class="data-key">email</span>
+          <span class="data-value">"taro@example.com"</span>
+        </div>
+        <div class="data-item">
+          <span class="data-key">company</span>
+          <span class="data-value">"株式会社〇〇" (法人のみ)</span>
+        </div>
+        <div class="data-item">
+          <span class="data-key">plan</span>
+          <span class="data-value">"personal" | "corporate"</span>
+        </div>
+        <div class="data-item">
+          <span class="data-key">agreedAt</span>
+          <span class="data-value">"2026-01-27T10:30:00.000Z"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Note -->
+    <div class="note">
+      <strong>⚠️ 未設定項目:</strong><br>
+      Stripe Payment Linksを作成し、apply.html内の <code>stripeLinks</code> オブジェクトにURLを設定してください。<br>
+      また、Stripeの「成功時リダイレクトURL」を <code class="highlight">https://partnership.fomusglobal.com/success.html</code> に設定してください。
+    </div>
+  </div>
+</body>
+</html>

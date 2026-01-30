@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-en="Payment Complete | FOMUS GLOBAL PARTNERSHIP" data-jp="決済完了 | FOMUS GLOBAL PARTNERSHIP" data-fr="Paiement terminé | FOMUS GLOBAL PARTNERSHIP" data-ar="اكتمل الدفع | شراكة فومس العالمية">Payment Complete | FOMUS GLOBAL PARTNERSHIP</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Shippori+Mincho:wght@400;500&family=Inter:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap");
+
+      :root {
+        --bg: #f9f9f7;
+        --ink: #111111;
+        --vermilion: #c03528;
+        --stone-100: #f1f1ef;
+        --stone-200: #e3e3df;
+        --stone-300: #d1d1cc;
+        --stone-400: #b5b5ad;
+        --stone-500: #8f8f86;
+        --stone-600: #6a6a61;
+        --stone-700: #3d3d38;
+        --success-green: #2d7a4f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.8;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      body.jp {
+        --serif-font: "Shippori Mincho", "Noto Serif JP", serif;
+        font-family: "Inter", "Noto Serif JP", serif;
+      }
+
+      body.en {
+        --serif-font: "Cormorant Garamond", serif;
+        font-family: "Inter", sans-serif;
+      }
+
+      body.fr {
+        --serif-font: "Playfair Display", serif;
+        font-family: "Inter", sans-serif;
+      }
+
+      body.ar {
+        --serif-font: "Noto Naskh Arabic", serif;
+        font-family: "Noto Naskh Arabic", "Inter", sans-serif;
+        direction: rtl;
+        text-align: right;
+      }
+
+      .font-serif {
+        font-family: var(--serif-font, "Cormorant Garamond", serif);
+      }
+
+      .container {
+        width: min(700px, 90vw);
+        margin: 0 auto;
+      }
+
+      .nav {
+        padding: 22px 0;
+        background: rgba(249, 249, 247, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(227, 227, 223, 0.7);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 4px;
+        text-decoration: none;
+        color: var(--ink);
+      }
+
+      .logo-row {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+      }
+
+      .logo-dot {
+        width: 6px;
+        height: 6px;
+        background: var(--ink);
+      }
+
+      .logo-sub {
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        color: var(--stone-400);
+      }
+
+      .main-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
+      }
+
+      .success-card {
+        background: #fff;
+        border: 1px solid var(--stone-200);
+        padding: 48px 40px;
+        text-align: center;
+        max-width: 100%;
+      }
+
+      .success-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: var(--success-green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 28px;
+      }
+
+      .success-icon svg {
+        width: 40px;
+        height: 40px;
+        fill: #fff;
+      }
+
+      .success-title {
+        font-size: 1.8rem;
+        margin: 0 0 16px;
+        line-height: 1.4;
+      }
+
+      .success-message {
+        color: var(--stone-600);
+        margin: 0 0 32px;
+        line-height: 2;
+      }
+
+      .contract-info {
+        background: var(--stone-100);
+        padding: 24px;
+        margin-bottom: 32px;
+        text-align: left;
+      }
+
+      body.ar .contract-info {
+        text-align: right;
+      }
+
+      .contract-info-title {
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--stone-500);
+        margin: 0 0 16px;
+      }
+
+      .contract-info-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--stone-200);
+        font-size: 0.95rem;
+      }
+
+      .contract-info-item:last-child {
+        border-bottom: none;
+      }
+
+      .contract-info-label {
+        color: var(--stone-500);
+      }
+
+      .contract-info-value {
+        color: var(--ink);
+        font-weight: 500;
+      }
+
+      .download-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: var(--ink);
+        color: #fff;
+        padding: 18px 36px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-size: 12px;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+
+      .download-btn:hover {
+        background: #2b2b2b;
+      }
+
+      .download-btn svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 28px 0;
+        color: var(--stone-400);
+        font-size: 0.85rem;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--stone-200);
+      }
+
+      .contact-section {
+        text-align: center;
+      }
+
+      .contact-title {
+        font-size: 1rem;
+        margin: 0 0 8px;
+      }
+
+      .contact-message {
+        color: var(--stone-600);
+        font-size: 0.9rem;
+        margin: 0 0 16px;
+      }
+
+      .whatsapp-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 28px;
+        background: #25D366;
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        transition: background 0.3s ease;
+      }
+
+      .whatsapp-btn:hover {
+        background: #1da851;
+      }
+
+      .whatsapp-btn svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+
+      .footer {
+        padding: 32px 0;
+        text-align: center;
+        border-top: 1px solid var(--stone-200);
+      }
+
+      .footer-brand {
+        font-size: 10px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--stone-400);
+      }
+
+      .no-data-warning {
+        background: #fff3cd;
+        border: 1px solid #ffc107;
+        padding: 20px;
+        margin-bottom: 24px;
+        color: #856404;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body class="en">
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a class="logo" href="index.html">
+          <div class="logo-row">
+            <span class="logo-dot"></span>
+            <span>FOMUS</span>
+          </div>
+          <span class="logo-sub">Global Partnership</span>
+        </a>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="container">
+        <div class="success-card">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+          </div>
+
+          <h1 class="success-title font-serif"
+            data-jp="決済が完了しました"
+            data-en="Payment Complete"
+            data-fr="Paiement terminé"
+            data-ar="اكتمل الدفع">
+            Payment Complete
+          </h1>
+
+          <p class="success-message"
+            data-jp="FOMUS GLOBAL PARTNERSHIP へのご参加、誠にありがとうございます。<br>下記より契約書PDFをダウンロードいただけます。"
+            data-en="Thank you for joining FOMUS GLOBAL PARTNERSHIP.<br>You can download your contract PDF below."
+            data-fr="Merci d'avoir rejoint FOMUS GLOBAL PARTNERSHIP.<br>Vous pouvez télécharger votre contrat PDF ci-dessous."
+            data-ar="شكراً لانضمامك إلى شراكة فومس العالمية.<br>يمكنك تحميل عقدك بصيغة PDF أدناه.">
+            Thank you for joining FOMUS GLOBAL PARTNERSHIP.<br>You can download your contract PDF below.
+          </p>
+
+          <div id="noDataWarning" class="no-data-warning" style="display: none;"
+            data-jp="契約データが見つかりません。apply.htmlから再度お申し込みください。"
+            data-en="Contract data not found. Please apply again from apply.html."
+            data-fr="Données du contrat introuvables. Veuillez postuler à nouveau depuis apply.html."
+            data-ar="لم يتم العثور على بيانات العقد. يرجى التقديم مرة أخرى من apply.html.">
+            Contract data not found. Please apply again from apply.html.
+          </div>
+
+          <div id="contractInfo" class="contract-info">
+            <div class="contract-info-title"
+              data-jp="契約情報"
+              data-en="Contract Information"
+              data-fr="Informations du contrat"
+              data-ar="معلومات العقد">
+              Contract Information
+            </div>
+            <div class="contract-info-item">
+              <span class="contract-info-label"
+                data-jp="氏名"
+                data-en="Name"
+                data-fr="Nom"
+                data-ar="الاسم">Name</span>
+              <span class="contract-info-value" id="displayName">-</span>
+            </div>
+            <div class="contract-info-item">
+              <span class="contract-info-label"
+                data-jp="メールアドレス"
+                data-en="Email"
+                data-fr="E-mail"
+                data-ar="البريد الإلكتروني">Email</span>
+              <span class="contract-info-value" id="displayEmail">-</span>
+            </div>
+            <div class="contract-info-item" id="companyRow" style="display: none;">
+              <span class="contract-info-label"
+                data-jp="会社名"
+                data-en="Company"
+                data-fr="Entreprise"
+                data-ar="الشركة">Company</span>
+              <span class="contract-info-value" id="displayCompany">-</span>
+            </div>
+            <div class="contract-info-item">
+              <span class="contract-info-label"
+                data-jp="プラン"
+                data-en="Plan"
+                data-fr="Plan"
+                data-ar="الخطة">Plan</span>
+              <span class="contract-info-value" id="displayPlan">-</span>
+            </div>
+            <div class="contract-info-item">
+              <span class="contract-info-label"
+                data-jp="同意日時"
+                data-en="Agreed At"
+                data-fr="Date d'accord"
+                data-ar="تاريخ الموافقة">Agreed At</span>
+              <span class="contract-info-value" id="displayDate">-</span>
+            </div>
+          </div>
+
+          <button class="download-btn" id="downloadBtn" onclick="generatePDF()">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            </svg>
+            <span
+              data-jp="契約書PDFをダウンロード"
+              data-en="Download Contract PDF"
+              data-fr="Télécharger le contrat PDF"
+              data-ar="تحميل عقد PDF">
+              Download Contract PDF
+            </span>
+          </button>
+
+          <div class="divider"
+            data-jp="または"
+            data-en="or"
+            data-fr="ou"
+            data-ar="أو">or</div>
+
+          <div class="contact-section">
+            <h3 class="contact-title font-serif"
+              data-jp="ご質問がありますか？"
+              data-en="Have Questions?"
+              data-fr="Des questions ?"
+              data-ar="هل لديك أسئلة؟">
+              Have Questions?
+            </h3>
+            <p class="contact-message"
+              data-jp="今後の流れやご質問は、お気軽にWhatsAppでお問い合わせください。"
+              data-en="Feel free to reach out via WhatsApp for any questions about next steps."
+              data-fr="N'hésitez pas à nous contacter via WhatsApp pour toute question sur les prochaines étapes."
+              data-ar="لا تتردد في التواصل عبر واتساب لأي أسئلة حول الخطوات التالية.">
+              Feel free to reach out via WhatsApp for any questions about next steps.
+            </p>
+            <a href="https://wa.me/971524109747" class="whatsapp-btn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span>+971 524109747</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-brand">FOMUS GLOBAL PARTNERSHIP</div>
+      </div>
+    </footer>
+
+    <script>
+      // Language handling
+      const langs = ["en", "jp", "fr", "ar"];
+      let currentLang = localStorage.getItem("fomus-lang") || "en";
+
+      function setLang(lang) {
+        currentLang = lang;
+        document.body.classList.remove("en", "jp", "fr", "ar");
+        document.body.classList.add(lang);
+        document.documentElement.lang = lang === "jp" ? "ja" : lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+        document.querySelectorAll("[data-" + lang + "]").forEach((el) => {
+          const value = el.getAttribute("data-" + lang);
+          if (!value) return;
+          if (el.tagName === "TITLE") {
+            document.title = value;
+          } else {
+            el.innerHTML = value;
+          }
+        });
+      }
+
+      setLang(currentLang);
+
+      // Get contract data from localStorage
+      let contractData = null;
+      try {
+        const stored = localStorage.getItem('fomus-contract');
+        if (stored) {
+          contractData = JSON.parse(stored);
+        }
+      } catch (e) {
+        console.error('Error reading contract data:', e);
+      }
+
+      // Display contract information
+      function displayContractInfo() {
+        if (!contractData) {
+          document.getElementById('noDataWarning').style.display = 'block';
+          document.getElementById('contractInfo').style.display = 'none';
+          document.getElementById('downloadBtn').style.display = 'none';
+          return;
+        }
+
+        document.getElementById('displayName').textContent = contractData.name || '-';
+        document.getElementById('displayEmail').textContent = contractData.email || '-';
+
+        if (contractData.company && contractData.plan === 'corporate') {
+          document.getElementById('displayCompany').textContent = contractData.company;
+          document.getElementById('companyRow').style.display = 'flex';
+        }
+
+        const planNames = {
+          personal: {
+            en: 'Personal Partnership ($10,000/year)',
+            jp: 'Personal Partnership ($10,000/年)',
+            fr: 'Personal Partnership (10 000$/an)',
+            ar: 'شراكة شخصية (10,000$/سنة)'
+          },
+          corporate: {
+            en: 'Corporate Partnership ($15,000/year)',
+            jp: 'Corporate Partnership ($15,000/年)',
+            fr: 'Corporate Partnership (15 000$/an)',
+            ar: 'شراكة مؤسسية (15,000$/سنة)'
+          }
+        };
+        document.getElementById('displayPlan').textContent = planNames[contractData.plan]?.[currentLang] || contractData.plan;
+
+        if (contractData.agreedAt) {
+          const date = new Date(contractData.agreedAt);
+          document.getElementById('displayDate').textContent = date.toLocaleString(
+            currentLang === 'jp' ? 'ja-JP' :
+            currentLang === 'fr' ? 'fr-FR' :
+            currentLang === 'ar' ? 'ar-AE' : 'en-US'
+          );
+        }
+      }
+
+      displayContractInfo();
+
+      // PDF Generation
+      function generatePDF() {
+        if (!contractData) {
+          alert('Contract data not found.');
+          return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const margin = 20;
+        const contentWidth = pageWidth - (margin * 2);
+        let y = 20;
+
+        // Title
+        doc.setFontSize(18);
+        doc.setFont('helvetica', 'bold');
+        doc.text('FOMUS GLOBAL PARTNERSHIP', pageWidth / 2, y, { align: 'center' });
+        y += 8;
+        doc.setFontSize(14);
+        doc.text('Contract Agreement', pageWidth / 2, y, { align: 'center' });
+        y += 15;
+
+        // Horizontal line
+        doc.setLineWidth(0.5);
+        doc.line(margin, y, pageWidth - margin, y);
+        y += 15;
+
+        // Contract Information Section
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'bold');
+        doc.text('Contract Information', margin, y);
+        y += 8;
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(10);
+
+        const info = [
+          ['Name:', contractData.name || '-'],
+          ['Email:', contractData.email || '-']
+        ];
+
+        if (contractData.company && contractData.plan === 'corporate') {
+          info.push(['Company:', contractData.company]);
+        }
+
+        const planLabel = contractData.plan === 'personal' ? 'Personal Partnership ($10,000/year)' : 'Corporate Partnership ($15,000/year)';
+        info.push(['Plan:', planLabel]);
+
+        const agreedDate = contractData.agreedAt ? new Date(contractData.agreedAt).toLocaleString('en-US') : '-';
+        info.push(['Agreed At:', agreedDate]);
+
+        info.forEach(([label, value]) => {
+          doc.setFont('helvetica', 'bold');
+          doc.text(label, margin, y);
+          doc.setFont('helvetica', 'normal');
+          doc.text(value, margin + 35, y);
+          y += 6;
+        });
+
+        y += 10;
+
+        // Horizontal line
+        doc.line(margin, y, pageWidth - margin, y);
+        y += 15;
+
+        // Contract Terms
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'bold');
+        doc.text('Terms and Conditions', margin, y);
+        y += 10;
+
+        doc.setFontSize(9);
+        doc.setFont('helvetica', 'normal');
+
+        const terms = [
+          {
+            title: '1. Operating Structure',
+            content: 'Operating Entity: FOMUS LLC - responsible for planning, operation, decisions, and service provision. Payment Processing: FOMUS Global FZ-LLC (UAE) - handles credit card payments and billing.'
+          },
+          {
+            title: '2. Nature of Services',
+            content: 'This Partnership does NOT guarantee specific outcomes, profits, project completion, investment returns, commercial success, or continuous opportunity provision. This Partnership provides rights to participate, opportunities to engage, and access to relationships.'
+          },
+          {
+            title: '3. Participation Requirements',
+            content: 'Participants must understand FOMUS\'s values and activity policies, show respect for Japanese culture and related parties, commit to building relationships, and respect the Company\'s judgment and discretion.'
+          },
+          {
+            title: '4. Refund & Cancellation Policy',
+            content: 'Refunds are NOT provided as a general rule. No refunds will be issued for any reason including non-participation, schedule changes, or differences from expectations.'
+          },
+          {
+            title: '5. Service Changes & Interruptions',
+            content: 'The Company reserves the right to change, add, or remove service content, change implementation timing, suspend or discontinue projects, and restrict provision to specific members without advance notice or compensation.'
+          },
+          {
+            title: '6. Confidentiality & Non-Disclosure',
+            content: 'Participants shall NOT disclose private locations, individuals, projects, statements and backgrounds of related parties, or internal information and unreleased plans to third parties including SNS, media, and commercial use.'
+          },
+          {
+            title: '7. Contract Termination',
+            content: 'The Company may immediately terminate participation for violation of contract terms, actions that damage trust, inappropriate conduct, or any case deemed inappropriate. No refunds will be provided in these cases.'
+          },
+          {
+            title: '8. Governing Law & Jurisdiction',
+            content: 'This agreement shall be governed by Japanese law. In case of disputes, Japanese courts shall have exclusive jurisdiction.'
+          }
+        ];
+
+        terms.forEach(term => {
+          // Check if we need a new page
+          if (y > 260) {
+            doc.addPage();
+            y = 20;
+          }
+
+          doc.setFont('helvetica', 'bold');
+          doc.text(term.title, margin, y);
+          y += 5;
+
+          doc.setFont('helvetica', 'normal');
+          const lines = doc.splitTextToSize(term.content, contentWidth);
+          doc.text(lines, margin, y);
+          y += (lines.length * 4) + 8;
+        });
+
+        // Signature Section
+        if (y > 220) {
+          doc.addPage();
+          y = 20;
+        }
+
+        y += 10;
+        doc.line(margin, y, pageWidth - margin, y);
+        y += 15;
+
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'bold');
+        doc.text('Signature', margin, y);
+        y += 12;
+
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+
+        doc.text('I, the undersigned, confirm that I have read, understood, and agreed to all', margin, y);
+        y += 5;
+        doc.text('the terms and conditions stated in this contract.', margin, y);
+        y += 15;
+
+        doc.text('Signed by: ' + (contractData.name || '-'), margin, y);
+        y += 6;
+        doc.text('Email: ' + (contractData.email || '-'), margin, y);
+        y += 6;
+        if (contractData.company && contractData.plan === 'corporate') {
+          doc.text('Company: ' + contractData.company, margin, y);
+          y += 6;
+        }
+        doc.text('Date: ' + agreedDate, margin, y);
+        y += 15;
+
+        // Digital signature note
+        doc.setFontSize(8);
+        doc.setTextColor(100, 100, 100);
+        doc.text('This contract was digitally signed and agreed to through the FOMUS GLOBAL PARTNERSHIP online application process.', margin, y);
+
+        // Footer on all pages
+        const pageCount = doc.internal.getNumberOfPages();
+        for (let i = 1; i <= pageCount; i++) {
+          doc.setPage(i);
+          doc.setFontSize(8);
+          doc.setTextColor(150, 150, 150);
+          doc.text('FOMUS GLOBAL PARTNERSHIP - Contract Agreement', pageWidth / 2, 290, { align: 'center' });
+          doc.text('Page ' + i + ' of ' + pageCount, pageWidth - margin, 290, { align: 'right' });
+        }
+
+        // Generate filename
+        const dateStr = contractData.agreedAt ? new Date(contractData.agreedAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+        const filename = `FOMUS_Contract_${contractData.name.replace(/\s+/g, '_')}_${dateStr}.pdf`;
+
+        // Download PDF
+        doc.save(filename);
+      }
+    </script>
+  </body>
+</html>
