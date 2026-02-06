@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FOMUS Partnership - 決済フロー</title>
+  <title>FOMUSglobal パートナーシップ枡 - 実務フロー</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -62,9 +62,15 @@
     .step-number.success {
       background: #2d7a4f;
     }
+    .step-number.craft {
+      background: #8B4513;
+    }
+    .step-number.ship {
+      background: #4a90a4;
+    }
     .step-connector {
       width: 3px;
-      height: 80px;
+      height: 100px;
       background: linear-gradient(to bottom, #C9A262, #C9A262 50%, transparent 50%);
       background-size: 3px 8px;
     }
@@ -132,14 +138,20 @@
     .highlight {
       color: #C9A262;
     }
-    .improved {
+    .key-rule {
       background: rgba(45, 122, 79, 0.2);
       border: 1px solid #2d7a4f;
       border-radius: 6px;
-      padding: 12px 16px;
-      margin-bottom: 16px;
-      font-size: 13px;
+      padding: 16px 20px;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .key-rule strong {
       color: #6fcf97;
+    }
+    .key-rule p {
+      margin: 8px 0 0;
+      color: #aaa;
     }
     .data-flow {
       margin-top: 50px;
@@ -182,29 +194,70 @@
       color: #fff;
       font-family: monospace;
     }
-    .url-example {
+    .legal-box {
       background: #1e1e1e;
-      border: 1px solid #333;
-      border-radius: 4px;
-      padding: 12px 16px;
-      font-family: monospace;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    .legal-box h3 {
+      color: #C9A262;
+      font-size: 14px;
+      margin: 0 0 12px;
+    }
+    .legal-box p {
+      color: #888;
       font-size: 13px;
-      color: #6BBCD4;
-      margin: 12px 0;
-      word-break: break-all;
+      line-height: 1.8;
+      margin: 0;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>FOMUS Partnership 決済フロー</h1>
-    <p class="subtitle">ユーザーの申し込みから決済完了までの流れ（改善版）</p>
+    <h1>FOMUSglobal パートナーシップ枡</h1>
+    <p class="subtitle">Apply → 決済 → 枡制作・保管／発送 → 関係開始（最終確定フロー）</p>
 
-    <div class="improved">
-      ✓ 改善: トップページ→契約条件確認が1クリックで完了するようになりました
+    <div class="key-rule">
+      <strong>重要ルール：決済日 ＝ パートナーシップ開始日（1年間）</strong>
+      <p>枡の発送（1〜3ヶ月）とは独立。「意思決定が完了した日」が起点となります。</p>
     </div>
 
     <div class="flow">
+      <!-- Step 0 -->
+      <div class="step">
+        <div class="step-line">
+          <div class="step-number">0</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">
+            LP（思想・世界観）
+            <span class="step-file">index.html</span>
+          </div>
+          <p class="step-desc">
+            売るのは FOMUSglobal パートナーシップ枡（物理プロダクト）<br>
+            パートナーシップは 購入後に生まれる関係性<br>
+            価格提示あり / BUYボタンなし / EC感を出さない
+          </p>
+          <div class="step-actions">
+            <div class="action">
+              <div class="action-label">Individual</div>
+              <div class="action-value">USD 20,000</div>
+            </div>
+            <div class="action">
+              <div class="action-label">Corporate</div>
+              <div class="action-value">USD 35,000</div>
+            </div>
+            <div class="action">
+              <div class="action-label">Co-Creation</div>
+              <div class="action-value">From USD 100,000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Step 1 -->
       <div class="step">
         <div class="step-line">
@@ -213,21 +266,25 @@
         </div>
         <div class="step-content">
           <div class="step-title">
-            トップページでプラン選択
-            <span class="step-file">index.html</span>
+            Apply / Private Introduction
+            <span class="step-file">apply.html</span>
           </div>
           <p class="step-desc">
-            ユーザーがパートナーシップの内容を確認し、<br>
-            希望するプランの「参加を希望する」ボタンをクリック
+            フォーム送信（最小構成）<br>
+            ROI・成果・具体的プロジェクトは聞かない
           </p>
           <div class="step-actions">
             <div class="action">
-              <div class="action-label">Personal</div>
-              <div class="action-value">apply.html?plan=personal#agreement</div>
+              <div class="action-label">必須</div>
+              <div class="action-value">Name / Individual or Corporate</div>
             </div>
             <div class="action">
-              <div class="action-label">Corporate</div>
-              <div class="action-value">apply.html?plan=corporate#agreement</div>
+              <div class="action-label">必須</div>
+              <div class="action-value">Country / Time zone</div>
+            </div>
+            <div class="action">
+              <div class="action-label">必須</div>
+              <div class="action-value">Why Japan / Why FOMUS</div>
             </div>
           </div>
         </div>
@@ -241,29 +298,18 @@
         </div>
         <div class="step-content">
           <div class="step-title">
-            契約条件の確認（自動表示）
-            <span class="step-file">apply.html</span>
+            Approval & Alignment
+            <span class="step-file">内部プロセス</span>
           </div>
           <p class="step-desc">
-            URLパラメータからプランを自動取得<br>
-            AGREEMENTセクションに自動スクロール・自動表示<br>
-            契約条件（全8条）をスクロールで確認
+            申込内容の確認 / 思想・方向性のアラインメント確認<br>
+            面談を前提にしない / 違和感がある場合のみ短い対話（15分程度）<br>
+            「審査」ではなく「成立可否の確認」
           </p>
-          <div class="url-example">
-            https://partnership.fomusglobal.com/apply.html?plan=personal#agreement
-          </div>
           <div class="step-actions">
             <div class="action">
-              <div class="action-label">自動処理</div>
-              <div class="action-value">プラン選択済み</div>
-            </div>
-            <div class="action">
-              <div class="action-label">自動処理</div>
-              <div class="action-value">AGREEMENTセクション表示</div>
-            </div>
-            <div class="action">
-              <div class="action-label">Corporate時</div>
-              <div class="action-value">会社名フィールド表示</div>
+              <div class="action-label">確定事項</div>
+              <div class="action-value">Edition / 価格 / Individual or Corporate</div>
             </div>
           </div>
         </div>
@@ -277,149 +323,176 @@
         </div>
         <div class="step-content">
           <div class="step-title">
-            署名情報の入力
+            Approval通知（決済前）
           </div>
           <p class="step-desc">
-            契約者情報を入力（必須）
+            承認メールに必ず含める内容：<br>
+            ・承認された Edition / 金額（USD）<br>
+            ・次のステップは EC決済<br>
+            ・売買対象は 物理プロダクト（枡）<br>
+            ・枡は 特別に制作される<br>
+            ※ここではまだ決済させない
           </p>
-          <div class="step-actions">
-            <div class="action">
-              <div class="action-label">必須</div>
-              <div class="action-value">氏名</div>
-            </div>
-            <div class="action">
-              <div class="action-label">必須</div>
-              <div class="action-value">メールアドレス</div>
-            </div>
-            <div class="action">
-              <div class="action-label">法人のみ</div>
-              <div class="action-value">会社名</div>
-            </div>
-          </div>
         </div>
       </div>
 
       <!-- Step 4 -->
       <div class="step">
         <div class="step-line">
-          <div class="step-number">4</div>
+          <div class="step-number stripe">4</div>
           <div class="step-connector"></div>
         </div>
         <div class="step-content">
           <div class="step-title">
-            同意チェック & 決済へ
+            EC決済（ドバイ法人）
+            <span class="step-file" style="background: rgba(99,91,255,0.2); color: #635BFF;">Stripe</span>
           </div>
           <p class="step-desc">
-            5項目すべてにチェック → 決済ボタン有効化<br>
-            クリックでlocalStorageに保存 → Stripeへ
+            承認後に個別で決済URL送付<br>
+            公開ECに並べない / 数量制限：1<br>
+            <strong class="highlight">決済完了日 ＝ パートナーシップ開始日（1年間）</strong>
           </p>
           <div class="step-actions">
             <div class="action">
-              <div class="action-label">チェック項目</div>
-              <div class="action-value">5項目 + 全同意</div>
-            </div>
-            <div class="action">
-              <div class="action-label">保存先</div>
-              <div class="action-value">localStorage</div>
+              <div class="action-label">商品名</div>
+              <div class="action-value">FOMUSglobal Partnership Masu – Year Edition 2026</div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Step 4.5 -->
+      <div class="step">
+        <div class="step-line">
+          <div class="step-number success">4.5</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">
+            パートナーシップ開始（即日）
+            <span class="step-file">success.html</span>
+          </div>
+          <p class="step-desc">
+            決済完了と同時に開始するもの：<br>
+            ・年間パートナーシップ（1年間）<br>
+            ・非公開コミュニケーションへの参加<br>
+            ・文化的プロジェクトに関する優先的なご案内（非保証）<br>
+            ※ 具体的な案件・成果は発生しなくても問題なし
+          </p>
         </div>
       </div>
 
       <!-- Step 5 -->
       <div class="step">
         <div class="step-line">
-          <div class="step-number stripe">5</div>
+          <div class="step-number craft">5</div>
           <div class="step-connector"></div>
         </div>
         <div class="step-content">
           <div class="step-title">
-            Stripe決済
-            <span class="step-file" style="background: rgba(99,91,255,0.2); color: #635BFF;">Stripe</span>
+            特別な枡の制作（日本）
           </div>
           <p class="step-desc">
-            Stripeの決済ページでカード情報を入力<br>
-            決済完了後、success.htmlにリダイレクト
+            パートナーシップ開始後に制作<br>
+            Year Edition 専用仕様 / 年号・Edition管理<br>
+            制作が遅れること ＝ 価値が下がることではない<br>
+            「その人のために作られる」感覚
           </p>
-          <div class="step-actions">
-            <div class="action">
-              <div class="action-label">Personal</div>
-              <div class="action-value">$10,000/年</div>
-            </div>
-            <div class="action">
-              <div class="action-label">Corporate</div>
-              <div class="action-value">$15,000/年</div>
-            </div>
-          </div>
         </div>
       </div>
 
       <!-- Step 6 -->
       <div class="step">
         <div class="step-line">
-          <div class="step-number success">6</div>
+          <div class="step-number ship">6</div>
           <div class="step-connector"></div>
         </div>
         <div class="step-content">
           <div class="step-title">
-            決済完了 & PDF発行
-            <span class="step-file">success.html</span>
+            保管 or 発送（1〜3ヶ月）
           </div>
           <p class="step-desc">
-            localStorageから契約情報を取得<br>
-            契約書PDFをダウンロード可能
+            <strong>オプション①：日本で保管</strong><br>
+            FOMUS側で管理 / 海外在住者向け / 将来の受け取り・展示・使用に対応<br><br>
+            <strong>オプション②：発送</strong><br>
+            発送目安：1〜3ヶ月以内 / 国・地域に応じて個別対応<br>
+            ※「すぐ届く商品」に見せないのがポイント
           </p>
-          <div class="step-actions">
-            <div class="action">
-              <div class="action-label">表示</div>
-              <div class="action-value">契約情報確認</div>
-            </div>
-            <div class="action">
-              <div class="action-label">機能</div>
-              <div class="action-value">PDFダウンロード</div>
-            </div>
-            <div class="action">
-              <div class="action-label">連絡</div>
-              <div class="action-value">WhatsApp</div>
-            </div>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="step">
+        <div class="step-line">
+          <div class="step-number success">7</div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">
+            年間パートナーシップ継続
           </div>
+          <p class="step-desc">
+            ここからが「非契約・非保証」の領域：<br>
+            ・年間の非公開コミュニケーション<br>
+            ・FOMUSが検討する文化的プロジェクトの案内<br>
+            ・USD 100,000枠：より近い距離での対話や相談の可能性<br><br>
+            何かを約束しない / 役割・成果を定義しない / 関係性のみが始まる
+          </p>
         </div>
       </div>
     </div>
 
-    <!-- Data Flow -->
+    <!-- Stripe設定 -->
     <div class="data-flow">
-      <h2>保存されるデータ (localStorage)</h2>
+      <h2>Stripe 商品設定（確定文言）</h2>
       <div class="data-box">
-        <div class="data-box-title">fomus-contract</div>
+        <div class="data-box-title">Product Name</div>
         <div class="data-item">
-          <span class="data-key">name</span>
-          <span class="data-value">"山田太郎"</span>
-        </div>
-        <div class="data-item">
-          <span class="data-key">email</span>
-          <span class="data-value">"taro@example.com"</span>
-        </div>
-        <div class="data-item">
-          <span class="data-key">company</span>
-          <span class="data-value">"株式会社〇〇" (法人のみ)</span>
-        </div>
-        <div class="data-item">
-          <span class="data-key">plan</span>
-          <span class="data-value">"personal" | "corporate"</span>
-        </div>
-        <div class="data-item">
-          <span class="data-key">agreedAt</span>
-          <span class="data-value">"2026-01-27T10:30:00.000Z"</span>
+          <span class="data-value">FOMUSglobal Partnership Masu – Year Edition 2026</span>
         </div>
       </div>
+      <div class="data-box">
+        <div class="data-box-title">Price Options</div>
+        <div class="data-item">
+          <span class="data-key">Individual</span>
+          <span class="data-value">USD 20,000</span>
+        </div>
+        <div class="data-item">
+          <span class="data-key">Corporate</span>
+          <span class="data-value">USD 35,000</span>
+        </div>
+        <div class="data-item">
+          <span class="data-key">Cultural Co-Creation</span>
+          <span class="data-value">USD 100,000</span>
+        </div>
+      </div>
+      <div class="data-box">
+        <div class="data-box-title">Description（必須）</div>
+        <div class="data-item" style="flex-direction: column; gap: 8px;">
+          <span class="data-value" style="white-space: pre-line; line-height: 1.8;">A specially crafted, physical Japanese Masu produced for the Year Edition.
+The purchase may include non-contractual, non-guaranteed cultural communications from FOMUS.
+This product is not an investment, membership, or service contract.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal -->
+    <div class="legal-box">
+      <h3>LP・利用規約に必ず入れる一文（重要）</h3>
+      <p>
+        <strong style="color: #fff;">日本語：</strong><br>
+        本商品は、物理的な工芸品（枡）の販売です。付随するコミュニケーションや機会は、任意かつ非保証であり、投資商品、会員権、役務提供ではありません。パートナーシップ期間は、決済完了日から1年間となります。枡は特別に制作され、日本での保管、または1〜3ヶ月以内の発送となります。<br><br>
+        <strong style="color: #fff;">English：</strong><br>
+        This product is a physical craft artifact (Masu). Any accompanying communications or opportunities are optional and non-guaranteed, and this is not an investment product, membership, or service contract. The partnership period begins on the date payment is completed and lasts for one year. The Masu is specially crafted and will be stored in Japan or shipped within 1–3 months.
+      </p>
     </div>
 
     <!-- Note -->
     <div class="note">
-      <strong>⚠️ 未設定項目:</strong><br>
-      Stripe Payment Linksを作成し、apply.html内の <code>stripeLinks</code> オブジェクトにURLを設定してください。<br>
-      また、Stripeの「成功時リダイレクトURL」を <code class="highlight">https://partnership.fomusglobal.com/success.html</code> に設定してください。
+      <strong>UAE ECライセンス適合ポイント：</strong><br>
+      ・決済＝物販完了<br>
+      ・パートナーシップ＝付随的・非契約・非保証<br>
+      ・開始日が明確（決済日）<br>
+      ・発送遅延＝契約不履行にならない
     </div>
   </div>
 </body>

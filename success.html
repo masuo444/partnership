@@ -335,28 +335,28 @@
           </h1>
 
           <p class="success-message"
-            data-jp="FOMUS GLOBAL PARTNERSHIP へのご参加、誠にありがとうございます。<br>下記より契約書PDFをダウンロードいただけます。"
-            data-en="Thank you for joining FOMUS GLOBAL PARTNERSHIP.<br>You can download your contract PDF below."
-            data-fr="Merci d'avoir rejoint FOMUS GLOBAL PARTNERSHIP.<br>Vous pouvez télécharger votre contrat PDF ci-dessous."
-            data-ar="شكراً لانضمامك إلى شراكة فومس العالمية.<br>يمكنك تحميل عقدك بصيغة PDF أدناه.">
-            Thank you for joining FOMUS GLOBAL PARTNERSHIP.<br>You can download your contract PDF below.
+            data-jp="FOMUSglobal パートナーシップ枡をご購入いただきありがとうございます。<br>本日からパートナーシップが開始されます（1年間）。<br>枡は特別に制作され、1〜3ヶ月以内に日本での保管または発送となります。"
+            data-en="Thank you for purchasing your FOMUSglobal Partnership Masu.<br>Your partnership begins today (for one year).<br>Your Masu will be specially crafted and stored in Japan or shipped within 1-3 months."
+            data-fr="Merci pour l'achat de votre Masu de Partenariat FOMUSglobal.<br>Votre partenariat commence aujourd'hui (pour un an).<br>Votre Masu sera fabriqué spécialement et stocké au Japon ou expédié dans 1 à 3 mois."
+            data-ar="شكراً لشراء ماسو شراكة فومس العالمية الخاص بك.<br>تبدأ شراكتك اليوم (لمدة سنة واحدة).<br>سيتم صنع ماسو الخاص بك خصيصاً وتخزينه في اليابان أو شحنه خلال 1-3 أشهر.">
+            Thank you for purchasing your FOMUSglobal Partnership Masu.<br>Your partnership begins today (for one year).<br>Your Masu will be specially crafted and stored in Japan or shipped within 1-3 months.
           </p>
 
           <div id="noDataWarning" class="no-data-warning" style="display: none;"
-            data-jp="契約データが見つかりません。apply.htmlから再度お申し込みください。"
-            data-en="Contract data not found. Please apply again from apply.html."
-            data-fr="Données du contrat introuvables. Veuillez postuler à nouveau depuis apply.html."
-            data-ar="لم يتم العثور على بيانات العقد. يرجى التقديم مرة أخرى من apply.html.">
-            Contract data not found. Please apply again from apply.html.
+            data-jp="購入データが見つかりません。apply.htmlから再度お申し込みください。"
+            data-en="Purchase data not found. Please apply again from apply.html."
+            data-fr="Données d'achat introuvables. Veuillez postuler à nouveau depuis apply.html."
+            data-ar="لم يتم العثور على بيانات الشراء. يرجى التقديم مرة أخرى من apply.html.">
+            Purchase data not found. Please apply again from apply.html.
           </div>
 
           <div id="contractInfo" class="contract-info">
             <div class="contract-info-title"
-              data-jp="契約情報"
-              data-en="Contract Information"
-              data-fr="Informations du contrat"
-              data-ar="معلومات العقد">
-              Contract Information
+              data-jp="購入情報"
+              data-en="Purchase Record"
+              data-fr="Enregistrement d'achat"
+              data-ar="سجل الشراء">
+              Purchase Record
             </div>
             <div class="contract-info-item">
               <span class="contract-info-label"
@@ -384,19 +384,27 @@
             </div>
             <div class="contract-info-item">
               <span class="contract-info-label"
-                data-jp="プラン"
-                data-en="Plan"
-                data-fr="Plan"
-                data-ar="الخطة">Plan</span>
+                data-jp="商品"
+                data-en="Product"
+                data-fr="Produit"
+                data-ar="المنتج">Product</span>
               <span class="contract-info-value" id="displayPlan">-</span>
             </div>
             <div class="contract-info-item">
               <span class="contract-info-label"
-                data-jp="同意日時"
-                data-en="Agreed At"
-                data-fr="Date d'accord"
-                data-ar="تاريخ الموافقة">Agreed At</span>
+                data-jp="パートナーシップ開始日"
+                data-en="Partnership Start"
+                data-fr="Début du partenariat"
+                data-ar="بداية الشراكة">Partnership Start</span>
               <span class="contract-info-value" id="displayDate">-</span>
+            </div>
+            <div class="contract-info-item">
+              <span class="contract-info-label"
+                data-jp="パートナーシップ終了日"
+                data-en="Partnership End"
+                data-fr="Fin du partenariat"
+                data-ar="نهاية الشراكة">Partnership End</span>
+              <span class="contract-info-value" id="displayEndDate">-</span>
             </div>
           </div>
 
@@ -405,11 +413,11 @@
               <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
             </svg>
             <span
-              data-jp="契約書PDFをダウンロード"
-              data-en="Download Contract PDF"
-              data-fr="Télécharger le contrat PDF"
-              data-ar="تحميل عقد PDF">
-              Download Contract PDF
+              data-jp="購入確認書PDFをダウンロード"
+              data-en="Download Purchase Confirmation (PDF)"
+              data-fr="Télécharger la confirmation d'achat (PDF)"
+              data-ar="تحميل تأكيد الشراء (PDF)">
+              Download Purchase Confirmation (PDF)
             </span>
           </button>
 
@@ -503,28 +511,44 @@
         }
 
         const planNames = {
+          individual: {
+            en: 'FOMUSglobal Partnership Masu – Individual Year Edition 2026 (USD 20,000)',
+            jp: 'FOMUSglobal パートナーシップ枡 – Individual Year Edition 2026 (USD 20,000)',
+            fr: 'Masu de Partenariat FOMUSglobal – Édition Annuelle Individuelle 2026 (20 000 USD)',
+            ar: 'ماسو شراكة فومس العالمية – إصدار سنوي فردي 2026 (20,000 USD)'
+          },
           personal: {
-            en: 'Personal Partnership ($10,000/year)',
-            jp: 'Personal Partnership ($10,000/年)',
-            fr: 'Personal Partnership (10 000$/an)',
-            ar: 'شراكة شخصية (10,000$/سنة)'
+            en: 'FOMUSglobal Partnership Masu – Individual Year Edition 2026 (USD 20,000)',
+            jp: 'FOMUSglobal パートナーシップ枡 – Individual Year Edition 2026 (USD 20,000)',
+            fr: 'Masu de Partenariat FOMUSglobal – Édition Annuelle Individuelle 2026 (20 000 USD)',
+            ar: 'ماسو شراكة فومس العالمية – إصدار سنوي فردي 2026 (20,000 USD)'
           },
           corporate: {
-            en: 'Corporate Partnership ($15,000/year)',
-            jp: 'Corporate Partnership ($15,000/年)',
-            fr: 'Corporate Partnership (15 000$/an)',
-            ar: 'شراكة مؤسسية (15,000$/سنة)'
+            en: 'FOMUSglobal Partnership Masu – Corporate Year Edition 2026 (USD 35,000)',
+            jp: 'FOMUSglobal パートナーシップ枡 – Corporate Year Edition 2026 (USD 35,000)',
+            fr: 'Masu de Partenariat FOMUSglobal – Édition Annuelle Entreprise 2026 (35 000 USD)',
+            ar: 'ماسو شراكة فومس العالمية – إصدار سنوي مؤسسي 2026 (35,000 USD)'
+          },
+          cocreation: {
+            en: 'FOMUSglobal Partnership Masu – Cultural Co-Creation Edition 2026 (USD 100,000)',
+            jp: 'FOMUSglobal パートナーシップ枡 – Cultural Co-Creation Edition 2026 (USD 100,000)',
+            fr: 'Masu de Partenariat FOMUSglobal – Édition Co-Création Culturelle 2026 (100 000 USD)',
+            ar: 'ماسو شراكة فومس العالمية – إصدار الإبداع الثقافي المشترك 2026 (100,000 USD)'
           }
         };
         document.getElementById('displayPlan').textContent = planNames[contractData.plan]?.[currentLang] || contractData.plan;
 
         if (contractData.agreedAt) {
-          const date = new Date(contractData.agreedAt);
-          document.getElementById('displayDate').textContent = date.toLocaleString(
-            currentLang === 'jp' ? 'ja-JP' :
+          const startDate = new Date(contractData.agreedAt);
+          const endDate = new Date(startDate);
+          endDate.setFullYear(endDate.getFullYear() + 1);
+
+          const locale = currentLang === 'jp' ? 'ja-JP' :
             currentLang === 'fr' ? 'fr-FR' :
-            currentLang === 'ar' ? 'ar-AE' : 'en-US'
-          );
+            currentLang === 'ar' ? 'ar-AE' : 'en-US';
+
+          document.getElementById('displayDate').textContent = startDate.toLocaleDateString(locale);
+          document.getElementById('displayEndDate').textContent = endDate.toLocaleDateString(locale);
         }
       }
 
@@ -533,7 +557,7 @@
       // PDF Generation
       function generatePDF() {
         if (!contractData) {
-          alert('Contract data not found.');
+          alert('Purchase data not found.');
           return;
         }
 
@@ -548,21 +572,31 @@
         // Title
         doc.setFontSize(18);
         doc.setFont('helvetica', 'bold');
-        doc.text('FOMUS GLOBAL PARTNERSHIP', pageWidth / 2, y, { align: 'center' });
+        doc.text('FOMUSglobal Partnership Masu', pageWidth / 2, y, { align: 'center' });
         y += 8;
         doc.setFontSize(14);
-        doc.text('Contract Agreement', pageWidth / 2, y, { align: 'center' });
-        y += 15;
+        doc.text('Year Edition 2026 – Purchase Confirmation', pageWidth / 2, y, { align: 'center' });
+        y += 12;
+
+        // Product Disclaimer
+        doc.setFontSize(8);
+        doc.setFont('helvetica', 'italic');
+        doc.setTextColor(100, 100, 100);
+        const disclaimer = 'This document is a purchase confirmation for a physical craft product (FOMUSglobal Partnership Masu – Year Edition 2026). It does not constitute a service contract, membership agreement, or guarantee of participation.';
+        const disclaimerLines = doc.splitTextToSize(disclaimer, contentWidth);
+        doc.text(disclaimerLines, pageWidth / 2, y, { align: 'center' });
+        y += (disclaimerLines.length * 3) + 8;
+        doc.setTextColor(0, 0, 0);
 
         // Horizontal line
         doc.setLineWidth(0.5);
         doc.line(margin, y, pageWidth - margin, y);
         y += 15;
 
-        // Contract Information Section
+        // Purchase Record Section
         doc.setFontSize(12);
         doc.setFont('helvetica', 'bold');
-        doc.text('Contract Information', margin, y);
+        doc.text('Purchase Record', margin, y);
         y += 8;
 
         doc.setFont('helvetica', 'normal');
@@ -573,15 +607,24 @@
           ['Email:', contractData.email || '-']
         ];
 
-        if (contractData.company && contractData.plan === 'corporate') {
+        if (contractData.company && (contractData.plan === 'corporate' || contractData.plan === 'cocreation')) {
           info.push(['Company:', contractData.company]);
         }
 
-        const planLabel = contractData.plan === 'personal' ? 'Personal Partnership ($10,000/year)' : 'Corporate Partnership ($15,000/year)';
-        info.push(['Plan:', planLabel]);
+        const planLabels = {
+          individual: 'FOMUSglobal Partnership Masu – Individual Year Edition 2026 (USD 20,000)',
+          personal: 'FOMUSglobal Partnership Masu – Individual Year Edition 2026 (USD 20,000)',
+          corporate: 'FOMUSglobal Partnership Masu – Corporate Year Edition 2026 (USD 35,000)',
+          cocreation: 'FOMUSglobal Partnership Masu – Cultural Co-Creation Edition 2026 (USD 100,000)'
+        };
+        const planLabel = planLabels[contractData.plan] || contractData.plan;
+        info.push(['Product:', planLabel]);
 
-        const agreedDate = contractData.agreedAt ? new Date(contractData.agreedAt).toLocaleString('en-US') : '-';
-        info.push(['Agreed At:', agreedDate]);
+        const startDate = contractData.agreedAt ? new Date(contractData.agreedAt) : new Date();
+        const endDate = new Date(startDate);
+        endDate.setFullYear(endDate.getFullYear() + 1);
+        info.push(['Partnership Start:', startDate.toLocaleDateString('en-US')]);
+        info.push(['Partnership End:', endDate.toLocaleDateString('en-US')]);
 
         info.forEach(([label, value]) => {
           doc.setFont('helvetica', 'bold');
@@ -597,7 +640,7 @@
         doc.line(margin, y, pageWidth - margin, y);
         y += 15;
 
-        // Contract Terms
+        // Terms and Conditions
         doc.setFontSize(12);
         doc.setFont('helvetica', 'bold');
         doc.text('Terms and Conditions', margin, y);
@@ -609,11 +652,11 @@
         const terms = [
           {
             title: '1. Operating Structure',
-            content: 'Operating Entity: FOMUS LLC - responsible for planning, operation, decisions, and service provision. Payment Processing: FOMUS Global FZ-LLC (UAE) - handles credit card payments and billing.'
+            content: 'Operating Entity: FOMUS LLC - responsible for cultural planning, coordination, and internal decision-making. Payment Processing: FOMUS Global FZ-LLC (UAE) - handles credit card payments and billing.'
           },
           {
-            title: '2. Nature of Services',
-            content: 'This Partnership does NOT guarantee specific outcomes, profits, project completion, investment returns, commercial success, or continuous opportunity provision. This Partnership provides rights to participate, opportunities to engage, and access to relationships.'
+            title: '2. Nature of Product',
+            content: 'This purchase is for a physical craft artifact (Partnership Masu). This does NOT guarantee specific outcomes, profits, project completion, investment returns, commercial success, or continuous opportunity provision. Any communication or interaction with FOMUS is discretionary, non-contractual, and non-guaranteed, and arises solely from mutual interest and context.'
           },
           {
             title: '3. Participation Requirements',
@@ -624,16 +667,16 @@
             content: 'Refunds are NOT provided as a general rule. No refunds will be issued for any reason including non-participation, schedule changes, or differences from expectations.'
           },
           {
-            title: '5. Service Changes & Interruptions',
-            content: 'The Company reserves the right to change, add, or remove service content, change implementation timing, suspend or discontinue projects, and restrict provision to specific members without advance notice or compensation.'
+            title: '5. Changes & Interruptions',
+            content: 'The Company reserves the right to change, add, or remove content, change implementation timing, suspend or discontinue activities, and restrict communication to specific individuals without advance notice or compensation.'
           },
           {
             title: '6. Confidentiality & Non-Disclosure',
             content: 'Participants shall NOT disclose private locations, individuals, projects, statements and backgrounds of related parties, or internal information and unreleased plans to third parties including SNS, media, and commercial use.'
           },
           {
-            title: '7. Contract Termination',
-            content: 'The Company may immediately terminate participation for violation of contract terms, actions that damage trust, inappropriate conduct, or any case deemed inappropriate. No refunds will be provided in these cases.'
+            title: '7. Termination',
+            content: 'The Company may immediately terminate the partnership for violation of terms, actions that damage trust, inappropriate conduct, or any case deemed inappropriate. No refunds will be provided in these cases.'
           },
           {
             title: '8. Governing Law & Jurisdiction',
@@ -678,7 +721,7 @@
 
         doc.text('I, the undersigned, confirm that I have read, understood, and agreed to all', margin, y);
         y += 5;
-        doc.text('the terms and conditions stated in this contract.', margin, y);
+        doc.text('the terms and conditions stated in this purchase confirmation.', margin, y);
         y += 15;
 
         doc.text('Signed by: ' + (contractData.name || '-'), margin, y);
@@ -695,7 +738,7 @@
         // Digital signature note
         doc.setFontSize(8);
         doc.setTextColor(100, 100, 100);
-        doc.text('This contract was digitally signed and agreed to through the FOMUS GLOBAL PARTNERSHIP online application process.', margin, y);
+        doc.text('This purchase was digitally confirmed through the FOMUS GLOBAL PARTNERSHIP online application process.', margin, y);
 
         // Footer on all pages
         const pageCount = doc.internal.getNumberOfPages();
@@ -703,13 +746,13 @@
           doc.setPage(i);
           doc.setFontSize(8);
           doc.setTextColor(150, 150, 150);
-          doc.text('FOMUS GLOBAL PARTNERSHIP - Contract Agreement', pageWidth / 2, 290, { align: 'center' });
+          doc.text('FOMUS GLOBAL PARTNERSHIP - Purchase Confirmation', pageWidth / 2, 290, { align: 'center' });
           doc.text('Page ' + i + ' of ' + pageCount, pageWidth - margin, 290, { align: 'right' });
         }
 
         // Generate filename
         const dateStr = contractData.agreedAt ? new Date(contractData.agreedAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
-        const filename = `FOMUS_Contract_${contractData.name.replace(/\s+/g, '_')}_${dateStr}.pdf`;
+        const filename = `FOMUS_Purchase_${contractData.name.replace(/\s+/g, '_')}_${dateStr}.pdf`;
 
         // Download PDF
         doc.save(filename);
